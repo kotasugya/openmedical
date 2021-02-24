@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employment_status: MyString
+  working_now_or_not: MyString
+  join_age: 1
+  join_year: 1
+  leave_year: 1
+  occupation: MyString
+
+two:
+  employment_status: MyString
+  working_now_or_not: MyString
+  join_age: 1
+  join_year: 1
+  leave_year: 1
+  occupation: MyString
