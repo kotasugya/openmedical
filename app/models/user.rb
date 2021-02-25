@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :companies
-  has_many :comments
+  has_many :reviews
   validates :name, presence: true
   validates :email, presence: true, length: { maximum: 255 },
             uniqueness: true
