@@ -2,12 +2,16 @@ module Api
   module V1
     class UsersController < ApplicationController
       def create
-        user = User.new(user_params)
-        if user.save
-          render json: user
+        @user = User.new(user_params)
+        if @user.save
+          render json: {user: @user}
         else
-          render json: user.errors
+          render json: {status: 500}
         end
+      end
+
+      def update
+        
       end
 
 
