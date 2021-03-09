@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import{
   BrowserRouter as Router,
@@ -9,18 +9,18 @@ import{
 //components
 import {UsersNew} from './containers/users/UsersNew.jsx';
 import {UsersShow} from './containers/users/UsersShow.jsx';
-import {usersNew} from './urls/index.js';
+import {UsersLogin} from './containers/users/UsersLogin.jsx';
 
 function App() {
+  const [loggedInStatus, setLoggedInStatus] = useState("ログインしてません")
+  const [user, setUser] = useState({})
+
   return (
     <Router>
       <Switch>
-        <Route exact path = "/users">
-          <UsersNew />
-        </Route>
-        <Route exact path = "/users/:id">
-          <UsersShow />
-        </Route>
+        <Route exact path = "/users" component = {UsersNew} />
+        <Route exact path = "/users/:id" component = {UsersShow} />
+        <Route exact path = "/login" component = {UsersLogin} />
       </Switch>
     </Router>
   );
