@@ -10,6 +10,8 @@ import{
 import {UsersNew} from './containers/users/UsersNew.jsx';
 import {UsersShow} from './containers/users/UsersShow.jsx';
 import {UsersLogin} from './containers/users/UsersLogin.jsx';
+import {Home} from './containers/Home';
+
 
 function App() {
   const [loggedInStatus, setLoggedInStatus] = useState("ログインしてません")
@@ -18,6 +20,7 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route exact path = "/" component = {Home} />
         <Route exact path = "/users" component = {UsersNew} />
         <Route exact path = "/users/:id" component = {UsersShow} />
         <Route exact path = "/login" component = {UsersLogin} />
