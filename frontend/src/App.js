@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import{
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import history from 'history/createBrowserHistory';
+
+//components
+import {Home} from './containers/Home';
+import {UsersNew} from './containers/users/UsersNew';
+import {UsersShow} from './containers/users/UsersShow';
+import {UsersLogin} from './containers/users/UsersLogin';
+import {CompaniesNew} from './containers/companies/CompaniesNew';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}>
+      <Switch>
+        <Route exact path = "/" component = {Home} />
+        {/* ユーザー */}
+        <Route exact path = "/users" component = {UsersNew} />
+        <Route exact path = "/users/:id" component = {UsersShow} />
+        <Route exact path = "/login" component = {UsersLogin} />
+
+        {/* 企業 */}
+        <Route exact path = "/companies/new" component = {CompaniesNew} />
+      </Switch>
+    </Router>
   );
 }
 

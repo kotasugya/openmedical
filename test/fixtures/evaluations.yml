@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  free_opinion: MyString
+  teamwork: MyString
+  compliance: MyString
+  motivation: MyString
+  growth_enviroment: MyString
+
+two:
+  free_opinion: MyString
+  teamwork: MyString
+  compliance: MyString
+  motivation: MyString
+  growth_enviroment: MyString
