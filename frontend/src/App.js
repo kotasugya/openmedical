@@ -3,27 +3,32 @@ import './App.css';
 import{
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
+import history from 'history/createBrowserHistory';
 
 //components
-import {UsersNew} from './containers/users/UsersNew.jsx';
-import {UsersShow} from './containers/users/UsersShow.jsx';
-import {UsersLogin} from './containers/users/UsersLogin.jsx';
 import {Home} from './containers/Home';
+import {UsersNew} from './containers/users/UsersNew';
+import {UsersShow} from './containers/users/UsersShow';
+import {UsersLogin} from './containers/users/UsersLogin';
+import {CompaniesNew} from './containers/companies/CompaniesNew';
+
+
 
 
 function App() {
-  const [loggedInStatus, setLoggedInStatus] = useState("ログインしてません")
-  const [user, setUser] = useState({})
-
   return (
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route exact path = "/" component = {Home} />
+        {/* ユーザー */}
         <Route exact path = "/users" component = {UsersNew} />
         <Route exact path = "/users/:id" component = {UsersShow} />
         <Route exact path = "/login" component = {UsersLogin} />
+
+        {/* 企業 */}
+        <Route exact path = "/companies/new" component = {CompaniesNew} />
       </Switch>
     </Router>
   );
