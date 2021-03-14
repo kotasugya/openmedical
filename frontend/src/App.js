@@ -13,6 +13,7 @@ import {UsersNew} from './containers/users/UsersNew';
 import {UsersShow} from './containers/users/UsersShow';
 import {UsersLogin} from './containers/users/UsersLogin';
 import {CompaniesNew} from './containers/companies/CompaniesNew';
+import {ReviewsNew} from './containers/reviews/ReviewsNew';
 
 
 
@@ -29,6 +30,9 @@ function App() {
 
         {/* 企業 */}
         <Route exact path = "/companies/new" component = {CompaniesNew} />
+
+        {/* レビュー */}
+        <Route exact path = "/reviews/new" component = {ReviewsNew} />
       </Switch>
     </Router>
   );
