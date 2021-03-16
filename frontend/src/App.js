@@ -14,6 +14,8 @@ import {UsersShow} from './containers/users/UsersShow';
 import {UsersLogin} from './containers/users/UsersLogin';
 import {CompaniesNew} from './containers/companies/CompaniesNew';
 import {ReviewsNew} from './containers/reviews/ReviewsNew';
+import {ReviewsShow} from './containers/reviews/ReviewsShow';
+import {EnrollmentsNew} from './containers/enrollments/EnrollmentsNew';
 
 
 
@@ -33,6 +35,10 @@ function App() {
 
         {/* レビュー */}
         <Route exact path = "/reviews/new" component = {ReviewsNew} />
+        <Route exact path = "/reviews/:id" component = {ReviewsShow} />
+
+        {/* 在籍情報 */}
+        <Route exact path = "/enrollments/new" component = {EnrollmentsNew} />
       </Switch>
     </Router>
   );
