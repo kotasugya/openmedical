@@ -5,11 +5,10 @@
       post '/login', to: 'sessions#login'
       get '/logged_in', to: 'sessions#loged_in?'
       delete '/logout', to: 'sessions#logout'
-      resources :companies
-      resources :reviews do
-        resources :enrollments
-        resources :evaluations
+      resources :companies do
+        resources :reviews
       end
+      resources :enrollments
     end
   end
 end
