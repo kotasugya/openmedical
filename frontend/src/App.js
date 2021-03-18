@@ -16,6 +16,7 @@ import {CompaniesNew} from './containers/companies/CompaniesNew';
 import {ReviewsNew} from './containers/reviews/ReviewsNew';
 import {ReviewsShow} from './containers/reviews/ReviewsShow';
 import {EnrollmentsNew} from './containers/enrollments/EnrollmentsNew';
+import { CompaniesIndex } from './containers/companies/CompaniesIndex';
 
 
 
@@ -32,6 +33,7 @@ function App() {
 
         {/* 企業 */}
         <Route exact path = "/companies/new" component = {CompaniesNew} />
+        <Route exact path = "/companies" component = {CompaniesIndex} />
 
         {/* レビュー */}
         <Route exact path = "/reviews/new" component = {ReviewsNew} />
