@@ -1,0 +1,20 @@
+@host = http://localhost
+@port = 3001
+@base_path = /api/v1
+
+###
+@name = getBooks
+{{host}}:{{port}}{{base_path}}/companies
+
+###
+@name = getBooksWithQuery
+POST {{host}}:{{port}}{{base_path}}/login
+Content-Type: application/json
+
+{
+  "user": {
+    "email": "test@gmail.com",
+    "password": "6427zero"
+  }
+}
+
