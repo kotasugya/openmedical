@@ -4,7 +4,7 @@
 
 ###
 @name = getBooks
-{{host}}:{{port}}{{base_path}}/companies
+{{host}}:{{port}}{{base_path}}/companies/1/reviews
 
 ###
 @name = getBooksWithQuery

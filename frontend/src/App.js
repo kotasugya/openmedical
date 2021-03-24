@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import{
   BrowserRouter as Router,
@@ -17,6 +17,7 @@ import {ReviewsNew} from './containers/reviews/ReviewsNew';
 import {ReviewsShow} from './containers/reviews/ReviewsShow';
 import {EnrollmentsNew} from './containers/enrollments/EnrollmentsNew';
 import { CompaniesIndex } from './containers/companies/CompaniesIndex';
+import { ReviewsIndex } from './containers/reviews/ReviewsIndex';
 
 
 
@@ -36,8 +37,9 @@ function App() {
         <Route exact path = "/companies" component = {CompaniesIndex} />
 
         {/* レビュー */}
-        <Route exact path = "/reviews/new" component = {ReviewsNew} />
-        <Route exact path = "/reviews/:id" component = {ReviewsShow} />
+        <Route  exact path = "/reviews/new" component = {ReviewsNew} />
+        <Route  exact path = "/reviews/:id" component = {ReviewsShow} />
+        <Route  exact path = "/:companyId/reviews" component = {ReviewsIndex} />
 
         {/* 在籍情報 */}
         <Route exact path = "/enrollments/new" component = {EnrollmentsNew} />

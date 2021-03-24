@@ -4,10 +4,12 @@ import {companiesIndex} from '../../urls/index'
 import { Fragment } from 'react';
 
 const initialState = {
-  "companies":{
-    "id":null,
-    "name":""
-  }
+  "companies":[
+    {
+      "id":null,
+      "name":""
+    }
+  ]
 }
 
 export const CompaniesIndex = () =>{
@@ -32,7 +34,12 @@ export const CompaniesIndex = () =>{
   return(
     <Fragment>
       <h2>企業一覧</h2>
-      {companiesList.companies.name}
+      {companiesList.companies.map(company =>
+        <div>
+          {company.name}
+        </div>
+        )
+      }
     </Fragment>
   )
 }

@@ -9,6 +9,7 @@ export const UsersNew = () =>{
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
+  const [birthday, setBirthday] = useState("")
 
   const history = useHistory();
 
@@ -18,7 +19,8 @@ export const UsersNew = () =>{
         name: name,
         email: email,
         password: password,
-        passwordConfirmation: passwordConfirmation
+        passwordConfirmation: passwordConfirmation,
+        birthday: birthday
       }
     }
     const headers = {"Content-Type": "application/json"}
@@ -62,6 +64,11 @@ export const UsersNew = () =>{
             value={passwordConfirmation}
             placeholder="確認用パスワード"
             onChange={event => setPasswordConfirmation(event.target.value)}
+          />
+          <input
+            type="date"
+            value={birthday}
+            onChange={event => setBirthday(event.target.value)}
           />
 
           <button onClick = {handleSubmit} type = "button" >登録する</button>

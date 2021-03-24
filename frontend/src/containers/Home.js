@@ -1,15 +1,20 @@
-import React from 'react'
+import React, {Component, Fragment} from 'react'
 import {useHistory} from "react-router-dom";
 
-import {UsersLogin} from './users/UsersLogin'
-import {UsersNew} from './users/UsersNew'
+// component
+import {Header} from '../components/Header'
 
-import {usersNew} from '../urls/index'
+// container
+import {CompaniesIndex} from '../containers/companies/CompaniesIndex'
+import {ReviewsShow} from '../containers/reviews/ReviewsShow'
 
 export const Home = () => {
     return (
         <div>
+            <Header />
             <h1>Home</h1>
+            <CompaniesIndex />
+            <ReviewsShow />
         </div>
     )
 }

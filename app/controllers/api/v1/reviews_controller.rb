@@ -2,7 +2,8 @@ module Api
   module V1
     class ReviewsController < ApplicationController
       def index
-        @reviews = Review.all
+        @company = Company.find(params[:company_id])
+        @reviews = @company.reviews
         render json: {reviews: @reviews}
       end
 

@@ -3,16 +3,16 @@ import axios from 'axios'
 import {reviewsShow} from '../../urls/index'
 
 const initialState = {
-    "review":{
-      "review_content": ""
-    }
+  "review":{
+    "review_content": ""
   }
+}
 
 export const ReviewsShow = ()=> {
   const [content, setContent] = useState(initialState)
 
-  const fetchReviewsShow = (comId, RevId) => {
-    return axios.get(reviewsShow(comId, RevId))
+  const fetchReviewsShow = (companyId, id) => {
+    return axios.get(reviewsShow(companyId, id))
     .then(response => {
       return response.data
     })
