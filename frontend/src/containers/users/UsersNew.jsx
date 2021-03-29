@@ -42,81 +42,93 @@ export const UsersNew = () =>{
 
   return(
     <Fragment>
-      <h2>新規登録</h2>
-      <p>基本情報</p>
-        <form className = "form">
-          <table>
+      <body>
+      <div className = "mainWrapper">
+        <h2>新規登録</h2>
+        <p>基本情報<span className = "asterisk"> ＊</span><span className = "vital"> 必須</span></p>
+        <form>
+          <table className = "newForm">
             <tr>
-              <th>氏名</th>
-              <th>
+              <th>氏名<span className = "asterisk"> *</span></th>
+              <td>
                 <input
                   type="text"
                   value={name}
                   placeholder="氏名"
                   onChange={event => setName(event.target.value)}
+                  className = "placeholderPosition"
                 />
-              </th>
+              </td>
             </tr>
             <tr>
-              <th>メールアドレス</th>
-              <th>
+              <th>メールアドレス<span className = "asterisk"> *</span></th>
+              <td>
                 <input
                   type="email"
                   value={email}
                   placeholder="メールアドレス"
                   onChange={event => setEmail(event.target.value)}
+                  className = "placeholderPosition"
                 />
-              </th>
+              </td>
             </tr>
             <tr>
-              <th>パスワード</th>
-              <th>
+              <th>パスワード<span className = "asterisk"> *</span></th>
+              <td>
                 <input
                   type="password"
                   value={password}
-                  placeholder="パスワード"
+                  placeholder="8文字以上でご入力下さい"
                   onChange={event => setPassword(event.target.value)}
+                  className = "placeholderPosition"
                 />
-              </th>
+              </td>
             </tr>
             <tr>
-              <th>確認用パスワード</th>
-              <th>
+              <th>確認用パスワード<span className = "asterisk"> *</span></th>
+              <td>
                 <input
                   type="password"
                   value={passwordConfirmation}
-                  placeholder="確認用パスワード"
+                  placeholder="再度ご入力下さい"
                   onChange={event => setPasswordConfirmation(event.target.value)}
+                  className = "placeholderPosition"
                 />
-              </th>
+              </td>
             </tr>
             <tr>
-              <th>誕生日</th>
-              <th>
+              <th>生年月日<span className = "asterisk"> *</span></th>
+              <td>
                 <input
                   type="date"
                   value={birthday}
                   onChange={event => setBirthday(event.target.value)}
+                  className = "placeholderPosition"
                 />
-              </th>
+              </td>
             </tr>
             <tr>
-              <th>現在の年収</th>
-              <th>
+              <th>現在の年収<span className = "asterisk"> *</span></th>
+              <td>
                 <select
                   value={salary}
                   onChange={event => setSalary(event.target.value)}
-                  placeholder="選択して下さい。"
                 >
-                  <option value="選択肢1">選択肢1</option>
-                  <option value="選択肢2">選択肢2</option>
-                  <option value="選択肢3">選択肢3</option>
+                  <option value="" className = "placeholderPosition">選択してください</option>
+                  <option value="〜300">300万円未満</option>
+                  <option value="300〜500">300万円〜500万円</option>
+                  <option value="750〜1000万円">750万円〜1000万円</option>
+                  <option value="1000万円〜1250万円">1000万円〜1250万円</option>
+                  <option value="1250万円〜1500万円">1250万円〜1500万円</option>
+                  <option value="1500万円〜">1500万円以上</option>
                 </select>
-              </th>
+              </td>
             </tr>
           </table>
-          <button onClick = {handleSubmit} type = "button" >登録する</button>
+          <button className = "register-btn" onClick = {handleSubmit} type = "button" >登録する</button>
         </form>
+      </div>
+      </body>
     </Fragment>
   )
 }
