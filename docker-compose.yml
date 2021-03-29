@@ -12,7 +12,9 @@ services:
     ports:
       - 3306:3306
   backend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
     volumes:
       - .:/open_medical
@@ -22,11 +24,12 @@ services:
       - db
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile_node
+      context: ./frontend/
+      dockerfile: Dockerfile
     volumes:
       - ./frontend:/usr/src/app/frontend
-    command: sh -c "cd frontend && npm start --host 0.0.0.0 --port 3000"
+    working_dir: /usr/src/app/frontend
+    command: sh -c "npm start --host 0.0.0.0 --port 3000"
     ports:
       - "3000:3000"
     stdin_open: true
