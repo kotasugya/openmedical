@@ -4,6 +4,7 @@ const DEFAULT_API_LOCALHOST = 'http://localhost:3001/api/v1'
 export const usersNew = `${DEFAULT_API_LOCALHOST}/users`
 export const usersLogin = `${DEFAULT_API_LOCALHOST}/login`
 export const usersShow = (id) => `${DEFAULT_API_LOCALHOST}/users/${id}`
+export const usersEdit = (id) => `${DEFAULT_API_LOCALHOST}/users/${id}`
 
 // 企業
 export const companiesNew = `${DEFAULT_API_LOCALHOST}/companies`

@@ -4,10 +4,10 @@ body {
     "Hiragino Sans", Meiryo, sans-serif;
 }
 .mainWrapper {
+  height: auto;
   width: 1170px;
   margin: 0 auto;
 }
-
 h2 {
   font-weight: normal;
   margin-left: 15%;
@@ -17,7 +17,6 @@ p {
   font-weight: bold;
   margin-left: 15%;
 }
-
 .asterisk {
   color: red;
 }
@@ -38,13 +37,11 @@ table.newForm th {
   text-align: left;
   font-weight: normal;
 }
-
 table.newForm td {
   border: 1px solid lightgray;
   padding: 30px 300px 30px 30px;
   font-size: small;
 }
-
 input,
 select {
   padding: 5px;
@@ -52,12 +49,10 @@ select {
   background-color: rgb(248, 241, 241);
   width: 150%;
 }
-
 .placeholderPosition::placeholder {
   text-align: left;
   font-size: small;
 }
-
 .register-btn {
   padding: 10px 80px;
   background-color: #0099ff;
@@ -69,4 +64,36 @@ select {
   color: white;
   font-weight: bold;
   font-size: 15px;
+}
+
+/* usersShow */
+.userShowTable {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+table.userShowTable th {
+  border: 1px solid lightgray;
+  padding: 30px 130px 30px 30px;
+  font-size: small;
+  text-align: left;
+  font-weight: normal;
+}
+
+table.userShowTable td {
+  border: 1px solid lightgray;
+  padding: 30px 300px 30px 30px;
+  font-size: small;
+}
+.edit-btn {
+  padding: 10px 80px;
+  background-color: #0099ff;
+  border-radius: 5px;
+  margin-top: 100px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #0099ff;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 50px;
 }

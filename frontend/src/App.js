@@ -18,6 +18,7 @@ import {ReviewsShow} from './containers/reviews/ReviewsShow';
 import {EnrollmentsNew} from './containers/enrollments/EnrollmentsNew';
 import { CompaniesIndex } from './containers/companies/CompaniesIndex';
 import { ReviewsIndex } from './containers/reviews/ReviewsIndex';
+import { usersEdit } from './urls';
 
 
 
@@ -30,6 +31,7 @@ function App() {
         {/* ユーザー */}
         <Route exact path = "/users" component = {UsersNew} />
         <Route exact path = "/users/:id" component = {UsersShow} />
+        <Route exact path = "/users/edit" component = {usersEdit} />
         <Route exact path = "/login" component = {UsersLogin} />
 
         {/* 企業 */}
