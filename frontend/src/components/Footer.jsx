@@ -6,15 +6,37 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   footerBar: {
-
+    width: '100%',
+    height: '150px',
+    backgroundColor: '#F2F2F2',
+    position: "absolute",
+    bottom: 0,
   },
   title: {
-
+    textAlign: 'center',
+    marginTop: '25px',
+    fontSize: '20px'
   },
-  menu: {
-
+  menuList: {
+    '& ul': {
+      display: 'flex',
+      justifyContent: 'center',
+      listStyle: 'none',
+      margin: '20px',
+      '& li': {
+        fontSize: '14px',
+        marginRight: '30px',
+        marginLeft: '30px',
+        color: 'lightglay',
+      },
+    },
+  },
+  copyRight: {
+    textAlign: 'center',
+    fontSize: '13px',
+    color: 'lightglay',
   }
-  }));
+}));
 
 export const Footer = ()=> {
   const classes = useStyles();
@@ -22,11 +44,15 @@ export const Footer = ()=> {
   return(
     <div className={classes.root}>
       <div className={classes.footerBar}>
-        <div className={classes.title}>
-          <div className={classes.menu}>
-
-          </div>
+        <div className={classes.title}>openmedical</div>
+        <div className={classes.menuList}>
+          <ul>
+            <li>HOME</li>
+            <li>ABOUT</li>
+            <li>お問い合わせ</li>
+          </ul>
         </div>
+        <div className={classes.copyRight}>Copyright © 2021 Sugya.</div>
       </div>
     </div>
   )

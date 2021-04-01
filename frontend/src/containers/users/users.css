@@ -1,13 +1,16 @@
-/* UsersNew */
+/* commonStyle */
 body {
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
 }
 .mainWrapper {
   height: auto;
-  width: 1170px;
+  width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
+/* UsersNew */
 h2 {
   font-weight: normal;
   margin-left: 15%;
