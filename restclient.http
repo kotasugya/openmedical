@@ -4,7 +4,7 @@
 
 ###
 @name = getBooks
-{{host}}:{{port}}{{base_path}}/companies/1/reviews
+{{host}}:{{port}}{{base_path}}/logged_in
 
 ###
 @name = getBooksWithQuery
@@ -13,8 +13,8 @@ Content-Type: application/json
 
 {
   "user": {
-    "email": "test@gmail.com",
-    "password": "6427zero"
+    "email": "dio_the_world9740zero@yahoo.co.jp",
+    "password": "9740zero"
   }
 }
 

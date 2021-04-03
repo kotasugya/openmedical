@@ -6,7 +6,7 @@ import {Header} from '../../components/Header'
 import './users.css'
 
 
-export const UsersNew = () =>{
+export const UsersNew = (props) =>{
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -33,9 +33,13 @@ export const UsersNew = () =>{
                 headers,
                 { withCredentials: true }
       ).then(response => {
-          console.log("success", response);
           const userId = response.data.user.id
-          history.push(`/users/${userId}`)
+          const handleSuccessfulAuthentication = (data) => {
+            history.push(`/users/${userId}`)
+          }
+          if (response.data.status === 'created') {
+              handleSuccessfulAuthentication(response.data)
+          }
       }).catch(error => {
           console.log("failed", error);
       })

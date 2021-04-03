@@ -23,18 +23,18 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       listStyle: 'none',
       margin: '20px',
+      color: 'gray',
       '& li': {
         fontSize: '14px',
         marginRight: '30px',
         marginLeft: '30px',
-        color: 'lightglay',
       },
     },
   },
   copyRight: {
     textAlign: 'center',
     fontSize: '13px',
-    color: 'lightglay',
+    color: 'gray',
   }
 }));
 

@@ -9,12 +9,12 @@ import {CompaniesIndex} from '../containers/companies/CompaniesIndex'
 import {ReviewsShow} from '../containers/reviews/ReviewsShow'
 
 export const Home = () => {
-    return (
-        <div>
-            <Header />
-            <h1>Home</h1>
-            <CompaniesIndex />
-            <ReviewsShow />
-        </div>
-    )
+	return (
+		<div>
+			<Header />
+			<h1>Home</h1>
+			<CompaniesIndex />
+			<ReviewsShow />
+		</div>
+	)
 }

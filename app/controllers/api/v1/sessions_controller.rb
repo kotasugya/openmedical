@@ -4,7 +4,7 @@ module Api
       def login
         @user = User.find_by(email: session_params[:email])
         if @user && @user.authenticate(session_params[:password])
-          log_in
+          login!
           render json: { logged_in: true, user: @user, success: 'ログインしました'}
         else
           render json: { status: 400, errors: ['ログイン出来ませんでした', 'メールアドレス又はパスワードが間違っています。']}
