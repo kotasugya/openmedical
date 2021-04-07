@@ -3,10 +3,11 @@ import axios from 'axios'
 import {usersNew} from '../../urls/index'
 import {useHistory} from 'react-router-dom'
 import {Header} from '../../components/Header'
+import {Footer} from '../../components/Footer'
 import './users.css'
+import { CheckLoginStatus } from '../../components/checkLogin';
 
-
-export const UsersNew = (props) =>{
+export const UsersNew = () =>{
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -33,12 +34,8 @@ export const UsersNew = (props) =>{
                 headers,
                 { withCredentials: true }
       ).then(response => {
-          const userId = response.data.user.id
-          const handleSuccessfulAuthentication = (data) => {
-            history.push(`/users/${userId}`)
-          }
           if (response.data.status === 'created') {
-              handleSuccessfulAuthentication(response.data)
+            history.push(`/users/${response.data.user.id}`)
           }
       }).catch(error => {
           console.log("failed", error);
@@ -47,8 +44,8 @@ export const UsersNew = (props) =>{
 
   return(
     <Fragment>
-      <Header />
       <body>
+        <Header />
         <div className = "mainWrapper">
           <h2>新規登録</h2>
           <p>基本情報<span className = "asterisk"> ＊</span><span className = "vital"> 必須</span></p>

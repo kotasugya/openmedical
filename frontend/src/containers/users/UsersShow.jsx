@@ -15,11 +15,12 @@ const initialState = {
     "salary":null,
   }
 }
-export const UsersShow = () => {
+export const UsersShow = ({match}) => {
   const [userInformation, setUserInformation] = useState(initialState)
 
   const fetchUsersShow = (id) => {
-    return axios.get(usersShow(id))
+    return axios.get(usersShow(id),
+                    { withCredentials: true })
     .then(response => {
       return response.data
     })
@@ -27,7 +28,7 @@ export const UsersShow = () => {
   }
 
   useEffect(() => {
-    fetchUsersShow(1)
+    fetchUsersShow(match.params.id)
     .then((data) =>
       setUserInformation(data),
       console.log({userInformation})

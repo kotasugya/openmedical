@@ -1,7 +1,10 @@
-import React, {useEffect, useState, useReducer} from 'react';
+import React, {Fragment ,useEffect, useState} from 'react';
 import axios from 'axios'
+import {useHistory, Link} from 'react-router-dom'
 import {companiesIndex} from '../../urls/index'
-import { Fragment } from 'react';
+import {Header} from '../../components/Header'
+import {Footer} from '../../components/Footer'
+
 
 const initialState = {
   "companies":[
@@ -14,6 +17,7 @@ const initialState = {
 
 export const CompaniesIndex = () =>{
   const [companiesList, setCompaniesList] = useState(initialState)
+  const history = useHistory();
 
   const fetchCompaniesIndex = () =>{
     return axios.get(companiesIndex)
@@ -33,13 +37,28 @@ export const CompaniesIndex = () =>{
 
   return(
     <Fragment>
-      <h2>企業一覧</h2>
-      {companiesList.companies.map(company =>
-        <div>
-          {company.name}
-        </div>
-        )
-      }
+      <body>
+        <Header/>
+          <div className = "mainWrapper">
+            <h2>医療機関一覧</h2>
+            {companiesList.companies.map((company, i) =>
+              <div>
+                <table>
+                  <tr>
+                    <th>{i}</th>
+                    <td>
+                      <Link to = {`companies/${company.id}`}>
+                        {company.name}
+                      </Link>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              )
+            }
+          </div>
+        <Footer />
+      </body>
     </Fragment>
   )
 }

@@ -3,7 +3,7 @@
     namespace :v1 do
       resources :users
       post '/login', to: 'sessions#login'
-      get '/logged_in', to: 'sessions#logged_in?'
+      # get '/logged_in', to: 'sessions#logged_in?'
       delete '/logout', to: 'sessions#logout'
       resources :companies do
         resources :reviews

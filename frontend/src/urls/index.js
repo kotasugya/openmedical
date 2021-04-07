@@ -9,11 +9,12 @@ export const usersEdit = (id) => `${DEFAULT_API_LOCALHOST}/users/${id}`
 
 // 企業
 export const companiesNew = `${DEFAULT_API_LOCALHOST}/companies`
+export const companiesShow = (companyId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}`
 export const companiesIndex = `${DEFAULT_API_LOCALHOST}/companies`
 
 // レビュー
 export const reviewsNew = (companyId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/reviews`
-export const reviewsShow = (companyId, id) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/reviews/${id}`
+export const reviewsShow = (companyId, reviewId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/reviews/${reviewId}`
 export const reviewsIndex = (companyId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/reviews`
 
 // 在籍情報

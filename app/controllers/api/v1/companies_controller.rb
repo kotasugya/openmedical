@@ -17,6 +17,7 @@ module Api
 
       def show
         @company = Company.find(params[:id])
+        render json: {company: @company}
       end
 
       def update

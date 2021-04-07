@@ -1,22 +1,31 @@
-import React, {Fragment, useReducer, useEffect, useState} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import axios from 'axios'
+import {useHistory} from 'react-router-dom'
 import {usersLogin} from '../../urls/index'
 
-export const UsersLogin = (props) => {
+export const UsersLogin = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const history = useHistory();
+
   const handleSubmit = () =>{
-    const headers = "Content-Type: application/json"
-    axios.post(usersLogin,{user:{
-                            email: email,
-                            password: password}},
-                            headers
+    const headers = {"Content-Type": "application/json"}
+    const body = {
+      user:{
+        email: email,
+        password: password
+      }
+    }
+    axios.post(usersLogin,
+                body,
+                headers,
       ).then(response => {
-          // if(response.logged_in){
-          //   props.handleLoginOk(response.user)
-          // }
-        console.log(response.data)
+        if (response.data.logged_in) {
+          const userId = response.data.user.id
+          document.cookie = `user_id=${userId}`
+          history.push(`/users/${userId}`)
+        }
       }).catch(error => {
           console.log("failed", error);
       })
@@ -24,7 +33,7 @@ export const UsersLogin = (props) => {
   return(
     <Fragment>
       <p>ログイン</p>
-        <form onSubmit = {handleSubmit}>
+        <form>
           <input
             type="email"
             value={email}
@@ -37,8 +46,7 @@ export const UsersLogin = (props) => {
             placeholder="パスワード"
             onChange={event => setPassword(event.target.value)}
           />
-
-          <button type="submit">ログインする</button>
+          <button onClick = {handleSubmit} type = "button" >ログインする</button>
         </form>
     </Fragment>
   )

@@ -1,0 +1,21 @@
+/* commonStyle */
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
+  height: auto;
+}
+.mainWrapper {
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CompaniesIndex */
+
+h2 {
+  font-weight: normal;
+  margin-left: 15%;
+  margin-bottom: 30px;
+}
