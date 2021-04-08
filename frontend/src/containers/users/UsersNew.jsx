@@ -1,11 +1,10 @@
-import React, {Fragment, useReducer, useEffect, useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import axios from 'axios'
 import {usersNew} from '../../urls/index'
 import {useHistory} from 'react-router-dom'
 import {Header} from '../../components/Header'
 import {Footer} from '../../components/Footer'
 import './users.css'
-import { CheckLoginStatus } from '../../components/checkLogin';
 
 export const UsersNew = () =>{
   const [name, setName] = useState("")

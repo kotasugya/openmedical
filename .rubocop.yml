@@ -1,0 +1,22 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+# Rails最適化
+Rails:
+  Enabled: true
+
+#検証除外フォルダ指定
+AllCops:
+  Exclude:
+    - "db/**/*"
+    - "bin/*"
+    - "config/environments/*"
+    - "config/application.rb"
+    - "config/initializers/*"
+    - "config/spring.rb"
+    - "lib/tasks/*"
+    - "vendor/**/*"
+
+# 文字数の上限を８０文字から変更
+LineLength:
+  Max: 130

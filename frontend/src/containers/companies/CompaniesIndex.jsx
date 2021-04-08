@@ -42,18 +42,25 @@ export const CompaniesIndex = () =>{
           <div className = "mainWrapper">
             <h2>医療機関一覧</h2>
             {companiesList.companies.map((company, i) =>
-              <div>
-                <table>
-                  <tr>
-                    <th>{i}</th>
-                    <td>
-                      <Link to = {`companies/${company.id}`}>
-                        {company.name}
-                      </Link>
-                    </td>
-                  </tr>
-                </table>
-              </div>
+              <table>
+                <tr>
+                  <th>{i}</th>
+                  <td className = "companyName">
+                    <Link to = {`companies/${company.id}`}>
+                      {company.name}
+                    </Link>
+                  </td>
+                  <td className = "reviews">
+                    <p>レビュー数</p>
+                  </td>
+                  <td className = "salaries">
+                    <p>給与情報数</p>
+                  </td>
+                  <td className = "follow-btn">
+                    <p>フォローする</p>
+                  </td>
+                </tr>
+              </table>
               )
             }
           </div>

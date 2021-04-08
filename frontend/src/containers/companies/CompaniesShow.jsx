@@ -2,6 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react';
 import axios from 'axios'
 import {companiesShow} from '../../urls/index';
 import {reviewsIndex} from '../../urls/index';
+import {reviewCategoriesIndex} from '../../urls/index';
 import {Header} from '../../components/Header'
 import {Footer} from '../../components/Footer'
 import './companies.css'
@@ -22,22 +23,27 @@ const reviewInitialState = {
     "review_content":""
   }
 }
+const reviewCategoryInitialState = {
+  "review_category":{
+    "id":null,
+    "name":""
+  }
+}
 export const CompaniesShow = ({match}) => {
   const [companyInformation, setCompanyInformation] = useState(companyInitialState)
   const [reviewInformation, setReviewInformation] = useState(reviewInitialState)
+  const [reviewCategoryInformation, setReviewCategoryInformation] = useState(reviewCategoryInitialState)
 
   const fetchCompaniesShow = (id) => {
-    return axios.get(companiesShow(id),
-                    { withCredentials: true })
+    return axios.get(companiesShow(id))
     .then(response => {
       return response.data
     })
     .catch((error) => console.error(error))
   }
 
-  const fetchReviewsIndex = (companyId) => {
-    return axios.get(reviewsIndex(companyId),
-                    { withCredentials: true })
+  const fetchReviewCategoriesIndex = (companyId) => {
+    return axios.get(reviewCategoriesIndex(companyId))
     .then(response => {
       return response.data
     })
@@ -50,10 +56,10 @@ export const CompaniesShow = ({match}) => {
       setCompanyInformation(data),
       console.log({companyInformation})
     )
-    fetchReviewsIndex(match.params.id)
+    fetchReviewCategoriesIndex(match.params.id)
     .then((data) =>
-      setReviewInformation(data),
-      console.log(reviewInformation)
+      setReviewCategoryInformation(data),
+      console.log(reviewCategoryInformation)
     )
   }, [])
 
@@ -68,17 +74,6 @@ export const CompaniesShow = ({match}) => {
                 <th>企業名</th>
                 <td>{companyInformation.company.name}</td>
               </tr>
-              {/* レビューカテゴリー
-              ①②
-              ③④ */}
-              {/* 社員データ
-              ・職種別年収
-                歯科医師 〇〇万円
-                歯科衛生士 〇〇万円 */}
-              {/* <tr>
-                <th>レビュー</th>
-                <td>{reviewInformation.reviews[0].review_content}</td>
-              </tr> */}
             </table>
           </div>
         <Footer/>

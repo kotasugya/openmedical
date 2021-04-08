@@ -13,9 +13,12 @@ export const companiesShow = (companyId) => `${DEFAULT_API_LOCALHOST}/companies/
 export const companiesIndex = `${DEFAULT_API_LOCALHOST}/companies`
 
 // レビュー
-export const reviewsNew = (companyId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/reviews`
-export const reviewsShow = (companyId, reviewId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/reviews/${reviewId}`
-export const reviewsIndex = (companyId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/reviews`
+export const reviewsNew = (companyId, reviewCategoryId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories/${reviewCategoryId}/reviews`
+export const reviewsShow = (companyId, reviewCategoryId, reviewId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories/${reviewCategoryId}/reviews/${reviewId}`
+export const reviewsIndex = (companyId, reviewCategoryId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories/${reviewCategoryId}/reviews`
+
+// レビューカテゴリー
+export const reviewCategoriesIndex = (companyId) => `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories`
 
 // 在籍情報
-export const  enrollmentsNew = `${DEFAULT_API_LOCALHOST}/enrollments`
+export const enrollmentsNew = `${DEFAULT_API_LOCALHOST}/enrollments`

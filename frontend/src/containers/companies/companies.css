@@ -7,8 +7,6 @@ body {
 .mainWrapper {
   height: auto;
   width: 100%;
-  margin: 0 auto;
-  display: flex;
   flex-direction: column;
 }
 
@@ -18,4 +16,46 @@ h2 {
   font-weight: normal;
   margin-left: 15%;
   margin-bottom: 30px;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid lightgray;
+  margin: 0 auto;
+}
+tr {
+  height: 70px;
+}
+td.companyName {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 100px 10px 10px;
+}
+td.reviews {
+  font-size: 10px;
+  padding: 20px 20px 5px 20px;
+}
+.reviews p {
+  font-weight: normal;
+  border-right: 0.5px dotted lightgray;
+  border-left: 0.5px dotted lightgray;
+  padding: px;
+}
+td.salaries {
+  font-size: 10px;
+  padding: 20px 20px 5px 20px;
+}
+.salaries p {
+  font-weight: normal;
+  border-right: 0.5px dotted lightgray;
+  border-left: 0.5px dotted lightgray;
+}
+td.follow-btn {
+  font-size: 10px;
+  padding: 20px 20px 5px 20px;
+}
+.follow-btn p {
+  font-weight: normal;
+  border-right: 0.5px dotted lightgray;
+  border-left: 0.5px dotted lightgray;
 }
