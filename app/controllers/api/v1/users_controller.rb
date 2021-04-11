@@ -9,32 +9,32 @@ module Api
           login!(@user)
           render json: { status: :created, user: @user }
         else
-          render json: { status: 500, errors:@user.errors.full_messages }
+          render json: { status: 500, errors: @user.errors.full_messages }
         end
       end
 
       def show
         @user = User.find(params[:id])
-        render json: {user: @user}
+        render json: { user: @user }
       end
 
       def update
       end
 
-
       private
-        def user_params
-          params.require(:user).permit(:name, :email, :password, :password_confirmation)
-        end
+
+      def user_params
+        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      end
 
       # beforeアクション
-        def logged_in_user
-          puts @current_user
-          unless logged_in?
-            render json: { logged_in: false, message: 'ログインして下さい。'},
-            status: :unauthorized
-          end
+      def logged_in_user
+        puts @current_user
+        unless logged_in?
+          render json: { logged_in: false, message: 'ログインして下さい。' },
+                 status: :unauthorized
         end
+      end
     end
   end
 end

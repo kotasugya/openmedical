@@ -6,5 +6,4 @@ class Company < ApplicationRecord
   has_many :evaluations
   validates :name, presence: true, uniqueness: true
   accepts_nested_attributes_for :company_users
-
 end

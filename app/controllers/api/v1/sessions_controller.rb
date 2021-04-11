@@ -6,9 +6,9 @@ module Api
         if user && user.authenticate(session_params[:password])
           login!(user)
           session[:sample] = "sample"
-          render json: { logged_in: true, user: user, success: 'ログインしました'}
+          render json: { logged_in: true, user: user, success: 'ログインしました' }
         else
-          render json: { status: 400, errors: ['ログイン出来ませんでした', 'メールアドレス又はパスワードが間違っています。']}
+          render json: { status: 400, errors: ['ログイン出来ませんでした', 'メールアドレス又はパスワードが間違っています。'] }
         end
       end
 
@@ -19,9 +19,9 @@ module Api
 
       private
 
-        def session_params
-          params.require(:user).permit(:name, :email, :password)
-        end
+      def session_params
+        params.require(:user).permit(:name, :email, :password)
+      end
     end
   end
 end

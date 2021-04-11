@@ -7,16 +7,14 @@ Rails:
 
 #検証除外フォルダ指定
 AllCops:
+  TargetRubyVersion: 2.7
+  TargetRailsVersion: 5.2
   Exclude:
-    - "db/**/*"
-    - "bin/*"
-    - "config/environments/*"
-    - "config/application.rb"
-    - "config/initializers/*"
-    - "config/spring.rb"
-    - "lib/tasks/*"
-    - "vendor/**/*"
-
-# 文字数の上限を８０文字から変更
-LineLength:
-  Max: 130
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'

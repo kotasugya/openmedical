@@ -2,12 +2,12 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   test "should get login," do
-    get sessions_login,_url
+    get sessions_login, _url
     assert_response :success
   end
 
   test "should get logged_in," do
-    get sessions_logged_in,_url
+    get sessions_logged_in, _url
     assert_response :success
   end
 
@@ -15,5 +15,4 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     get sessions_logout_url
     assert_response :success
   end
-
 end
