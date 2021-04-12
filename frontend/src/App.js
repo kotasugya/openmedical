@@ -13,8 +13,7 @@ import { CompaniesNew } from './containers/companies/CompaniesNew'
 import { CompaniesIndex } from './containers/companies/CompaniesIndex'
 import { CompaniesShow } from './containers/companies/CompaniesShow'
 import { ReviewsNew } from './containers/reviews/ReviewsNew'
-import { ReviewsShow } from './containers/reviews/ReviewsShow'
-import { ReviewsIndex } from './containers/reviews/ReviewsIndex'
+import { ReviewCategoriesShow } from './containers/reviewCategories/ReviewCategoriesShow'
 
 import { EnrollmentsNew } from './containers/enrollments/EnrollmentsNew'
 
@@ -44,11 +43,10 @@ function App() {
 
         {/* レビュー */}
         <Route exact path="/reviews/new" component={ReviewsNew} />
-        <Route exact path="/reviews/:id" component={ReviewsShow} />
         <Route
           exact
           path="/companies/:companyId/reviewCategories/:reviewCategoryId/reviews"
-          render={({ match }) => <ReviewsShow match={match} />}
+          render={({ match }) => <ReviewCategoriesShow match={match} />}
         />
 
         {/* 在籍情報 */}
