@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import './users.css'
+import { Link } from 'react-router-dom'
 import { usersShow } from '../../urls/index'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
-import './users.css'
 
 const initialState = {
   user: {
@@ -55,7 +56,7 @@ export const UsersShow = ({ match }) => {
             </tr>
           </table>
           <button className="edit-btn" type="button">
-            編集する
+            <Link to={`${userInformation.user.id}/edit`}>編集する</Link>
           </button>
         </div>
         <Footer />

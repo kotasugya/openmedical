@@ -8,7 +8,7 @@ import { Home } from './containers/Home'
 import { UsersNew } from './containers/users/UsersNew'
 import { UsersShow } from './containers/users/UsersShow'
 import { UsersLogin } from './containers/users/UsersLogin'
-import { usersEdit } from './urls'
+import { UsersEdit } from './containers/users/UsersEdit'
 import { CompaniesNew } from './containers/companies/CompaniesNew'
 import { CompaniesIndex } from './containers/companies/CompaniesIndex'
 import { CompaniesShow } from './containers/companies/CompaniesShow'
@@ -22,6 +22,7 @@ function App() {
     <Router history={history}>
       <Switch>
         <Route exact path="/" component={Home} />
+
         {/* ユーザー */}
         <Route exact path="/users" component={UsersNew} />
         <Route
@@ -29,7 +30,11 @@ function App() {
           path="/users/:id"
           render={({ match }) => <UsersShow match={match} />}
         />
-        <Route exact path="/users/edit" component={usersEdit} />
+        <Route
+          exact
+          path="/users/:id/edit"
+          render={({ match }) => <UsersEdit match={match} />}
+        />
         <Route exact path="/login" component={UsersLogin} />
 
         {/* 企業 */}
