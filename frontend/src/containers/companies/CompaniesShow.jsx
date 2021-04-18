@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { companiesShow, reviewCategoriesIndex } from '../../urls/index'
+import {
+  companiesShow,
+  reviewCategoriesIndex,
+  reviewsShow,
+} from '../../urls/index'
 
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
@@ -34,7 +38,7 @@ export const CompaniesShow = ({ match }) => {
   const [companyInformation, setCompanyInformation] = useState(
     companyInitialState
   )
-  const [] = useState(reviewInitialState)
+  const [reviewInformation, setReviewInformation] = useState(reviewInitialState)
   const [reviewCategoryInformation, setReviewCategoryInformation] = useState(
     reviewCategoryInitialState
   )
@@ -51,15 +55,25 @@ export const CompaniesShow = ({ match }) => {
       .then((response) => response.data)
       .catch((error) => console.error(error))
 
+  const fetchReview = (companyId) =>
+    axios
+      .get(reviewsShow(companyId))
+      .then((response) => response.data)
+      .catch((error) => console.error(error))
+
   useEffect(() => {
     fetchCompaniesShow(match.params.id).then(
       (data) => setCompanyInformation(data),
       console.log({ companyInformation })
-    )
-    fetchReviewCategoriesIndex(match.params.id).then(
-      (data) => setReviewCategoryInformation(data),
-      console.log(reviewCategoryInformation)
-    )
+    ),
+      fetchReviewCategoriesIndex(match.params.id).then(
+        (data) => setReviewCategoryInformation(data),
+        console.log(reviewCategoryInformation)
+      ),
+      fetchReview(match.params.id, 企業カテゴリーID, レビューID).then(
+        (data) => setReviewInformation(data),
+        console.log(reviewInformation)
+      )
   }, [])
 
   return (
@@ -68,12 +82,16 @@ export const CompaniesShow = ({ match }) => {
         <Header />
         <div className="mainWrapper">
           <h2>{companyInformation.company.name}</h2>
+          <h3>カテゴリー</h3>
           <div className="review-categories">
-            {reviewCategoryInformation.reviewCategories.map(
+            {reviewCategoryInformation.review_categories.map(
               (reviewCategory) => (
-                <div>{reviewCategory.name}</div>
+                <div className="categories-name">{reviewCategory.name}</div>
               )
             )}
+          </div>
+          <div className="reviewIndex">
+            <h3>口コミ一覧</h3>
           </div>
         </div>
         <Footer />

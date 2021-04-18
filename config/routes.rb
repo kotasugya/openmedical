@@ -10,6 +10,7 @@ Rails.application.routes.draw do
           resources :reviews
         end
       end
+      get 'search', to: 'companies#search'
       resources :enrollments, only: [:create, :update, :show, :destroy]
     end
   end

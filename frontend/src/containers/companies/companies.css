@@ -10,21 +10,30 @@ body {
   flex-direction: column;
 }
 
-/* CompaniesIndex */
-
 h2 {
   font-weight: normal;
   margin-left: 15%;
   margin-bottom: 30px;
 }
 
+h3 {
+  font-weight: normal;
+  margin-left: 20%;
+}
+
+/* CompaniesIndex */
 table {
   border-collapse: collapse;
   border: 1px solid lightgray;
-  margin: 0 auto;
 }
 tr {
   height: 70px;
+}
+a {
+  color: #0077b6;
+}
+td p {
+  color: #0077b6;
 }
 td.companyName {
   font-size: 20px;
@@ -33,17 +42,18 @@ td.companyName {
 }
 td.reviews {
   font-size: 10px;
-  padding: 20px 20px 5px 20px;
+  text-align: center;
+  padding: 20px 10px 5px 10px;
 }
 .reviews p {
   font-weight: normal;
   border-right: 0.5px dotted lightgray;
   border-left: 0.5px dotted lightgray;
-  padding: px;
 }
 td.salaries {
   font-size: 10px;
-  padding: 20px 20px 5px 20px;
+  text-align: center;
+  padding: 20px 10px 5px 10px;
 }
 .salaries p {
   font-weight: normal;
@@ -52,7 +62,8 @@ td.salaries {
 }
 td.follow-btn {
   font-size: 10px;
-  padding: 20px 20px 5px 20px;
+  text-align: center;
+  padding: 20px 10px 5px 10px;
 }
 .follow-btn p {
   font-weight: normal;
@@ -61,3 +72,12 @@ td.follow-btn {
 }
 
 /* CompaniesShow */
+.review-categories {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 20px;
+}
+.categories-name {
+  padding: 10px;
+  border: 0.5px solid lightgray;
+}

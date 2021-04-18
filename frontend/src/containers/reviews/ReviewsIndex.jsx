@@ -1,47 +1,41 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios'
-import {reviewsIndex} from '../../urls/index'
+import { reviewsIndex } from '../../urls/index'
 
 const initialState = {
-  "reviews":[
+  reviews: [
     {
-      "id":null,
-      "user_id":null,
-      "company_id":null,
-      "review_category_id":null,
-      "review_content":""
-    }
-  ]
+      id: null,
+      user_id: null,
+      company_id: null,
+      review_category_id: null,
+      review_content: '',
+    },
+  ],
 }
 
-export const ReviewsIndex = () =>{
+export const ReviewsIndex = () => {
   const [reviewsList, setReviewsList] = useState(initialState)
 
-  const fetchReviewsIndex = (companyId) =>{
-    return axios.get(reviewsIndex(companyId))
-    .then(response => {
-      return response.data
-    })
-    .catch((error) => console.error(error))
-  }
+  const fetchReviewsIndex = (companyId) =>
+    axios
+      .get(reviewsIndex(companyId))
+      .then((response) => response.data)
+      .catch((error) => console.error(error))
 
   useEffect(() => {
-    fetchReviewsIndex(1)
-    .then((data) =>
-      setReviewsList(data),
-      console.log({reviewsList})
+    fetchReviewsIndex(1).then(
+      (data) => setReviewsList(data),
+      console.log({ reviewsList })
     )
   }, [])
 
-  return(
-    <Fragment>
+  return (
+    <>
       <h2>レビュ一覧</h2>
-      {reviewsList.reviews.map(review =>
-        <div>
-          {review.review_content}
-        </div>
-        )
-      }
-    </Fragment>
+      {reviewsList.reviews.map((review) => (
+        <div>{review.review_content}</div>
+      ))}
+    </>
   )
 }

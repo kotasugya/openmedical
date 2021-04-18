@@ -26,6 +26,11 @@ module Api
       def destroy
       end
 
+      def search
+        @companies = Company.search(params[:serach])
+        render json: {companies: @companies}
+      end
+
       private
 
       def company_params

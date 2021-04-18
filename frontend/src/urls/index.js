@@ -12,6 +12,8 @@ export const companiesNew = `${DEFAULT_API_LOCALHOST}/companies`
 export const companiesShow = (companyId) =>
   `${DEFAULT_API_LOCALHOST}/companies/${companyId}`
 export const companiesIndex = `${DEFAULT_API_LOCALHOST}/companies`
+// 企業検索
+export const search = `${DEFAULT_API_LOCALHOST}/search`
 
 // レビュー
 export const reviewsNew = (companyId, reviewCategoryId) =>

@@ -1,19 +1,19 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
+import React from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import InputBase from '@material-ui/core/InputBase'
+import { fade, makeStyles } from '@material-ui/core/styles'
+import MenuIcon from '@material-ui/icons/Menu'
+import SearchIcon from '@material-ui/icons/Search'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  header:{
-    backgroundColor: '  #0e78db',
+  header: {
+    backgroundColor: '  #0077B6',
   },
   menuButton: {
     marginRight: theme.spacing(4),
@@ -65,17 +65,14 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-}));
+}))
 
-export const Header = ()=> {
-  const classes = useStyles();
+export const Header = () => {
+  const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <AppBar
-        position="static"
-        className={classes.header}
-      >
+      <AppBar position="static" className={classes.header}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -104,5 +101,5 @@ export const Header = ()=> {
         </Toolbar>
       </AppBar>
     </div>
-  );
+  )
 }

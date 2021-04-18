@@ -1,5 +1,5 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,13 +9,13 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '150px',
     backgroundColor: '#F2F2F2',
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
   },
   title: {
     textAlign: 'center',
     marginTop: '25px',
-    fontSize: '20px'
+    fontSize: '20px',
   },
   menuList: {
     '& ul': {
@@ -35,13 +35,13 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontSize: '13px',
     color: 'gray',
-  }
-}));
+  },
+}))
 
-export const Footer = ()=> {
-  const classes = useStyles();
+export const Footer = () => {
+  const classes = useStyles()
 
-  return(
+  return (
     <div className={classes.root}>
       <div className={classes.footerBar}>
         <div className={classes.title}>openmedical</div>

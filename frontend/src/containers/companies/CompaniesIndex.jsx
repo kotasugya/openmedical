@@ -39,7 +39,6 @@ export const CompaniesIndex = () => {
           {companiesList.companies.map((company, i) => (
             <table>
               <tr>
-                <th>{i}</th>
                 <td className="companyName">
                   <Link to={`companies/${company.id}`}>{company.name}</Link>
                 </td>
