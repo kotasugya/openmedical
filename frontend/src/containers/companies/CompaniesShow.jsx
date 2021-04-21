@@ -55,9 +55,9 @@ export const CompaniesShow = ({ match }) => {
       .then((response) => response.data)
       .catch((error) => console.error(error))
 
-  const fetchReview = (companyId) =>
+  const fetchReview = (companyId, reviewCategoryId, id) =>
     axios
-      .get(reviewsShow(companyId))
+      .get(reviewsShow(companyId, reviewCategoryId, id))
       .then((response) => response.data)
       .catch((error) => console.error(error))
 
@@ -69,11 +69,11 @@ export const CompaniesShow = ({ match }) => {
       fetchReviewCategoriesIndex(match.params.id).then(
         (data) => setReviewCategoryInformation(data),
         console.log(reviewCategoryInformation)
-      ),
-      fetchReview(match.params.id, 企業カテゴリーID, レビューID).then(
-        (data) => setReviewInformation(data),
-        console.log(reviewInformation)
       )
+    // fetchReview(match.params.id, レビューカテゴリーID, レビューID).then(
+    //   (data) => setReviewInformation(data),
+    //   console.log(reviewInformation)
+    // )
   }, [])
 
   return (

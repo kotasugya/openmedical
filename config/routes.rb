@@ -9,8 +9,10 @@ Rails.application.routes.draw do
         resources :review_categories do
           resources :reviews
         end
+        collection do
+          get :search
+        end
       end
-      get 'search', to: 'companies#search'
       resources :enrollments, only: [:create, :update, :show, :destroy]
     end
   end

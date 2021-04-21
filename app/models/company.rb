@@ -7,11 +7,11 @@ class Company < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   accepts_nested_attributes_for :company_users
 
-  def self.search(search)
-    if search
-      Company.where(['name LIKE ?', "%#{search}%"])
-    else
-      Company.all
-    end
-  end
+  # def self.search(search)
+  #   if search
+  #     Company.where(companies['name LIKE ?', "%#{search}%"])
+  #   else
+  #     Company.all
+  #   end
+  # end
 end

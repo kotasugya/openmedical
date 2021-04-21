@@ -4,7 +4,7 @@
 
 ###
 @name = getBooks
-{{host}}:{{port}}{{base_path}}/search
+{{host}}:{{port}}{{base_path}}/companies/search?search=test2
 
 ###
 @name = getBooksWithQuery
