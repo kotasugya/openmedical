@@ -16,6 +16,7 @@ import { ReviewsNew } from './containers/reviews/ReviewsNew'
 import { ReviewCategoriesShow } from './containers/reviewCategories/ReviewCategoriesShow'
 
 import { EnrollmentsNew } from './containers/enrollments/EnrollmentsNew'
+import { SearchCompanies } from './containers/companies/SearchCompanies'
 
 function App() {
   return (
@@ -44,6 +45,13 @@ function App() {
           exact
           path="/companies/:id"
           render={({ match }) => <CompaniesShow match={match} />}
+        />
+
+        {/* 検索 */}
+        <Route
+          exact
+          path="/companies/search?search=:keyword"
+          render={({ match }) => <SearchCompanies match={match} />}
         />
 
         {/* レビュー */}

@@ -15,7 +15,7 @@ const initialState = {
 }
 
 export const CompaniesIndex = () => {
-  const [companiesList, setCompaniesList] = useState(initialState)
+  const [companyList, setCompanyList] = useState(initialState)
 
   const fetchCompaniesIndex = () =>
     axios
@@ -25,8 +25,8 @@ export const CompaniesIndex = () => {
 
   useEffect(() => {
     fetchCompaniesIndex().then(
-      (data) => setCompaniesList(data),
-      console.log({ companiesList })
+      (data) => setCompanyList(data),
+      console.log({ companyList })
     )
   }, [])
 
@@ -36,7 +36,7 @@ export const CompaniesIndex = () => {
         <Header />
         <div className="mainWrapper">
           <h2>医療機関一覧</h2>
-          {companiesList.companies.map((company, i) => (
+          {companyList.companies.map((company, i) => (
             <table>
               <tr>
                 <td className="companyName">
