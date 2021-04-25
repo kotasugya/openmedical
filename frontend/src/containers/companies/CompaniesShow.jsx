@@ -70,10 +70,10 @@ export const CompaniesShow = ({ match }) => {
         (data) => setReviewCategoryInformation(data),
         console.log(reviewCategoryInformation)
       )
-    // fetchReview(match.params.id, レビューカテゴリーID, レビューID).then(
-    //   (data) => setReviewInformation(data),
-    //   console.log(reviewInformation)
-    // )
+    fetchReview(match.params.companyId, Math.floor(Math.random() * 6), 2).then(
+      (data) => setReviewInformation(data),
+      console.log(reviewInformation)
+    )
   }, [])
 
   return (
@@ -92,6 +92,7 @@ export const CompaniesShow = ({ match }) => {
           </div>
           <div className="reviewIndex">
             <h3>口コミ一覧</h3>
+            {reviewInformation.review.content}
           </div>
         </div>
         <Footer />

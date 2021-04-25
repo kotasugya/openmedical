@@ -12,7 +12,7 @@ module Api
         if @review.save
           render json: { status: :created, review: @review }
         else
-          render json: { status: 500, errors: @review.errors.full_messages }
+          render json: { errors: @review.errors.full_messages }, status: :internal_server_error
         end
       end
 

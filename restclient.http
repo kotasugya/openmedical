@@ -4,17 +4,25 @@
 
 ###
 @name = getBooks
-{{host}}:{{port}}{{base_path}}/companies/search?search=test2
+{{host}}:{{port}}{{base_path}}/companies/search?search=test1
 
 ###
 @name = getBooksWithQuery
-POST {{host}}:{{port}}{{base_path}}/login
+POST {{host}}:{{port}}{{base_path}}/companies/2/review_categories/2/reviews
 Content-Type: application/json
 
 {
-  "user": {
-    "email": "dio_the_world9740zero@yahoo.co.jp",
-    "password": "9740zero"
+  "review": {
+    "id": 5,
+    "user_id": 1,
+    "company_id": 2,
+    "review_category_id": 2,
+    "review_content": "すぎゃの大冒険スペシャル",
+    "created_at": "2021-03-14 15:09:03",
+    "updated_at": "2021-03-14 15:09:03"
   }
 }
 
+###
+@name = getReview
+{{host}}:{{port}}{{base_path}}/companies/1/review_categories/2/reviews/1

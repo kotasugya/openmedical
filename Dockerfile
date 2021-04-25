@@ -4,8 +4,7 @@ RUN mkdir /open_medical
 WORKDIR /open_medical
 COPY Gemfile /open_medical/Gemfile
 COPY Gemfile.lock /open_medical/Gemfile.lock
-# RUN apt-get update -qq && apt-get install -y shared-mime-info
-# RUN bundle update mimemagic nokogiri marcel
+
 RUN bundle install
 COPY . /open_medical
 
