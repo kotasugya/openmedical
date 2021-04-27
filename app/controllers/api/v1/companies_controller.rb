@@ -28,7 +28,7 @@ module Api
 
       def search
         @companies = Company.where("name LIKE ?", "%#{params[:search]}%")
-        render json: {companies: @companies}
+        render json: { companies: @companies }
       end
 
       private

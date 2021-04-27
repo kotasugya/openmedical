@@ -27,7 +27,11 @@ module Api
       private
 
       def review_params
-        params.require(:review).permit(:review_content, :user_id, :company_id, :review_category_id)
+        params.require(:review).
+          permit(:review_content).
+          merge(user_id: 1,
+                company_id: params[:company_id],
+                review_category_id: params[:review_category_id])
       end
     end
   end

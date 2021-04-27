@@ -1,39 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { reviewsNew } from '../../urls/index'
 import { SearchCompanies } from '../companies/SearchCompanies'
+import { Header } from '../../components/Header'
 
 export const ReviewsNew = () => {
   const [searchKeyWord, setSearchKeyWord] = useState('')
-  // 検索ワードを保持する
+  const companyInformation = SearchCompanies(searchKeyWord)
+  const [content, setContent] = useState('')
+  const [content1, setContent1] = useState('')
+  const [reviewCategoryId, setReviewCategoryId] = useState()
+
   const handleChange = (e) => {
     setSearchKeyWord(e.target.value)
   }
-  // 検索ワードで企業を探す
-  const companyInformation = SearchCompanies(searchKeyWord)
-
-  // レビューコンテンツ
-  const [content, setContent] = useState('')
-  const [content2, setContent2] = useState('')
-  const [reviewCategoryId, setReviewCategoryID] = useState()
 
   const handleSubmit = (id) => {
-    setReviewCategoryID(id)
+    const newCategoryId = id
+    console.log(newCategoryId)
+    setReviewCategoryId(newCategoryId)
+
     const body = {
-      review: [
-        {
-          user_id: 1,
-          company_id: companyInformation.companies.id,
-          review_category_id: reviewCategoryId,
-          review_content: content,
-        },
-      ],
+      review: {
+        user_id: 1,
+        company_id: companyInformation.companies[0].id,
+        review_category_id: reviewCategoryId,
+        review_content: content,
+      },
     }
-    console.log(companyInformation, reviewCategoryId)
+    console.log(companyInformation, reviewCategoryId, body)
     const headers = { 'Content-Type': 'application/json' }
     axios
       .post(
-        reviewsNew(companyInformation.companies.id, reviewCategoryId),
+        reviewsNew(companyInformation.companies[0].id, reviewCategoryId),
         body,
         headers
       )
@@ -49,30 +48,37 @@ export const ReviewsNew = () => {
 
   return (
     <>
-      <input type="text" placeholder="医院で検索する" onChange={handleChange} />
-      <h4>組織体制 / 企業文化</h4>
-      <form>
-        <textarea
-          name="companyCulture"
-          value={content}
-          onChange={(event) => setContent(event.target.value)}
+      <body>
+        <Header />
+        <input
+          type="text"
+          placeholder="医院で検索する"
+          onChange={handleChange}
         />
-        <button onClick={() => handleSubmit(1)} type="button">
-          この内容で投稿する
-        </button>
-      </form>
-      <h4>入職した理由</h4>
-      <form>
-        <textarea
-          name="JoinReason"
-          value={content2}
-          onChange={(event) => setContent2(event.target.value)}
-        />
+        <h4>職場の雰囲気</h4>
+        <form>
+          <textarea
+            name="companyCulture"
+            value={content}
+            onChange={(event) => setContent(event.target.value)}
+          />
+          <button onClick={() => handleSubmit(1)} type="button">
+            この内容で投稿する
+          </button>
+        </form>
+        <h4>入職した理由</h4>
+        <form>
+          <textarea
+            name="JoinReason"
+            value={content1}
+            onChange={(event) => setContent1(event.target.value)}
+          />
 
-        <button onClick={handleSubmit} type="button">
-          レポートを投稿する
-        </button>
-      </form>
+          <button onClick={handleSubmit} type="button">
+            レポートを投稿する
+          </button>
+        </form>
+      </body>
     </>
   )
 }
