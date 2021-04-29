@@ -17,8 +17,7 @@ export const search = (keyword) =>
   `${DEFAULT_API_LOCALHOST}/companies/search?search=${keyword}`
 
 // レビュー
-export const reviewsNew = (companyId, reviewCategoryId) =>
-  `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories/${reviewCategoryId}/reviews`
+export const reviewsNew = `${DEFAULT_API_LOCALHOST}/company/reviews`
 export const reviewsShow = (companyId, reviewCategoryId, reviewId) =>
   `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories/${reviewCategoryId}/reviews/${reviewId}`
 export const reviewsIndex = (companyId, reviewCategoryId) =>

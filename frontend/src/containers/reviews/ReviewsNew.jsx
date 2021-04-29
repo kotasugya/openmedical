@@ -7,37 +7,83 @@ import { Header } from '../../components/Header'
 export const ReviewsNew = () => {
   const [searchKeyWord, setSearchKeyWord] = useState('')
   const companyInformation = SearchCompanies(searchKeyWord)
-  const [content, setContent] = useState('')
   const [content1, setContent1] = useState('')
-  const [reviewCategoryId, setReviewCategoryId] = useState()
+  const [content2, setContent2] = useState('')
+  const [content3, setContent3] = useState('')
+  const [reviewCategoryId1, setReviewCategoryId1] = useState()
+  const [reviewCategoryId2, setReviewCategoryId2] = useState()
+  const [reviewCategoryId3, setReviewCategoryId3] = useState()
 
   const handleChange = (e) => {
     setSearchKeyWord(e.target.value)
   }
 
-  const handleSubmit = (id) => {
-    const newCategoryId = id
-    console.log(newCategoryId)
-    setReviewCategoryId(newCategoryId)
+  const handleSubmit1 = () => {
+    setReviewCategoryId1(1)
+    console.log(reviewCategoryId1)
 
     const body = {
-      review: [
-        {
-          user_id: 1,
-          company_id: companyInformation.companies[0].id,
-          review_category_id: reviewCategoryId,
-          review_content: content,
-        },
-      ],
+      review: {
+        user_id: 1,
+        company_id: companyInformation.companies[0].id,
+        review_category_id: reviewCategoryId1,
+        review_content: content1,
+      },
     }
-    console.log(companyInformation, reviewCategoryId, body)
+    console.log(companyInformation, reviewCategoryId1, body)
     const headers = { 'Content-Type': 'application/json' }
     axios
-      .post(
-        reviewsNew(companyInformation.companies[0].id, reviewCategoryId),
-        body,
-        headers
-      )
+      .post(reviewsNew, body, headers)
+      .then((response) => {
+        console.log('success', response)
+        alert('レポート投稿が成功しました')
+      })
+      .catch((error) => {
+        console.log('failed', error)
+        alert('投稿に失敗しました')
+      })
+  }
+  const handleSubmit2 = () => {
+    setReviewCategoryId2(2)
+    console.log(reviewCategoryId2)
+
+    const body = {
+      review: {
+        user_id: 1,
+        company_id: companyInformation.companies[0].id,
+        review_category_id: reviewCategoryId2,
+        review_content: content2,
+      },
+    }
+    console.log(companyInformation, reviewCategoryId2, body)
+    const headers = { 'Content-Type': 'application/json' }
+    axios
+      .post(reviewsNew, body, headers)
+      .then((response) => {
+        console.log('success', response)
+        alert('レポート投稿が成功しました')
+      })
+      .catch((error) => {
+        console.log('failed', error)
+        alert('投稿に失敗しました')
+      })
+  }
+  const handleSubmit3 = () => {
+    setReviewCategoryId3(3)
+    console.log(reviewCategoryId3)
+
+    const body = {
+      review: {
+        user_id: 1,
+        company_id: companyInformation.companies[0].id,
+        review_category_id: reviewCategoryId3,
+        review_content: content3,
+      },
+    }
+    console.log(companyInformation, reviewCategoryId3, body)
+    const headers = { 'Content-Type': 'application/json' }
+    axios
+      .post(reviewsNew, body, headers)
       .then((response) => {
         console.log('success', response)
         alert('レポート投稿が成功しました')
@@ -61,10 +107,10 @@ export const ReviewsNew = () => {
         <form>
           <textarea
             name="companyCulture"
-            value={content}
-            onChange={(event) => setContent(event.target.value)}
+            value={content1}
+            onChange={(event) => setContent1(event.target.value)}
           />
-          <button onClick={() => handleSubmit(1)} type="button">
+          <button onClick={handleSubmit1} type="button">
             この内容で投稿する
           </button>
         </form>
@@ -72,11 +118,21 @@ export const ReviewsNew = () => {
         <form>
           <textarea
             name="JoinReason"
-            value={content1}
-            onChange={(event) => setContent1(event.target.value)}
+            value={content2}
+            onChange={(event) => setContent2(event.target.value)}
           />
-
-          <button onClick={handleSubmit} type="button">
+          <button onClick={handleSubmit2} type="button">
+            レポートを投稿する
+          </button>
+        </form>
+        <h4>働きがい/成長</h4>
+        <form>
+          <textarea
+            name="Motivation"
+            value={content3}
+            onChange={(event) => setContent3(event.target.value)}
+          />
+          <button onClick={handleSubmit3} type="button">
             レポートを投稿する
           </button>
         </form>

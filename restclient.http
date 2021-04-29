@@ -8,21 +8,18 @@
 
 ###
 @name = getBooksWithQuery
-POST {{host}}:{{port}}{{base_path}}/companies/2/review_categories/2/reviews
+POST {{host}}:{{port}}{{base_path}}/companies/2/reviews
 Content-Type: application/json
 
 {
-  "review": {
-    "id": 5,
-    "user_id": 1,
-    "company_id": 2,
-    "review_category_id": 2,
-    "review_content": "すぎゃの大冒険スペシャル",
-    "created_at": "2021-03-14 15:09:03",
-    "updated_at": "2021-03-14 15:09:03"
-  }
+  "review":
+    {
+      "user_id": 1,
+      "review_category_id": 2,
+      "review_content": "すぎゃの大冒険スペシャル"
+    }
 }
 
 ###
 @name = getReview
-{{host}}:{{port}}{{base_path}}/companies/1/review_categories/2/reviews/1
+{{host}}:{{port}}{{base_path}}/review_categories

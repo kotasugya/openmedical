@@ -5,14 +5,16 @@ Rails.application.routes.draw do
       post '/login', to: 'sessions#login'
       # get '/logged_in', to: 'sessions#logged_in?'
       delete '/logout', to: 'sessions#logout'
-      resources :companies, only: [:show, :create, :index, :destroym] do
-        resources :review_categories do
-          resources :reviews
+      resources :companies, only: [:show, :index, :destroy] do
+        resources :review_categories, only: [:show] do
+          resources :reviews, only: [:show, :index, :update, :destroy]
         end
         collection do
           get :search
         end
       end
+      get '/review_categories', to: 'review_categories#index'
+      post 'company/reviews', to: 'reviews#create'
       resources :enrollments, only: [:create, :update, :show, :destroy]
     end
   end
