@@ -1,0 +1,103 @@
+/* commonStyle */
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
+  height: auto;
+}
+.mainWrapper {
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+/* UsersNew */
+h2 {
+  font-weight: normal;
+  margin-left: 15%;
+  margin-bottom: 30px;
+}
+p {
+  font-weight: bold;
+  margin-left: 15%;
+}
+.asterisk {
+  color: red;
+}
+.vital {
+  font-weight: normal;
+  font-size: small;
+}
+table.newForm {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+table.newForm th {
+  border: 1px solid lightgray;
+  padding: 30px 130px 30px 30px;
+  font-size: small;
+  text-align: left;
+  font-weight: normal;
+}
+table.newForm td {
+  border: 1px solid lightgray;
+  padding: 30px 300px 30px 30px;
+  font-size: small;
+}
+input,
+select {
+  padding: 5px;
+  border: 1px solid lightgray;
+  background-color: rgb(248, 241, 241);
+  width: 150%;
+}
+.placeholderPosition::placeholder {
+  text-align: left;
+  font-size: small;
+}
+.register-btn {
+  padding: 10px 80px;
+  background-color: #0099ff;
+  border-radius: 5px;
+  margin-top: 100px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #0099ff;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+/* usersShow */
+.userShowTable {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+table.userShowTable th {
+  border: 1px solid lightgray;
+  padding: 30px 130px 30px 30px;
+  font-size: small;
+  text-align: left;
+  font-weight: normal;
+}
+
+table.userShowTable td {
+  border: 1px solid lightgray;
+  padding: 30px 300px 30px 30px;
+  font-size: small;
+}
+.edit-btn {
+  padding: 10px 80px;
+  background-color: #0099ff;
+  border-radius: 5px;
+  margin-top: 100px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #0099ff;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 50px;
+}

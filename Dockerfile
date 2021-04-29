@@ -4,6 +4,7 @@ RUN mkdir /open_medical
 WORKDIR /open_medical
 COPY Gemfile /open_medical/Gemfile
 COPY Gemfile.lock /open_medical/Gemfile.lock
+
 RUN bundle install
 COPY . /open_medical
 
