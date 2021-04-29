@@ -21,12 +21,14 @@ export const ReviewsNew = () => {
     setReviewCategoryId(newCategoryId)
 
     const body = {
-      review: {
-        user_id: 1,
-        company_id: companyInformation.companies[0].id,
-        review_category_id: reviewCategoryId,
-        review_content: content,
-      },
+      review: [
+        {
+          user_id: 1,
+          company_id: companyInformation.companies[0].id,
+          review_category_id: reviewCategoryId,
+          review_content: content,
+        },
+      ],
     }
     console.log(companyInformation, reviewCategoryId, body)
     const headers = { 'Content-Type': 'application/json' }
