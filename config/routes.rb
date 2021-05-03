@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:update, :show, :create, :destroy]
       post '/login', to: 'sessions#login'
-      # get '/logged_in', to: 'sessions#logged_in?'
+      get '/logged_in', to: 'sessions#logged_in?'
       delete '/logout', to: 'sessions#logout'
       resources :companies, only: [:show, :index, :destroy] do
         resources :review_categories, only: [:show] do

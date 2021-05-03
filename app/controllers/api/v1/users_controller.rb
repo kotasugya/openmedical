@@ -6,7 +6,7 @@ module Api
       def create
         @user = User.new(user_params)
         if @user.save
-          login!(@user)
+          login!
           render json: { status: :created, user: @user }
         else
           render json: { status: 500, errors: @user.errors.full_messages }
@@ -40,13 +40,12 @@ module Api
       end
 
       # beforeアクション
-      def logged_in_user
-        puts @current_user
-        unless logged_in?
-          render json: { logged_in: false, message: 'ログインして下さい。' },
-                 status: :unauthorized
-        end
-      end
+      # def logged_in_user
+      #   unless logged_in?
+      #     render json: { logged_in: false, message: 'ログインして下さい。' },
+      #            status: :unauthorized
+      #   end
+      # end
     end
   end
 end

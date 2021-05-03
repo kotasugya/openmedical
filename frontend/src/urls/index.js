@@ -2,10 +2,13 @@ const DEFAULT_API_LOCALHOST = 'http://localhost:3001/api/v1'
 
 // ユーザー
 export const usersNew = `${DEFAULT_API_LOCALHOST}/users`
-export const usersLogin = `${DEFAULT_API_LOCALHOST}/login`
-export const usersCheckLogin = `${DEFAULT_API_LOCALHOST}/logged_in`
 export const usersShow = (id) => `${DEFAULT_API_LOCALHOST}/users/${id}`
 export const usersEdit = (id) => `${DEFAULT_API_LOCALHOST}/users/${id}`
+
+// ログインログアウト系
+export const login = `${DEFAULT_API_LOCALHOST}/login`
+export const usersCheckLogin = `${DEFAULT_API_LOCALHOST}/logged_in`
+export const logout = `${DEFAULT_API_LOCALHOST}/logout`
 
 // 企業
 export const companiesNew = `${DEFAULT_API_LOCALHOST}/companies`

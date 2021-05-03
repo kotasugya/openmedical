@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import history from 'history/createBrowserHistory'
+import axios from 'axios'
 
 // components
 import { Home } from './containers/Home'
@@ -14,22 +15,70 @@ import { CompaniesIndex } from './containers/companies/CompaniesIndex'
 import { CompaniesShow } from './containers/companies/CompaniesShow'
 import { ReviewsNew } from './containers/reviews/ReviewsNew'
 import { ReviewCategoriesShow } from './containers/reviewCategories/ReviewCategoriesShow'
-
 import { EnrollmentsNew } from './containers/enrollments/EnrollmentsNew'
 import { SearchCompanies } from './containers/companies/SearchCompanies'
 
+// Api
+import { usersCheckLogin } from './urls/index'
+
 function App() {
+  const [loggedInStatus, setLoggedInStatus] = useState('未ログイン')
+  const [user, setUser] = useState({})
+  const handleLogin = (data) => {
+    setLoggedInStatus('ログイン中')
+    setUser(data.user)
+  }
+  const handleLogout = () => {
+    setLoggedInStatus('未ログイン')
+    setUser({})
+  }
+  useEffect(() => {
+    checkLoginStatus()
+  })
+  const checkLoginStatus = () => {
+    axios
+      .get(usersCheckLogin, { withCredentials: true })
+      .then((response) => {
+        if (response.data.logged_in && loggedInStatus === '未ログイン') {
+          setLoggedInStatus('ログイン中')
+          setUser(response.data.user)
+        } else if (
+          !response.data.logged_in &&
+          loggedInStatus === 'ログイン中'
+        ) {
+          setLoggedInStatus('未ログイン')
+          setUser({})
+        }
+      })
+
+      .catch((error) => {
+        console.log('ログインエラー', error)
+      })
+  }
+
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <Home
+              {...props}
+              handleLogin={handleLogin}
+              loggedInStatus={loggedInStatus}
+            />
+          )}
+        />
 
         {/* ユーザー */}
         <Route exact path="/users" component={UsersNew} />
         <Route
           exact
           path="/users/:id"
-          render={({ match }) => <UsersShow match={match} />}
+          render={({ match }) => (
+            <UsersShow match={match} handleLogout={handleLogout} />
+          )}
         />
         <Route
           exact
