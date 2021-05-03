@@ -12,10 +12,10 @@ Rails.application.routes.draw do
         collection do
           get :search
         end
+        resources :enrollments, only: [:create, :update, :show, :destroy]
       end
       get '/review_categories', to: 'review_categories#index'
       post 'company/reviews', to: 'reviews#create'
-      resources :enrollments, only: [:create, :update, :show, :destroy]
     end
   end
 end
