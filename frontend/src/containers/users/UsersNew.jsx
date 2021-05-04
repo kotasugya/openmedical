@@ -6,7 +6,7 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import './users.css'
 
-export const UsersNew = () => {
+export const UsersNew = (props) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -17,6 +17,7 @@ export const UsersNew = () => {
   const history = useHistory()
 
   const handleSubmit = () => {
+    const headers = { 'Content-Type': 'application/json' }
     const body = {
       user: {
         name,
@@ -27,11 +28,11 @@ export const UsersNew = () => {
         salary,
       },
     }
-    const headers = { 'Content-Type': 'application/json' }
     axios
-      .post(usersNew, body, headers, { withCredentials: true })
+      .post(usersNew, headers, body, { withCredentials: true })
       .then((response) => {
         if (response.data.status === 'created') {
+          props.handleLogin(response.data)
           history.push(`/users/${response.data.user.id}`)
         }
       })
@@ -44,6 +45,7 @@ export const UsersNew = () => {
     <>
       <body>
         <Header />
+        <p>ログイン状態：{props.loggedInStatus}</p>
         <div className="mainWrapper">
           <h2>新規登録</h2>
           <p>

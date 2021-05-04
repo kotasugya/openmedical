@@ -8,8 +8,6 @@ import { Footer } from '../../components/Footer'
 export const Login = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [passwordConfirmation, setPasswordConfirmation] = useState('')
-
   const history = useHistory()
 
   const handleSubmit = () => {
@@ -24,7 +22,7 @@ export const Login = (props) => {
       .post(login, body, headers, { withCredentials: true })
       .then((response) => {
         if (response.data.logged_in) {
-          props.handleSuccessfulAuthentication(response.data)
+          props.handleLogin(response.data)
           history.push(`/users/${response.data.user.id}`)
         }
       })
@@ -37,6 +35,7 @@ export const Login = (props) => {
     <>
       <body>
         <Header />
+        <p>ログイン状態：{props.loggedInStatus}</p>
         <div className="mainWrapper">
           <h2>ログイン</h2>
           <form>
@@ -75,6 +74,7 @@ export const Login = (props) => {
             </button>
           </form>
         </div>
+        <Footer />
       </body>
     </>
   )

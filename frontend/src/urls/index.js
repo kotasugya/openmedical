@@ -27,10 +27,12 @@ export const reviewsIndex = (companyId, reviewCategoryId) =>
   `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories/${reviewCategoryId}/reviews`
 
 // レビューカテゴリー
-export const reviewCategoriesIndex = (companyId) =>
-  `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories`
+export const reviewCategoriesIndex = `${DEFAULT_API_LOCALHOST}/review_categories`
 export const reviewCategoriesShow = (companyId, reviewCategoryId) =>
   `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories/${reviewCategoryId}`
 
 // 在籍情報
-export const enrollmentsNew = `${DEFAULT_API_LOCALHOST}/enrollments`
+export const enrollmentsNew = (companyId) =>
+  `${DEFAULT_API_LOCALHOST}/companies/${companyId}/enrollments`
+export const enrollmentsShow = (companyId, id) =>
+  `${DEFAULT_API_LOCALHOST}/companies/${companyId}/enrollments/${id}`

@@ -8,7 +8,7 @@ import axios from 'axios'
 import { Home } from './containers/Home'
 import { UsersNew } from './containers/users/UsersNew'
 import { UsersShow } from './containers/users/UsersShow'
-import { UsersLogin } from './containers/users/UsersLogin'
+import { Login } from './containers/sessions/Login'
 import { UsersEdit } from './containers/users/UsersEdit'
 import { CompaniesNew } from './containers/companies/CompaniesNew'
 import { CompaniesIndex } from './containers/companies/CompaniesIndex'
@@ -32,6 +32,8 @@ function App() {
     setLoggedInStatus('未ログイン')
     setUser({})
   }
+
+  // ログイン中か否かを判断する
   useEffect(() => {
     checkLoginStatus()
   })
@@ -59,20 +61,21 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
+        <Route exact path="/" component={Home} />
+
+        {/* ユーザー */}
+        {/* <Route exact path="/users" component={UsersNew} /> */}
         <Route
           exact
-          path="/"
+          path="/users/new"
           render={(props) => (
-            <Home
+            <UsersNew
               {...props}
               handleLogin={handleLogin}
               loggedInStatus={loggedInStatus}
             />
           )}
         />
-
-        {/* ユーザー */}
-        <Route exact path="/users" component={UsersNew} />
         <Route
           exact
           path="/users/:id"
@@ -85,7 +88,19 @@ function App() {
           path="/users/:id/edit"
           render={({ match }) => <UsersEdit match={match} />}
         />
-        <Route exact path="/login" component={UsersLogin} />
+
+        {/* ログイン */}
+        <Route
+          exact
+          path="/login"
+          render={(props) => (
+            <Login
+              {...props}
+              handleLogin={handleLogin}
+              loggedInStatus={loggedInStatus}
+            />
+          )}
+        />
 
         {/* 企業 */}
         <Route exact path="/companies/new" component={CompaniesNew} />
@@ -113,6 +128,11 @@ function App() {
 
         {/* 在籍情報 */}
         <Route exact path="/enrollments/new" component={EnrollmentsNew} />
+        {/* <Route
+          exact
+          path="/companies/:companyId/enrollments/:id"
+          component={EnrollmentsShow}
+        /> */}
       </Switch>
     </Router>
   )

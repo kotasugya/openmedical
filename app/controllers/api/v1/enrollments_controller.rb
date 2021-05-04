@@ -14,6 +14,8 @@ module Api
       end
 
       def show
+        @enrollment = Enrollment.find(params[:id])
+        render json: { enrollment: @enrollment }
       end
 
       def update

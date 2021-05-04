@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_135255) do
+ActiveRecord::Schema.define(version: 2021_05_03_093919) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
@@ -32,9 +32,8 @@ ActiveRecord::Schema.define(version: 2021_02_24_135255) do
     t.bigint "company_id", null: false
     t.string "employment_status"
     t.string "working_now_or_not"
-    t.integer "join_age"
-    t.integer "join_year"
-    t.integer "leave_year"
+    t.date "join_year"
+    t.date "leave_year"
     t.string "occupation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
