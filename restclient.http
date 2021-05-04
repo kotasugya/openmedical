@@ -4,19 +4,18 @@
 
 ###
 @name = getBooks
-{{host}}:{{port}}{{base_path}}/companies/search?search=test1
+{{host}}:{{port}}{{base_path}}/logged_in
 
 ###
 @name = getBooksWithQuery
-POST {{host}}:{{port}}{{base_path}}/companies/2/reviews
+POST {{host}}:{{port}}{{base_path}}/login
 Content-Type: application/json
 
 {
-  "review":
+  "user":
     {
-      "user_id": 1,
-      "review_category_id": 2,
-      "review_content": "すぎゃの大冒険スペシャル"
+      "email": "test1@test.com",
+      "password": "9740zero"
     }
 }
 

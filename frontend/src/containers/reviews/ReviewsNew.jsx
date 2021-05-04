@@ -3,6 +3,7 @@ import axios from 'axios'
 import { reviewsNew } from '../../urls/index'
 import { SearchCompanies } from '../companies/SearchCompanies'
 import { Header } from '../../components/Header'
+import { EnrollmentsNew } from '../enrollments/EnrollmentsNew'
 
 export const ReviewsNew = () => {
   const [searchKeyWord, setSearchKeyWord] = useState('')
@@ -157,6 +158,9 @@ export const ReviewsNew = () => {
           placeholder="医院で検索する"
           onChange={handleChange}
         />
+        <h3>レポート対象企業</h3>
+        <div>{companyInformation.companies[0].name}</div>
+        <EnrollmentsNew companyInformation={companyInformation} />
         <h4>職場の雰囲気</h4>
         <form>
           <textarea

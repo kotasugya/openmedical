@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './users.css'
 import { Link } from 'react-router-dom'
-import { usersShow } from '../../urls/index'
+import { usersShow, logout } from '../../urls/index'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 
@@ -31,6 +31,15 @@ export const UsersShow = ({ match }) => {
     )
   }, [])
 
+  const handleLogoutClick = () => {
+    axios
+      .delete(logout, { withCredentials: true })
+      .then((response) => {
+        match.handleLogout()
+      })
+      .catch((error) => console.log('ログアウトエラー', error))
+  }
+
   return (
     <>
       <body>
@@ -58,6 +67,7 @@ export const UsersShow = ({ match }) => {
           <button className="edit-btn" type="button">
             <Link to={`${userInformation.user.id}/edit`}>編集する</Link>
           </button>
+          <button onClick={handleLogoutClick}>ログアウト</button>
         </div>
         <Footer />
       </body>

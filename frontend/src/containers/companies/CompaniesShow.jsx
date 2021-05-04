@@ -49,9 +49,9 @@ export const CompaniesShow = ({ match }) => {
       .then((response) => response.data)
       .catch((error) => console.error(error))
 
-  const fetchReviewCategoriesIndex = (companyId) =>
+  const fetchReviewCategoriesIndex = () =>
     axios
-      .get(reviewCategoriesIndex(companyId))
+      .get(reviewCategoriesIndex)
       .then((response) => response.data)
       .catch((error) => console.error(error))
 
@@ -65,11 +65,11 @@ export const CompaniesShow = ({ match }) => {
     fetchCompaniesShow(match.params.id).then(
       (data) => setCompanyInformation(data),
       console.log({ companyInformation })
-    ),
-      fetchReviewCategoriesIndex(match.params.id).then(
-        (data) => setReviewCategoryInformation(data),
-        console.log(reviewCategoryInformation)
-      )
+    )
+    fetchReviewCategoriesIndex().then(
+      (data) => setReviewCategoryInformation(data),
+      console.log(reviewCategoryInformation)
+    )
     fetchReview(match.params.companyId, Math.floor(Math.random() * 6), 2).then(
       (data) => setReviewInformation(data),
       console.log(reviewInformation)

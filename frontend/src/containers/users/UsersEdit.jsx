@@ -35,6 +35,7 @@ export const UsersEdit = ({ match }) => {
   }, [])
 
   const handleSubmit = () => {
+    const header = { 'Content-Type': 'application/json' }
     const body = {
       user: {
         name,
@@ -43,9 +44,8 @@ export const UsersEdit = ({ match }) => {
         salary,
       },
     }
-    const header = { 'Content-Type': 'application/json' }
     axios
-      .patch(usersEdit, body, header, { withCredentials: true })
+      .patch(usersEdit, header, body, { withCredentials: true })
       .then((response) => {
         console.log('success', response)
       })

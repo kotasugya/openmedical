@@ -3,11 +3,17 @@ import React, { useState } from 'react'
 import { Header } from '../components/Header'
 // container
 import { SearchCompanyList } from './companies/SearchCompanyList'
+import { ReviewsNew } from './reviews/ReviewsNew'
+import { Login } from './sessions/Login'
+import { UsersNew } from './users/UsersNew'
 
-export const Home = () => {
+export const Home = (props) => {
   const [searchKeyWord, setSearchKeyWord] = useState('')
   const handleChange = (e) => {
     setSearchKeyWord(e.target.value)
+  }
+  const handleSuccessfulAuthentication = (data) => {
+    props.handleLogin(data)
   }
 
   return (
