@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { usersNew } from '../../urls/index'
@@ -20,16 +20,16 @@ export const UsersNew = (props) => {
     const headers = { 'Content-Type': 'application/json' }
     const body = {
       user: {
-        name,
-        email,
-        password,
-        passwordConfirmation,
-        birthday,
-        salary,
+        name: name,
+        email: email,
+        password: password,
+        passwordConfirmation: passwordConfirmation,
+        birthday: birthday,
+        salary: salary,
       },
     }
     axios
-      .post(usersNew, headers, body, { withCredentials: true })
+      .post(usersNew, body, headers, { withCredentials: true })
       .then((response) => {
         if (response.data.status === 'created') {
           props.handleLogin(response.data)
@@ -156,6 +156,7 @@ export const UsersNew = (props) => {
             </button>
           </form>
         </div>
+        <Footer />
       </body>
     </>
   )

@@ -1,5 +1,8 @@
 import React, { Fragment, useReducer, useEffect, useState } from 'react'
 import axios from 'axios'
+import './enrollments.css'
+import { Header } from '../../components/Header'
+import { Footer } from '../../components/Footer'
 import { enrollmentsNew } from '../../urls/index'
 
 export const EnrollmentsNew = (props) => {
@@ -39,74 +42,86 @@ export const EnrollmentsNew = (props) => {
 
   return (
     <>
-      <h3>在籍情報</h3>
-      <form>
-        <table>
-          <tr>
-            <th>雇用形態</th>
-            <td>
-              <select
-                value={employmentStatus}
-                onChange={(event) => setEmploymentStatus(event.target.value)}
-              >
-                <option value="" className="placeholderPosition">
-                  選択してください
-                </option>
-                <option value="非常勤">非常勤</option>
-                <option value="常勤">常勤</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <th>在籍状況</th>
-            <td>
-              <select
-                value={workingNowOrNot}
-                onChange={(event) => setWorkingNowOrNot(event.target.value)}
-              >
-                <option value="" className="placeholderPosition">
-                  選択してください
-                </option>
-                <option value="現職">現職中</option>
-                <option value="退職済み">退職済み</option>
-              </select>
-            </td>
-          </tr>
-          <tr>
-            <th>入社年</th>
-            <td>
-              <input
-                type="month"
-                value={joinYear}
-                onChange={(event) => setJoinYear(event.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>退職年</th>
-            <td>
-              <input
-                type="month"
-                value={leaveYear}
-                onChange={(event) => setLeaveYear(event.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>職種</th>
-            <td>
-              <input
-                type="text"
-                value={occupation}
-                onChange={(event) => setOccupation(event.target.value)}
-              />
-            </td>
-          </tr>
-        </table>
-        <button onClick={handleSubmit} type="button">
-          登録する
-        </button>
-      </form>
+      <body>
+        <Header />
+        <div className="mainWrapper">
+          <h3>在籍情報</h3>
+          <form>
+            <table className="newForm">
+              <tr>
+                <th>雇用形態</th>
+                <td>
+                  <select
+                    value={employmentStatus}
+                    onChange={(event) =>
+                      setEmploymentStatus(event.target.value)
+                    }
+                  >
+                    <option value="" className="placeholderPosition">
+                      選択してください
+                    </option>
+                    <option value="非常勤">非常勤</option>
+                    <option value="常勤">常勤</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>在籍状況</th>
+                <td>
+                  <select
+                    value={workingNowOrNot}
+                    onChange={(event) => setWorkingNowOrNot(event.target.value)}
+                  >
+                    <option value="" className="placeholderPosition">
+                      選択してください
+                    </option>
+                    <option value="現職">現職中</option>
+                    <option value="退職済み">退職済み</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>入社年</th>
+                <td>
+                  <input
+                    type="month"
+                    value={joinYear}
+                    onChange={(event) => setJoinYear(event.target.value)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>退職年</th>
+                <td>
+                  <input
+                    type="month"
+                    value={leaveYear}
+                    onChange={(event) => setLeaveYear(event.target.value)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>職種</th>
+                <td>
+                  <input
+                    type="text"
+                    value={occupation}
+                    onChange={(event) => setOccupation(event.target.value)}
+                  />
+                </td>
+              </tr>
+            </table>
+            <button
+              className="register-btn"
+              onClick={handleSubmit}
+              type="button"
+            >
+              登録する
+            </button>
+          </form>
+        </div>
+        <Footer />
+      </body>
     </>
   )
 }
