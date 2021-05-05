@@ -10,11 +10,23 @@ body {
   display: flex;
   flex-direction: column;
 }
+h3 {
+  font-weight: normal;
+  margin-left: 15%;
+  margin-bottom: 30px;
+}
+p {
+  font-weight: bold;
+  margin-left: 15%;
+}
 table.newForm {
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
+}
+.enrollmentTable {
+  margin-bottom: 15%;
 }
 .register-btn {
   padding: 10px 80px;

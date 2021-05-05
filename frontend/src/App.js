@@ -14,6 +14,7 @@ import { CompaniesNew } from './containers/companies/CompaniesNew'
 import { CompaniesIndex } from './containers/companies/CompaniesIndex'
 import { CompaniesShow } from './containers/companies/CompaniesShow'
 import { ReviewsNew } from './containers/reviews/ReviewsNew'
+import { ReviewsTop } from './containers/reviews/ReviewsTop'
 import { ReviewCategoriesShow } from './containers/reviewCategories/ReviewCategoriesShow'
 import { EnrollmentsNew } from './containers/enrollments/EnrollmentsNew'
 import { SearchCompanies } from './containers/companies/SearchCompanies'
@@ -119,6 +120,7 @@ function App() {
         />
 
         {/* レビュー */}
+        <Route exact path="/reviews" component={ReviewsTop} />
         <Route exact path="/reviews/new" component={ReviewsNew} />
         <Route
           exact

@@ -1,7 +1,8 @@
-import React, { Fragment, useReducer, useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import './enrollments.css'
-import { Header } from '../../components/Header'
+// import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { enrollmentsNew } from '../../urls/index'
 
@@ -11,11 +12,13 @@ export const EnrollmentsNew = (props) => {
   const [joinYear, setJoinYear] = useState('')
   const [leaveYear, setLeaveYear] = useState('')
   const [occupation, setOccupation] = useState('')
+  const history = useHistory()
 
   const handleSubmit = () => {
     const headers = { 'Content-Type': 'application/json' }
     const body = {
       enrollment: {
+        company_id: props.companyInformation.companies[0].id,
         employment_status: employmentStatus,
         working_now_or_not: workingNowOrNot,
         join_year: joinYear,
@@ -33,6 +36,10 @@ export const EnrollmentsNew = (props) => {
       .then((response) => {
         console.log('success', response)
         alert('登録が完了しました')
+        history.push({
+          pathname: `/reviews/new`,
+          state: { companyInformation: props.companyInformation },
+        })
       })
       .catch((error) => {
         console.log('failed', error)
@@ -43,10 +50,9 @@ export const EnrollmentsNew = (props) => {
   return (
     <>
       <body>
-        <Header />
         <div className="mainWrapper">
-          <h3>在籍情報</h3>
-          <form>
+          <h3>在籍情報 (STEP1)</h3>
+          <form className="enrollmentTable">
             <table className="newForm">
               <tr>
                 <th>雇用形態</th>
@@ -116,11 +122,10 @@ export const EnrollmentsNew = (props) => {
               onClick={handleSubmit}
               type="button"
             >
-              登録する
+              登録して次へ進む
             </button>
           </form>
         </div>
-        <Footer />
       </body>
     </>
   )

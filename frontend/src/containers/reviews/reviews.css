@@ -1,0 +1,99 @@
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
+}
+.mainWrapper {
+  min-height: 100%;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.h4-selectedCompany {
+  margin-left: 15%;
+  margin-bottom: 30px;
+  color: #333333;
+}
+/* ReviewsTop */
+
+.searchCompanyAsterisk {
+  font-size: 12px;
+  margin-left: 35%;
+}
+.searchCompanyAsterisk solid {
+  color: red;
+}
+.selectCompany {
+  width: 30%;
+  margin: 0 auto;
+  padding: 15px;
+}
+.selectedCompanyName {
+  width: 30%;
+  margin: 0 auto;
+  padding: 15px;
+  border: 0.5px solid lightgray;
+}
+
+/* ReviewsNew */
+.reviewsNewForm {
+  margin-left: 20%;
+  padding-bottom: 20%;
+}
+.reviewsForm {
+  margin-bottom: 5%;
+  display: flex;
+}
+textarea {
+  height: 120px;
+  width: 60%;
+  border: 1px solid lightgray;
+  background-color: rgb(250, 246, 246);
+}
+.exp-culture {
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 0px;
+}
+.exp-joinReason {
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 0px;
+}
+.exp-growth {
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 0px;
+}
+.exp-leaveReason {
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 0px;
+}
+.exp-salarySystem {
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 0px;
+}
+textarea::placeholder {
+  font-size: small;
+}
+
+.reviews-btn {
+  background-color: #0077b6;
+  border: 1px solid #0077b6;
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.reviews-btn:hover {
+  opacity: 0.8;
+}
+.reviews-btn:active {
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  border-bottom: none;
+}
