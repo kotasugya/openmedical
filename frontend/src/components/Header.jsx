@@ -19,9 +19,6 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(4),
   },
-  a: {
-    color: 'white',
-  },
   title: {
     flexGrow: 1,
     display: 'none',
@@ -29,10 +26,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+  },
+  link: {
     color: 'inherit',
-    '&:a': {
-      color: 'inherit',
-    },
+    textDecoration: 'none',
   },
   search: {
     position: 'relative',
@@ -91,7 +88,9 @@ export const Header = () => {
           <MenuIcon />
         </IconButton>
         <Typography className={classes.title} variant="h6" noWrap>
-          <Link to="/">openmedical</Link>
+          <Link to="/" className={classes.link}>
+            openmedical
+          </Link>
         </Typography>
         <div className={classes.search}>
           <div className={classes.searchIcon}>
