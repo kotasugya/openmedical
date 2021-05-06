@@ -97,3 +97,26 @@ textarea::placeholder {
   transform: translate(0, 2px);
   border-bottom: none;
 }
+.finishReviews-btn {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: auto;
+  margin-left: 20%;
+  margin-top: 20px;
+  background-color: #0099ff;
+  color: white;
+  width: 30%;
+  border: 1px solid #0099ff;
+  border-radius: 4px;
+  line-height: 50%;
+  font-weight: bold;
+}
+.finishReviews-btn:hover {
+  opacity: 0.8;
+}
+.finishReviews-btn:active {
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  border-bottom: none;
+}
