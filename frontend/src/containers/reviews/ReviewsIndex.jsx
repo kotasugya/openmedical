@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { reviewsIndex } from '../../urls/index'
 
@@ -14,20 +14,20 @@ const initialState = {
   ],
 }
 
-export const ReviewsIndex = () => {
+export const ReviewsIndex = (props) => {
   const [reviewsList, setReviewsList] = useState(initialState)
 
-  const fetchReviewsIndex = (companyId) =>
+  const fetchReviewsIndex = (companyId, reviewCategoryId) =>
     axios
-      .get(reviewsIndex(companyId))
+      .get(reviewsIndex(companyId, reviewCategoryId))
       .then((response) => response.data)
       .catch((error) => console.error(error))
 
   useEffect(() => {
-    fetchReviewsIndex(1).then(
-      (data) => setReviewsList(data),
-      console.log({ reviewsList })
-    )
+    fetchReviewsIndex(
+      props.location.companyId,
+      props.location.reviewCategoryId
+    ).then((data) => setReviewsList(data), console.log({ reviewsList }))
   }, [])
 
   return (

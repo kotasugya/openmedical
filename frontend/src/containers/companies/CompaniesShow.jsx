@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import {
-  companiesShow,
-  reviewCategoriesIndex,
-  reviewsShow,
-} from '../../urls/index'
-
+import './companies.css'
+import { Link } from 'react-router-dom'
+import { companiesShow, reviewsShow } from '../../urls/index'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
-import './companies.css'
+import { ReviewCategoriesIndex } from '../reviewCategories/ReviewCategoriesIndex'
 
 const companyInitialState = {
   company: {
@@ -25,33 +22,17 @@ const reviewInitialState = {
     review_content: '',
   },
 }
-const reviewCategoryInitialState = {
-  review_categories: [
-    {
-      id: null,
-      name: '',
-    },
-  ],
-}
 
 export const CompaniesShow = ({ match }) => {
   const [companyInformation, setCompanyInformation] = useState(
     companyInitialState
   )
   const [reviewInformation, setReviewInformation] = useState(reviewInitialState)
-  const [reviewCategoryInformation, setReviewCategoryInformation] = useState(
-    reviewCategoryInitialState
-  )
+  const reviewCategoryList = ReviewCategoriesIndex()
 
   const fetchCompaniesShow = (id) =>
     axios
       .get(companiesShow(id))
-      .then((response) => response.data)
-      .catch((error) => console.error(error))
-
-  const fetchReviewCategoriesIndex = () =>
-    axios
-      .get(reviewCategoriesIndex)
       .then((response) => response.data)
       .catch((error) => console.error(error))
 
@@ -65,10 +46,6 @@ export const CompaniesShow = ({ match }) => {
     fetchCompaniesShow(match.params.id).then(
       (data) => setCompanyInformation(data),
       console.log({ companyInformation })
-    )
-    fetchReviewCategoriesIndex().then(
-      (data) => setReviewCategoryInformation(data),
-      console.log(reviewCategoryInformation)
     )
     fetchReview(match.params.companyId, Math.floor(Math.random() * 6), 2).then(
       (data) => setReviewInformation(data),
@@ -84,9 +61,17 @@ export const CompaniesShow = ({ match }) => {
           <h2>{companyInformation.company.name}</h2>
           <h3>カテゴリー</h3>
           <div className="review-categories">
-            {reviewCategoryInformation.review_categories.map(
-              (reviewCategory) => (
-                <div className="categories-name">{reviewCategory.name}</div>
+            {reviewCategoryList.review_categories.map(
+              (reviewCategory, index) => (
+                <div className="categories-name">
+                  <Link
+                    to={`/companies/${
+                      companyInformation.company.id
+                    }/reviewCategories/${index + 1}/reviews`}
+                  >
+                    {reviewCategory.name} <span>詳しく見る</span>
+                  </Link>
+                </div>
               )
             )}
           </div>

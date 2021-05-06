@@ -83,6 +83,16 @@ td.follow-btn {
   margin-bottom: 20px;
 }
 .categories-name {
-  padding: 10px;
+  padding: 20px;
   border: 0.5px solid lightgray;
+  line-height: 50%;
+  color: #0077b6;
+  font-weight: bold;
+  text-decoration: none;
+}
+.categories-name span {
+  display: block;
+  font-size: 12px;
+  text-align: right;
+  text-decoration: underline;
 }
