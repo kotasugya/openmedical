@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import './reviewCategories.css'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { reviewCategoriesShow, reviewsIndex } from '../../urls/index'
@@ -63,12 +64,21 @@ export const ReviewCategoriesShow = ({ match }) => {
       <body>
         <Header />
         <div className="mainWrapper">
-          {reviewCategoryInformation.review_category.name}
+          <h3>
+            {reviewCategoryInformation.review_category.name}
+            <span>-企業名入れる-</span>
+          </h3>
           {reviewInformation.reviews.map((review) => (
-            <div>{review.review_content}</div>
+            <div className="review">
+              <div className="review-category">
+                {reviewCategoryInformation.review_category.name}
+              </div>
+              <div className="enrollment">在籍情報入れる</div>
+              <div className="review-content">{review.review_content}</div>
+            </div>
           ))}
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </>
   )

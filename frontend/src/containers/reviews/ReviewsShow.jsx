@@ -1,4 +1,4 @@
-import React, { Fragment, useReducer, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { reviewsShow } from '../../urls/index'
 
@@ -21,11 +21,11 @@ export const ReviewsShow = ({ match }) => {
   }
 
   useEffect(() => {
-    fetchReviewsShow(1, 1).then(
-      (data) => setContent(data),
-      console.log({ content })
-    )
+    fetchReviewsShow(
+      match.params.companyId,
+      match.params.reviewCategoryId
+    ).then((data) => setContent(data), console.log({ content }))
   }, [])
 
-  return <Fragment>{content.review.review_content}</Fragment>
+  return <>{content.review.review_content}</>
 }

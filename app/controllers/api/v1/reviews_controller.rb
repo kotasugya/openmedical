@@ -3,7 +3,8 @@ module Api
     class ReviewsController < ApplicationController
       def index
         @company = Company.find(params[:company_id])
-        @reviews = @company.reviews
+        @review_category_id = ReviewCategory.find(params[:review_category_id])
+        @reviews = (@company && @review_category_id).reviews
         render json: { reviews: @reviews }
       end
 
