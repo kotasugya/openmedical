@@ -76,10 +76,9 @@ export const ReviewCategoriesShow = ({ match }) => {
                 {reviewCategoryInformation.review_category.name}
               </div>
               <div className="enrollment">
-                {review.enrollment_id}
                 <EnrollmentsShow
                   companyId={match.params.companyId}
-                  id={review.enrollment_id}
+                  enrollmentId={review.enrollment_id}
                 />
               </div>
               <div className="review-content">{review.review_content}</div>

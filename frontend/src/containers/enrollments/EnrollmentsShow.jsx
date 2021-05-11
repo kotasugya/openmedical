@@ -16,21 +16,25 @@ const enrollmentInitialState = {
 }
 
 export const EnrollmentsShow = (props) => {
+  const { companyId, enrollmentId } = props
+  console.log(companyId, enrollmentId)
   const [enrollmentInformation, setEnrollmentInformation] = useState(
     enrollmentInitialState
   )
 
-  const fetchEnrollmentsShow = (companyId, id) =>
+  const fetchEnrollmentsShow = () =>
     axios
-      .get(enrollmentsShow(companyId, id), { withCredentials: true })
+      .get(enrollmentsShow(companyId, enrollmentId), { withCredentials: true })
       .then((response) => response.data)
       .catch((error) => console.error(error))
 
   useEffect(() => {
-    fetchEnrollmentsShow(props.companyId, props.id).then(
-      (data) => setEnrollmentInformation(data),
-      console.log({ enrollmentInformation })
-    )
+    if (enrollmentId != null) {
+      fetchEnrollmentsShow().then(
+        (data) => setEnrollmentInformation(data),
+        console.log({ enrollmentInformation })
+      )
+    }
   }, [])
 
   return (
