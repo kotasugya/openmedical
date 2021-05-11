@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import './enrollments.css'
-// import { Header } from '../../components/Header'
-import { Footer } from '../../components/Footer'
 import { enrollmentsNew } from '../../urls/index'
 
 export const EnrollmentsNew = (props) => {
@@ -18,7 +16,8 @@ export const EnrollmentsNew = (props) => {
     const headers = { 'Content-Type': 'application/json' }
     const body = {
       enrollment: {
-        company_id: props.companyInformation.companies[0].id,
+        user_id: 2,
+        company_id: props.companyInformation.id,
         employment_status: employmentStatus,
         working_now_or_not: workingNowOrNot,
         join_year: joinYear,
@@ -27,18 +26,18 @@ export const EnrollmentsNew = (props) => {
       },
     }
     axios
-      .post(
-        enrollmentsNew(props.companyInformation.companies[0].id),
-        body,
-        headers,
-        { withCredentials: true }
-      )
+      .post(enrollmentsNew(props.companyInformation.id), body, headers, {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log('success', response)
         alert('登録が完了しました')
         history.push({
           pathname: `/reviews/new`,
-          state: { companyInformation: props.companyInformation },
+          state: {
+            companyId: props.companyInformation.id,
+            enrollmentId: response.data.enrollment.id,
+          },
         })
       })
       .catch((error) => {

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_03_093919) do
+ActiveRecord::Schema.define(version: 2021_05_09_115133) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
@@ -72,7 +72,9 @@ ActiveRecord::Schema.define(version: 2021_05_03_093919) do
     t.text "review_content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "enrollment_id", null: false
     t.index ["company_id"], name: "index_reviews_on_company_id"
+    t.index ["enrollment_id"], name: "index_reviews_on_enrollment_id"
     t.index ["review_category_id"], name: "index_reviews_on_review_category_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

@@ -3,6 +3,7 @@ import axios from 'axios'
 import './reviewCategories.css'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
+import { EnrollmentsShow } from '../enrollments/EnrollmentsShow'
 import { reviewCategoriesShow, reviewsIndex } from '../../urls/index'
 
 const reviewInitialState = {
@@ -13,6 +14,7 @@ const reviewInitialState = {
       company_id: null,
       review_category_id: null,
       review_content: '',
+      enrollment_id: null,
     },
   ],
 }
@@ -73,7 +75,13 @@ export const ReviewCategoriesShow = ({ match }) => {
               <div className="review-category">
                 {reviewCategoryInformation.review_category.name}
               </div>
-              <div className="enrollment">在籍情報入れる</div>
+              <div className="enrollment">
+                {review.enrollment_id}
+                <EnrollmentsShow
+                  companyId={match.params.companyId}
+                  id={review.enrollment_id}
+                />
+              </div>
               <div className="review-content">{review.review_content}</div>
             </div>
           ))}

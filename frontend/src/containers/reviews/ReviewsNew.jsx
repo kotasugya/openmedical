@@ -1,43 +1,40 @@
 import React, { useState } from 'react'
 import './reviews.css'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { reviewsNew } from '../../urls/index'
-// import { SearchCompanies } from '../companies/SearchCompanies'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
-// import { EnrollmentsNew } from '../enrollments/EnrollmentsNew'
 
-export const ReviewsNew = () => {
-  // const [searchKeyWord, setSearchKeyWord] = useState('')
-  // const companyInformation = SearchCompanies(searchKeyWord)
+export const ReviewsNew = (props) => {
   const [content1, setContent1] = useState('')
   const [content2, setContent2] = useState('')
   const [content3, setContent3] = useState('')
   const [content4, setContent4] = useState('')
   const [content5, setContent5] = useState('')
-  const [reviewCategoryId1, setReviewCategoryId1] = useState()
-  const [reviewCategoryId2, setReviewCategoryId2] = useState()
-  const [reviewCategoryId3, setReviewCategoryId3] = useState()
-  const [reviewCategoryId4, setReviewCategoryId4] = useState()
-  const [reviewCategoryId5, setReviewCategoryId5] = useState()
-
-  // const handleChange = (e) => {
-  //   setSearchKeyWord(e.target.value)
-  // }
+  // const [reviewCategoryId1, setReviewCategoryId1] = useState()
+  // const [reviewCategoryId2, setReviewCategoryId2] = useState()
+  // const [reviewCategoryId3, setReviewCategoryId3] = useState()
+  // const [reviewCategoryId4, setReviewCategoryId4] = useState()
+  // const [reviewCategoryId5, setReviewCategoryId5] = useState()
 
   const handleSubmit1 = () => {
-    setReviewCategoryId1(1)
+    const { location } = props
+    const companyId = location.state.companyId
+    const enrollmentId = location.state.enrollmentId
+    const reviewCategoryId1 = 1
     console.log(reviewCategoryId1)
 
     const body = {
       review: {
         user_id: 1,
-        company_id: companyInformation.companies[0].id,
+        company_id: companyId,
+        enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId1,
         review_content: content1,
       },
     }
-    console.log(companyInformation, reviewCategoryId1, body)
+    console.log(companyId, reviewCategoryId1, enrollmentId, body)
     const headers = { 'Content-Type': 'application/json' }
     axios
       .post(reviewsNew, body, headers)
@@ -51,18 +48,20 @@ export const ReviewsNew = () => {
       })
   }
   const handleSubmit2 = () => {
-    setReviewCategoryId2(2)
-    console.log(reviewCategoryId2)
+    const { location } = props
+    const companyId = location.state.companyId
+    const enrollmentId = location.state.enrollmentId
+    const reviewCategoryId2 = 2
 
     const body = {
       review: {
         user_id: 1,
-        company_id: companyInformation.companies[0].id,
+        company_id: companyId,
+        enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId2,
         review_content: content2,
       },
     }
-    console.log(companyInformation, reviewCategoryId2, body)
     const headers = { 'Content-Type': 'application/json' }
     axios
       .post(reviewsNew, body, headers)
@@ -76,13 +75,15 @@ export const ReviewsNew = () => {
       })
   }
   const handleSubmit3 = () => {
-    setReviewCategoryId3(3)
-    console.log(reviewCategoryId3)
-
+    const { location } = props
+    const companyId = location.state.companyId
+    const enrollmentId = location.state.enrollmentId
+    const reviewCategoryId3 = 3
     const body = {
       review: {
         user_id: 1,
-        company_id: companyInformation.companies[0].id,
+        company_id: companyId,
+        enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId3,
         review_content: content3,
       },
@@ -101,13 +102,16 @@ export const ReviewsNew = () => {
       })
   }
   const handleSubmit4 = () => {
-    setReviewCategoryId4(4)
-    console.log(reviewCategoryId4)
+    const { location } = props
+    const companyId = location.state.companyId
+    const enrollmentId = location.state.enrollmentId
+    const reviewCategoryId4 = 4
 
     const body = {
       review: {
         user_id: 1,
-        company_id: companyInformation.companies[0].id,
+        company_id: companyId,
+        enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId4,
         review_content: content4,
       },
@@ -126,13 +130,16 @@ export const ReviewsNew = () => {
       })
   }
   const handleSubmit5 = () => {
-    setReviewCategoryId5(5)
-    console.log(reviewCategoryId5)
+    const { location } = props
+    const companyId = location.state.companyId
+    const enrollmentId = location.state.enrollmentId
+    const reviewCategoryId5 = 5
 
     const body = {
       review: {
         user_id: 1,
-        company_id: companyInformation.companies[0].id,
+        company_id: companyId,
+        enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId5,
         review_content: content5,
       },
@@ -167,14 +174,6 @@ export const ReviewsNew = () => {
         <div className="mainWrapper">
           <Header />
           <h3>評価レポート (STEP2)</h3>
-          {/* <input
-          type="text"
-          placeholder="医院で検索する"
-          onChange={handleChange}
-        />
-        <h3>レポート対象企業</h3>
-        <div>{companyInformation.companies[0].name}</div> */}
-          {/* <EnrollmentsNew companyInformation={companyInformation} /> */}
           <div className="reviewsNewForm">
             <h4>職場の雰囲気</h4>
             <p className="exp-culture">
@@ -273,9 +272,11 @@ export const ReviewsNew = () => {
                 このレポートを投稿する
               </button>
             </form>
-            <button className="finishReviews-btn" type="button">
-              以上でレポートを終了する
-            </button>
+            <Link to="/">
+              <button className="finishReviews-btn" type="button">
+                以上でレポートを終了する
+              </button>
+            </Link>
           </div>
           <Footer />
         </div>

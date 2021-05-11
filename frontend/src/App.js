@@ -34,11 +34,6 @@ function App() {
     setLoggedInStatus('未ログイン')
     setUser({})
   }
-
-  // ログイン中か否かを判断する
-  useEffect(() => {
-    checkLoginStatus()
-  })
   const checkLoginStatus = () => {
     axios
       .get(usersCheckLogin, { withCredentials: true })
@@ -54,11 +49,14 @@ function App() {
           setUser({})
         }
       })
-
       .catch((error) => {
         console.log('ログインエラー', error)
       })
   }
+  // ログイン中か否かを判断する
+  useEffect(() => {
+    checkLoginStatus()
+  })
 
   return (
     <Router history={history}>

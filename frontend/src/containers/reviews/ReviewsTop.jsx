@@ -31,7 +31,9 @@ export const ReviewsTop = () => {
           <p className="searchCompanyAsterisk">
             <solid>※</solid>検索すると表示が変わります
           </p>
-          <EnrollmentsNew companyInformation={companyInformation} />
+          <EnrollmentsNew
+            companyInformation={companyInformation.companies[0]}
+          />
           <Footer />
         </div>
       </body>

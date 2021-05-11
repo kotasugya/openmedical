@@ -2,7 +2,6 @@
 body {
   font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
     'Hiragino Sans', Meiryo, sans-serif;
-  height: auto;
 }
 .mainWrapper {
   height: auto;
@@ -10,6 +9,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 /* UsersNew */
 h2 {
@@ -30,13 +30,12 @@ p {
 }
 table.newForm {
   border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 50px;
 }
 table.newForm th {
   border: 1px solid lightgray;
-  padding: 30px 130px 30px 30px;
+  padding-left: 30px;
+  height: 20px;
   font-size: small;
   text-align: left;
   font-weight: normal;

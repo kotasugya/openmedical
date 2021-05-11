@@ -156,7 +156,7 @@ export const UsersNew = (props) => {
             </button>
           </form>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </>
   )
