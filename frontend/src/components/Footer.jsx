@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  link: {
+    color: 'gray',
+    textDecoration: 'none',
+  },
   copyRight: {
     textAlign: 'center',
     fontSize: '13px',
@@ -47,7 +52,9 @@ export const Footer = () => {
         <div className={classes.title}>openmedical</div>
         <div className={classes.menuList}>
           <ul>
-            <li>HOME</li>
+            <Link className={classes.link} to="/">
+              <li>HOME</li>
+            </Link>
             <li>ABOUT</li>
             <li>お問い合わせ</li>
           </ul>

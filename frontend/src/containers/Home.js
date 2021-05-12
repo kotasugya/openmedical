@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Footer } from '../components/Footer'
 // component
 import { Header } from '../components/Header'
 // container
@@ -22,6 +23,7 @@ export const Home = (props) => {
       <h1>Home</h1>
       <input type="text" placeholder="医院で検索する" onChange={handleChange} />
       <SearchCompanyList keyword={searchKeyWord} />
+      <Footer />
     </>
   )
 }

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { usersEdit, usersShow } from '../../urls/index'
 
@@ -7,7 +7,6 @@ import './users.css'
 
 const initialState = {
   user: {
-    id: null,
     name: '',
     email: '',
     birthday: null,
@@ -45,7 +44,7 @@ export const UsersEdit = ({ match }) => {
       },
     }
     axios
-      .patch(usersEdit, header, body, { withCredentials: true })
+      .patch(usersEdit, body, header, { withCredentials: true })
       .then((response) => {
         console.log('success', response)
       })
@@ -120,6 +119,7 @@ export const UsersEdit = ({ match }) => {
             更新する
           </button>
         </div>
+        <Footer />
       </body>
     </>
   )

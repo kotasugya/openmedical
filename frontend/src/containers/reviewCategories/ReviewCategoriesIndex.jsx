@@ -22,7 +22,7 @@ export const ReviewCategoriesIndex = () => {
       .catch((error) => console.error(error))
 
   useEffect(() => {
-    fetchReviewCategoriesIndex.then(
+    fetchReviewCategoriesIndex().then(
       (data) => setReviewCategoryList(data),
       console.log(reviewCategoryList)
     )

@@ -14,6 +14,8 @@ import { CompaniesNew } from './containers/companies/CompaniesNew'
 import { CompaniesIndex } from './containers/companies/CompaniesIndex'
 import { CompaniesShow } from './containers/companies/CompaniesShow'
 import { ReviewsNew } from './containers/reviews/ReviewsNew'
+import { ReviewsTop } from './containers/reviews/ReviewsTop'
+import { ReviewsIndex } from './containers/reviews/ReviewsIndex'
 import { ReviewCategoriesShow } from './containers/reviewCategories/ReviewCategoriesShow'
 import { EnrollmentsNew } from './containers/enrollments/EnrollmentsNew'
 import { SearchCompanies } from './containers/companies/SearchCompanies'
@@ -32,11 +34,6 @@ function App() {
     setLoggedInStatus('未ログイン')
     setUser({})
   }
-
-  // ログイン中か否かを判断する
-  useEffect(() => {
-    checkLoginStatus()
-  })
   const checkLoginStatus = () => {
     axios
       .get(usersCheckLogin, { withCredentials: true })
@@ -52,11 +49,14 @@ function App() {
           setUser({})
         }
       })
-
       .catch((error) => {
         console.log('ログインエラー', error)
       })
   }
+  // ログイン中か否かを判断する
+  useEffect(() => {
+    checkLoginStatus()
+  })
 
   return (
     <Router history={history}>
@@ -119,6 +119,7 @@ function App() {
         />
 
         {/* レビュー */}
+        <Route exact path="/reviews" component={ReviewsTop} />
         <Route exact path="/reviews/new" component={ReviewsNew} />
         <Route
           exact

@@ -2,7 +2,6 @@
 body {
   font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
     'Hiragino Sans', Meiryo, sans-serif;
-  height: auto;
 }
 .mainWrapper {
   height: auto;
@@ -10,6 +9,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 /* UsersNew */
 h2 {
@@ -30,13 +30,12 @@ p {
 }
 table.newForm {
   border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 50px;
 }
 table.newForm th {
   border: 1px solid lightgray;
-  padding: 30px 130px 30px 30px;
+  padding-left: 30px;
+  height: 20px;
   font-size: small;
   text-align: left;
   font-weight: normal;
@@ -69,6 +68,15 @@ select {
   font-weight: bold;
   font-size: 15px;
 }
+.register-btn:hover {
+  opacity: 0.8;
+}
+.register-btn:active {
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  border-bottom: none;
+}
 
 /* usersShow */
 .userShowTable {
@@ -100,4 +108,32 @@ table.userShowTable td {
   font-weight: bold;
   font-size: 15px;
   margin-top: 50px;
+}
+.edit-btn:hover {
+  opacity: 0.8;
+}
+.edit-btn:active {
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  border-bottom: none;
+}
+
+.logout-btn {
+  display: block;
+  padding: 5px 60px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  color: gray;
+}
+.logout-btn:hover {
+  opacity: 0.8;
+}
+.logout-btn:active {
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  border-bottom: none;
 }

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import './reviewCategories.css'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
+import { EnrollmentsShow } from '../enrollments/EnrollmentsShow'
 import { reviewCategoriesShow, reviewsIndex } from '../../urls/index'
 
 const reviewInitialState = {
@@ -12,6 +14,7 @@ const reviewInitialState = {
       company_id: null,
       review_category_id: null,
       review_content: '',
+      enrollment_id: null,
     },
   ],
 }
@@ -63,12 +66,26 @@ export const ReviewCategoriesShow = ({ match }) => {
       <body>
         <Header />
         <div className="mainWrapper">
-          {reviewCategoryInformation.review_category.name}
+          <h3>
+            {reviewCategoryInformation.review_category.name}
+            <span>-企業名入れる-</span>
+          </h3>
           {reviewInformation.reviews.map((review) => (
-            <div>{review.review_content}</div>
+            <div className="review">
+              <div className="review-category">
+                {reviewCategoryInformation.review_category.name}
+              </div>
+              <div className="enrollment">
+                <EnrollmentsShow
+                  companyId={match.params.companyId}
+                  enrollmentId={review.enrollment_id}
+                />
+              </div>
+              <div className="review-content">{review.review_content}</div>
+            </div>
           ))}
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </>
   )

@@ -3,7 +3,8 @@ module Api
     class ReviewsController < ApplicationController
       def index
         @company = Company.find(params[:company_id])
-        @reviews = @company.reviews
+        @review_category_id = ReviewCategory.find(params[:review_category_id])
+        @reviews = (@company && @review_category_id).reviews
         render json: { reviews: @reviews }
       end
 
@@ -28,8 +29,7 @@ module Api
 
       def review_params
         params.require(:review).
-          permit(:user_id, :review_content, :company_id, :review_category_id)
-        # .merge(user_id: 1)
+          permit(:user_id, :review_content, :company_id, :review_category_id, :enrollment_id)
       end
     end
   end

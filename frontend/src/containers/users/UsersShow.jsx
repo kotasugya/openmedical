@@ -35,7 +35,7 @@ export const UsersShow = ({ match }) => {
     axios
       .delete(logout, { withCredentials: true })
       .then((response) => {
-        match.handleLogout()
+        match.params.handleLogout()
       })
       .catch((error) => console.log('ログアウトエラー', error))
   }
@@ -67,7 +67,9 @@ export const UsersShow = ({ match }) => {
           <button className="edit-btn" type="button">
             <Link to={`${userInformation.user.id}/edit`}>編集する</Link>
           </button>
-          <button onClick={handleLogoutClick}>ログアウト</button>
+          <button className="logout-btn" onClick={handleLogoutClick}>
+            ログアウト
+          </button>
         </div>
         <Footer />
       </body>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { companiesIndex } from '../../urls/index'
+import { reviewCategoriesIndex } from '../../urls/index'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 
@@ -43,13 +44,10 @@ export const CompaniesIndex = () => {
                   <Link to={`companies/${company.id}`}>{company.name}</Link>
                 </td>
                 <td className="reviews">
-                  <p>レビュー数</p>
-                </td>
-                <td className="salaries">
-                  <p>給与情報数</p>
+                  <Link to={reviewCategoriesIndex}>レビュー数</Link>
                 </td>
                 <td className="follow-btn">
-                  <p>フォローする</p>
+                  <button>フォローする</button>
                 </td>
               </tr>
             </table>

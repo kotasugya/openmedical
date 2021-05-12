@@ -1,0 +1,36 @@
+/* commonStyle */
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
+  height: auto;
+}
+.mainWrapper {
+  height: auto;
+  width: 100%;
+  flex-direction: column;
+}
+
+h2 {
+  font-weight: normal;
+  margin-left: 15%;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-weight: normal;
+  margin-left: 20%;
+}
+td.review-content-item {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.review {
+  margin: 0 auto;
+  width: 40%;
+  border: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+.review-category {
+  border-bottom: 1px solid lightgray;
+}

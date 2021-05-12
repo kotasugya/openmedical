@@ -1,0 +1,51 @@
+/* commonStyle */
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
+  height: auto;
+}
+.mainWrapper {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+h3 {
+  font-weight: normal;
+  margin-left: 15%;
+  margin-bottom: 30px;
+}
+p {
+  font-weight: bold;
+  margin-left: 15%;
+}
+table.newForm {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+.enrollmentTable {
+  margin-bottom: 15%;
+}
+.register-btn {
+  padding: 10px 80px;
+  background-color: #0099ff;
+  border-radius: 5px;
+  margin-top: 100px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #0099ff;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+.register-btn:hover {
+  opacity: 0.8;
+}
+.register-btn:active {
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  border-bottom: none;
+}
