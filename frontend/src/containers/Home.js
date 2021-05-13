@@ -1,29 +1,33 @@
 import React, { useState } from 'react'
+import './home.css'
 import { Footer } from '../components/Footer'
-// component
 import { Header } from '../components/Header'
-// container
 import { SearchCompanyList } from './companies/SearchCompanyList'
-import { ReviewsNew } from './reviews/ReviewsNew'
-import { Login } from './sessions/Login'
-import { UsersNew } from './users/UsersNew'
 
 export const Home = (props) => {
   const [searchKeyWord, setSearchKeyWord] = useState('')
   const handleChange = (e) => {
     setSearchKeyWord(e.target.value)
   }
-  const handleSuccessfulAuthentication = (data) => {
-    props.handleLogin(data)
-  }
 
   return (
     <>
-      <Header />
-      <h1>Home</h1>
-      <input type="text" placeholder="医院で検索する" onChange={handleChange} />
-      <SearchCompanyList keyword={searchKeyWord} />
-      <Footer />
+      <body>
+        <Header />
+        <div className="mainWrapper">
+          <h2>医院を検索する</h2>
+          <input
+            className="searchInput"
+            type="text"
+            placeholder="医院で検索する"
+            onChange={handleChange}
+          />
+          <div className="companyList">
+            <SearchCompanyList keyword={searchKeyWord} />
+          </div>
+        </div>
+        <Footer />
+      </body>
     </>
   )
 }

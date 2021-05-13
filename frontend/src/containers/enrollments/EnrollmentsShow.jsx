@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { enrollmentsShow } from '../../urls/index'
+import './enrollments.css'
 
 const enrollmentInitialState = {
   enrollment: {
-    id: null,
     user_id: null,
     company_id: null,
     employment_status: '',
@@ -39,7 +39,13 @@ export const EnrollmentsShow = (props) => {
 
   return (
     <div className="enrollments-information">
-      回答者：{enrollmentInformation.enrollment.employment_status}
+      <span>回答者：</span>
+      {enrollmentInformation.enrollment.employment_status}、
+      {enrollmentInformation.enrollment.working_now_or_not}、
+      {enrollmentInformation.enrollment.join_year}、
+      {enrollmentInformation.enrollment.occupation}
+      <br />
+      <br />
     </div>
   )
 }

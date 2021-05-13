@@ -74,6 +74,8 @@ export const ReviewCategoriesShow = ({ match }) => {
             <div className="review">
               <div className="review-category">
                 {reviewCategoryInformation.review_category.name}
+                {/* 回答日：
+                {reviewCategoryInformation.review_category.created_at} */}
               </div>
               <div className="enrollment">
                 <EnrollmentsShow
