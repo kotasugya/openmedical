@@ -1,0 +1,21 @@
+.login-btn {
+  padding: 10px 80px;
+  background-color: #0099ff;
+  border-radius: 5px;
+  margin-top: 100px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #0099ff;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+.login-btn:hover {
+  opacity: 0.8;
+}
+.login-btn:active {
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  border-bottom: none;
+}

@@ -7,11 +7,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     position: 'absolute',
     width: '100%',
+    bottom: 0,
   },
   footerBar: {
     height: '150px',
     backgroundColor: '#F2F2F2',
-    bottom: 0,
   },
   items: {
     paddingTop: '30px',

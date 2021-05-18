@@ -15,8 +15,8 @@ export const ReviewsTop = () => {
   return (
     <>
       <body>
+        <Header />
         <div className="mainWrapper">
-          <Header />
           <h3>レポート対象医院を検索する</h3>
           <input
             className="selectCompany"
@@ -34,8 +34,8 @@ export const ReviewsTop = () => {
           <EnrollmentsNew
             companyInformation={companyInformation.companies[0]}
           />
-          <Footer />
         </div>
+        <Footer />
       </body>
     </>
   )

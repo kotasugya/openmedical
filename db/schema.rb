@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_09_115133) do
+ActiveRecord::Schema.define(version: 2021_05_09_065931) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_05_09_115133) do
   add_foreign_key "evaluations", "evaluation_categories"
   add_foreign_key "evaluations", "users"
   add_foreign_key "reviews", "companies"
+  add_foreign_key "reviews", "enrollments"
   add_foreign_key "reviews", "review_categories"
   add_foreign_key "reviews", "users"
 end

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './sessions.css'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { login } from '../../urls/index'
@@ -23,8 +24,9 @@ export const Login = (props) => {
       .then((response) => {
         if (response.data.logged_in) {
           props.handleLogin(response.data)
-          history.push(`/users/${response.data.user.id}`)
+          // history.push(`/users/${response.data.user.id}`)
         }
+        console.log('login response', response)
       })
       .catch((error) => {
         console.log('failed', error)

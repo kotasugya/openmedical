@@ -22,10 +22,12 @@ import { SearchCompanies } from './containers/companies/SearchCompanies'
 
 // Api
 import { usersCheckLogin } from './urls/index'
+import { auth } from './firebase'
 
 function App() {
   const [loggedInStatus, setLoggedInStatus] = useState('未ログイン')
   const [user, setUser] = useState({})
+
   const handleLogin = (data) => {
     setLoggedInStatus('ログイン中')
     setUser(data.user)
@@ -34,29 +36,27 @@ function App() {
     setLoggedInStatus('未ログイン')
     setUser({})
   }
+  // ログイン中か否かを判断する
+  useEffect(() => {
+    checkLoginStatus()
+  })
   const checkLoginStatus = () => {
     axios
       .get(usersCheckLogin, { withCredentials: true })
       .then((response) => {
-        if (response.data.logged_in && loggedInStatus === '未ログイン') {
+        if (response.data.logged_in === 'true') {
           setLoggedInStatus('ログイン中')
           setUser(response.data.user)
-        } else if (
-          !response.data.logged_in &&
-          loggedInStatus === 'ログイン中'
-        ) {
+        } else if (!response.data.logged_in === 'false') {
           setLoggedInStatus('未ログイン')
           setUser({})
         }
+        console.log('ログイン状況', response)
       })
       .catch((error) => {
         console.log('ログインエラー', error)
       })
   }
-  // ログイン中か否かを判断する
-  useEffect(() => {
-    checkLoginStatus()
-  })
 
   return (
     <Router history={history}>
