@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
+import { AuthContext } from '../../auth/AuthProvider'
 import { usersNew } from '../../urls/index'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
@@ -15,19 +16,22 @@ export const UsersNew = (props) => {
   const [salary, setSalary] = useState('')
 
   const history = useHistory()
+  const { signup } = useContext(AuthContext)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    await signup(email, password, history)
     const headers = { 'Content-Type': 'application/json' }
     const body = {
       user: {
         name: name,
         email: email,
         password: password,
-        passwordConfirmation: passwordConfirmation,
+        // passwordConfirmation: passwordConfirmation,
         birthday: birthday,
         salary: salary,
       },
     }
+    console.log(body)
     axios
       .post(usersNew, body, headers, { withCredentials: true })
       .then((response) => {

@@ -1,6 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { useHistory, Link } from 'react-router-dom'
+import { AuthContext } from '../auth/AuthProvider'
+
 import AppBar from '@material-ui/core/AppBar'
+import Button from '@material-ui/core/Button'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
@@ -73,7 +76,14 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const Header = () => {
+  const history = useHistory()
   const classes = useStyles()
+  const { logout } = useContext(AuthContext)
+
+  const handleClick = () => {
+    logout()
+    history.push('/login')
+  }
 
   return (
     // <div className={classes.root}>
@@ -92,7 +102,7 @@ export const Header = () => {
             openmedical
           </Link>
         </Typography>
-        <div className={classes.search}>
+        {/* <div className={classes.search}>
           <div className={classes.searchIcon}>
             <SearchIcon />
           </div>
@@ -105,6 +115,14 @@ export const Header = () => {
             inputProps={{ 'aria-label': 'search' }}
           />
         </div>
+         */}
+        <Button
+          onClick={() => {
+            handleClick()
+          }}
+        >
+          LogOut
+        </Button>
       </Toolbar>
     </AppBar>
     // </div>

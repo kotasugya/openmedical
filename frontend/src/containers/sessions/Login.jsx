@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { AuthContext } from '../../auth/AuthProvider'
 import './sessions.css'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-import { login } from '../../urls/index'
+// import { login } from '../../urls/index'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 
@@ -11,26 +12,29 @@ export const Login = (props) => {
   const [password, setPassword] = useState('')
   const history = useHistory()
 
+  const { login } = useContext(AuthContext)
+
   const handleSubmit = () => {
-    const body = {
-      user: {
-        email,
-        password,
-      },
-    }
-    const headers = { 'Content-Type': 'application/json' }
-    axios
-      .post(login, body, headers, { withCredentials: true })
-      .then((response) => {
-        if (response.data.logged_in) {
-          props.handleLogin(response.data)
-          // history.push(`/users/${response.data.user.id}`)
-        }
-        console.log('login response', response)
-      })
-      .catch((error) => {
-        console.log('failed', error)
-      })
+    login(email, password, history)
+    // const body = {
+    //   user: {
+    //     email,
+    //     password,
+    //   },
+    // }
+    // const headers = { 'Content-Type': 'application/json' }
+    // axios
+    //   .post(login, body, headers, { withCredentials: true })
+    //   .then((response) => {
+    //     if (response.data.logged_in) {
+    //       props.handleLogin(response.data)
+    //       // history.push(`/users/${response.data.user.id}`)
+    //     }
+    //     console.log('login response', response)
+    //   })
+    //   .catch((error) => {
+    //     console.log('failed', error)
+    //   })
   }
 
   return (

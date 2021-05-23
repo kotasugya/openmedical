@@ -31,14 +31,14 @@ export const UsersShow = ({ match }) => {
     )
   }, [])
 
-  const handleLogoutClick = () => {
-    axios
-      .delete(logout, { withCredentials: true })
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((error) => console.log('ログアウトエラー', error))
-  }
+  // const handleLogoutClick = () => {
+  //   axios
+  //     .delete(logout, { withCredentials: true })
+  //     .then((response) => {
+  //       console.log(response)
+  //     })
+  //     .catch((error) => console.log('ログアウトエラー', error))
+  // }
 
   return (
     <>
@@ -67,9 +67,9 @@ export const UsersShow = ({ match }) => {
         <button className="edit-btn" type="button">
           <Link to={`${userInformation.user.id}/edit`}>編集する</Link>
         </button>
-        <button className="logout-btn" onClick={handleLogoutClick}>
+        {/* <button className="logout-btn" onClick={handleLogoutClick}>
           ログアウト
-        </button>
+        </button> */}
       </div>
       <Footer />
       {/* </body> */}

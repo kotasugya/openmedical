@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import history from 'history/createBrowserHistory'
 import axios from 'axios'
 
+// auth
+import PrivateRoute from './auth/PrivateRoute'
+import { AuthProvider } from './auth/AuthProvider'
+
 // components
 import { Home } from './containers/Home'
 import { UsersNew } from './containers/users/UsersNew'
@@ -21,114 +25,94 @@ import { EnrollmentsNew } from './containers/enrollments/EnrollmentsNew'
 import { SearchCompanies } from './containers/companies/SearchCompanies'
 
 // Api
-import { usersCheckLogin } from './urls/index'
-import { auth } from './firebase'
+// import { usersCheckLogin } from './urls/index'
+// import { auth } from './firebase'
 
 function App() {
-  const [loggedInStatus, setLoggedInStatus] = useState('未ログイン')
-  const [user, setUser] = useState({})
+  // const [loggedInStatus, setLoggedInStatus] = useState('未ログイン')
+  // const [user, setUser] = useState({})
 
-  const handleLogin = (data) => {
-    setLoggedInStatus('ログイン中')
-    setUser(data.user)
-  }
-  const handleLogout = () => {
-    setLoggedInStatus('未ログイン')
-    setUser({})
-  }
-  // ログイン中か否かを判断する
-  useEffect(() => {
-    checkLoginStatus()
-  })
-  const checkLoginStatus = () => {
-    axios
-      .get(usersCheckLogin, { withCredentials: true })
-      .then((response) => {
-        if (response.data.logged_in === 'true') {
-          setLoggedInStatus('ログイン中')
-          setUser(response.data.user)
-        } else if (!response.data.logged_in === 'false') {
-          setLoggedInStatus('未ログイン')
-          setUser({})
-        }
-        console.log('ログイン状況', response)
-      })
-      .catch((error) => {
-        console.log('ログインエラー', error)
-      })
-  }
+  // const handleLogin = (data) => {
+  //   setLoggedInStatus('ログイン中')
+  //   setUser(data.user)
+  // }
+  // const handleLogout = () => {
+  //   setLoggedInStatus('未ログイン')
+  //   setUser({})
+  // }
+  // // ログイン中か否かを判断する
+  // useEffect(() => {
+  //   checkLoginStatus()
+  // })
+  // const checkLoginStatus = () => {
+  //   axios
+  //     .get(usersCheckLogin, { withCredentials: true })
+  //     .then((response) => {
+  //       if (response.data.logged_in === 'true') {
+  //         setLoggedInStatus('ログイン中')
+  //         setUser(response.data.user)
+  //       } else if (!response.data.logged_in === 'false') {
+  //         setLoggedInStatus('未ログイン')
+  //         setUser({})
+  //       }
+  //       console.log('ログイン状況', response)
+  //     })
+  //     .catch((error) => {
+  //       console.log('ログインエラー', error)
+  //     })
+  // }
 
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <AuthProvider>
+          <Route exact path="/" component={Home} />
 
-        {/* ユーザー */}
-        {/* <Route exact path="/users" component={UsersNew} /> */}
-        <Route
-          exact
-          path="/users/new"
-          render={(props) => (
-            <UsersNew
-              {...props}
-              handleLogin={handleLogin}
-              loggedInStatus={loggedInStatus}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/users/:id"
-          render={({ match }) => (
-            <UsersShow match={match} handleLogout={handleLogout} />
-          )}
-        />
-        <Route
-          exact
-          path="/users/:id/edit"
-          render={({ match }) => <UsersEdit match={match} />}
-        />
+          {/* ユーザー */}
+          {/* <Route exact path="/users" component={UsersNew} /> */}
+          <Route exact path="/users/new" component={UsersNew} />
+          {/* <Route
+            exact
+            path="/users/:id"
+            render={({ match }) => <UsersShow match={match} />}
+          /> */}
+          <Route
+            exact
+            path="/users/:id/edit"
+            render={({ match }) => <UsersEdit match={match} />}
+          />
 
-        {/* ログイン */}
-        <Route
-          exact
-          path="/login"
-          render={(props) => (
-            <Login
-              {...props}
-              handleLogin={handleLogin}
-              loggedInStatus={loggedInStatus}
-            />
-          )}
-        />
+          {/* ログイン */}
+          <Route exact path="/login" component={Login} />
 
-        {/* 企業 */}
-        <Route exact path="/companies/new" component={CompaniesNew} />
-        <Route exact path="/companies" component={CompaniesIndex} />
-        <Route
-          exact
-          path="/companies/:id"
-          render={({ match }) => <CompaniesShow match={match} />}
-        />
+          {/* 企業 */}
+          <Route exact path="/companies/new" component={CompaniesNew} />
+          <Route exact path="/companies" component={CompaniesIndex} />
+          <Route
+            exact
+            path="/companies/:id"
+            render={({ match }) => <CompaniesShow match={match} />}
+          />
 
-        {/* 検索 */}
-        <Route
-          exact
-          path="/companies/search?search=:keyword"
-          render={({ match }) => <SearchCompanies match={match} />}
-        />
+          {/* 検索 */}
+          <Route
+            exact
+            path="/companies/search?search=:keyword"
+            render={({ match }) => <SearchCompanies match={match} />}
+          />
 
-        {/* レビュー */}
-        <Route exact path="/reviews" component={ReviewsTop} />
-        <Route exact path="/reviews/new" component={ReviewsNew} />
-        <Route
-          exact
-          path="/companies/:companyId/reviewCategories/:reviewCategoryId/reviews"
-          render={({ match }) => <ReviewCategoriesShow match={match} />}
-        />
+          {/* レビュー */}
+          <PrivateRoute exact path="/reviews" component={ReviewsTop} />
+          <PrivateRoute exact path="/reviews/new" component={ReviewsNew} />
+          <Route
+            exact
+            path="/companies/:companyId/reviewCategories/:reviewCategoryId/reviews"
+            render={({ match }) => <ReviewCategoriesShow match={match} />}
+          />
 
-        {/* 在籍情報 */}
-        <Route exact path="/enrollments/new" component={EnrollmentsNew} />
+          {/* 在籍情報 */}
+          <Route exact path="/enrollments/new" component={EnrollmentsNew} />
+        </AuthProvider>
         {/* <Route
           exact
           path="/companies/:companyId/enrollments/:id"
