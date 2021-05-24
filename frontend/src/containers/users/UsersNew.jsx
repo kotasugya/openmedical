@@ -26,7 +26,7 @@ export const UsersNew = (props) => {
         name: name,
         email: email,
         password: password,
-        // passwordConfirmation: passwordConfirmation,
+        passwordConfirmation: passwordConfirmation,
         birthday: birthday,
         salary: salary,
       },
@@ -36,7 +36,6 @@ export const UsersNew = (props) => {
       .post(usersNew, body, headers, { withCredentials: true })
       .then((response) => {
         if (response.data.status === 'created') {
-          props.handleLogin(response.data)
           history.push(`/users/${response.data.user.id}`)
         }
       })
