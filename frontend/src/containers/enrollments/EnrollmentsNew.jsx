@@ -11,12 +11,14 @@ export const EnrollmentsNew = (props) => {
   const [leaveYear, setLeaveYear] = useState('')
   const [occupation, setOccupation] = useState('')
   const history = useHistory()
+  const { state } = useContext(Context)
+  console.log(`state:${state.id}`)
 
   const handleSubmit = () => {
     const headers = { 'Content-Type': 'application/json' }
     const body = {
       enrollment: {
-        user_id: 2,
+        user_id: state.id,
         company_id: props.companyInformation.id,
         employment_status: employmentStatus,
         working_now_or_not: workingNowOrNot,

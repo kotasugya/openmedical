@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:update, :show, :create, :destroy]
+      post '/login', to: 'sessions#login'
       resources :companies, only: [:show, :index, :destroy] do
         resources :review_categories, only: [:show] do
           resources :reviews, only: [:show, :index, :update, :destroy]

@@ -21,15 +21,14 @@ import { CompaniesIndex } from './containers/companies/CompaniesIndex'
 import { CompaniesShow } from './containers/companies/CompaniesShow'
 import { ReviewsNew } from './containers/reviews/ReviewsNew'
 import { ReviewsTop } from './containers/reviews/ReviewsTop'
-import { ReviewsIndex } from './containers/reviews/ReviewsIndex'
 import { ReviewCategoriesShow } from './containers/reviewCategories/ReviewCategoriesShow'
 import { EnrollmentsNew } from './containers/enrollments/EnrollmentsNew'
 import { SearchCompanies } from './containers/companies/SearchCompanies'
 
 function App() {
-  const [store, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
   return (
-    <Context.Provider value={{ store, dispatch }}>
+    <Context.Provider value={{ state, dispatch }}>
       <Router history={history}>
         <Switch>
           <AuthProvider>
@@ -79,11 +78,6 @@ function App() {
             {/* 在籍情報 */}
             <Route exact path="/enrollments/new" component={EnrollmentsNew} />
           </AuthProvider>
-          {/* <Route
-            exact
-            path="/companies/:companyId/enrollments/:id"
-            component={EnrollmentsShow}
-          /> */}
         </Switch>
       </Router>
     </Context.Provider>

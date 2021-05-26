@@ -3,45 +3,47 @@ import { AuthContext } from '../../auth/AuthProvider'
 import './sessions.css'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-// import { login } from '../../urls/index'
+import { login } from '../../urls/index'
+import { Context } from '../../store'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 
-export const Login = (props) => {
+export const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const history = useHistory()
-
-  const { login } = useContext(AuthContext)
+  const { state, dispatch } = useContext(Context)
+  const { loginFirebase } = useContext(AuthContext)
 
   const handleSubmit = () => {
-    login(email, password, history)
-    // const body = {
-    //   user: {
-    //     email,
-    //     password,
-    //   },
-    // }
-    // const headers = { 'Content-Type': 'application/json' }
-    // axios
-    //   .post(login, body, headers, { withCredentials: true })
-    //   .then((response) => {
-    //     if (response.data.logged_in) {
-    //       props.handleLogin(response.data)
-    //       // history.push(`/users/${response.data.user.id}`)
-    //     }
-    //     console.log('login response', response)
-    //   })
-    //   .catch((error) => {
-    //     console.log('failed', error)
-    //   })
+    loginFirebase(email, password, history)
+    const body = {
+      user: {
+        email,
+        password,
+      },
+    }
+    const headers = { 'Content-Type': 'application/json' }
+    axios
+      .post(login, body, headers, { withCredentials: true })
+      .then((response) => {
+        if (response.data.logged_in) {
+          const id = response.data.user.id
+          console.log(id)
+          dispatch({ type: 'setId', payload: id })
+          console.log(state.id)
+          // history.push(`/users/${response.data.user.id}`)
+        }
+      })
+      .catch((error) => {
+        console.log('failed', error)
+      })
   }
 
   return (
     <>
       <body>
         <Header />
-        <p>ログイン状態：{props.loggedInStatus}</p>
         <div className="mainWrapper">
           <h2>ログイン</h2>
           <form>

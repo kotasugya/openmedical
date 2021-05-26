@@ -12,11 +12,8 @@ export const ReviewsNew = (props) => {
   const [content3, setContent3] = useState('')
   const [content4, setContent4] = useState('')
   const [content5, setContent5] = useState('')
-  // const [reviewCategoryId1, setReviewCategoryId1] = useState()
-  // const [reviewCategoryId2, setReviewCategoryId2] = useState()
-  // const [reviewCategoryId3, setReviewCategoryId3] = useState()
-  // const [reviewCategoryId4, setReviewCategoryId4] = useState()
-  // const [reviewCategoryId5, setReviewCategoryId5] = useState()
+  const { state } = useContext(Context)
+  console.log(`state:${state.id}`)
 
   const handleSubmit1 = () => {
     const { location } = props
@@ -27,7 +24,7 @@ export const ReviewsNew = (props) => {
 
     const body = {
       review: {
-        user_id: 1,
+        user_id: state.id,
         company_id: companyId,
         enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId1,
@@ -55,7 +52,7 @@ export const ReviewsNew = (props) => {
 
     const body = {
       review: {
-        user_id: 1,
+        user_id: state.id,
         company_id: companyId,
         enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId2,
@@ -81,7 +78,7 @@ export const ReviewsNew = (props) => {
     const reviewCategoryId3 = 3
     const body = {
       review: {
-        user_id: 1,
+        user_id: state.id,
         company_id: companyId,
         enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId3,
@@ -109,7 +106,7 @@ export const ReviewsNew = (props) => {
 
     const body = {
       review: {
-        user_id: 1,
+        user_id: state.id,
         company_id: companyId,
         enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId4,
@@ -137,7 +134,7 @@ export const ReviewsNew = (props) => {
 
     const body = {
       review: {
-        user_id: 1,
+        user_id: state.id,
         company_id: companyId,
         enrollment_id: enrollmentId,
         review_category_id: reviewCategoryId5,

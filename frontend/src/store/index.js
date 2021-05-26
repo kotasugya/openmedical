@@ -1,18 +1,25 @@
 import React from 'react'
 
-export const initialState = { count: 0 }
+export const initialState = { id: null }
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case 'reset':
-      return initialState
-    case 'increment':
-      return { count: state.count + 1 }
-    case 'decrement':
-      return { count: state.count - 1 }
+    case 'setId':
+      return {
+        ...state,
+        id: action.payload,
+      }
+
+    case 'setOutId':
+      return {
+        ...state,
+        id: null,
+      }
+
     default:
-      return state
+      return {
+        state,
+      }
   }
 }
-
 export const Context = React.createContext()
