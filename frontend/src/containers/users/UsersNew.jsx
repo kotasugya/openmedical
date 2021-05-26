@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useReducer } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
+import { AuthContext } from '../../auth/AuthProvider'
+import { Context } from '../../store'
 import { usersNew } from '../../urls/index'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import './users.css'
 
-export const UsersNew = (props) => {
+export const UsersNew = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -15,8 +17,17 @@ export const UsersNew = (props) => {
   const [salary, setSalary] = useState('')
 
   const history = useHistory()
+  const { state, dispatch } = useContext(Context)
+  const { signup } = useContext(AuthContext)
 
-  const handleSubmit = () => {
+  // const handleTest = () => {
+  //   console.log(`before${state.id}`)
+  //   dispatch({ type: 'setId', payload: 1 })
+  //   console.log(`after${state}`)
+  //   // history.push(`/users/1`)
+  // }
+  const handleSubmit = async () => {
+    await signup(email, password, history)
     const headers = { 'Content-Type': 'application/json' }
     const body = {
       user: {
@@ -32,8 +43,9 @@ export const UsersNew = (props) => {
       .post(usersNew, body, headers, { withCredentials: true })
       .then((response) => {
         if (response.data.status === 'created') {
-          props.handleLogin(response.data)
-          history.push(`/users/${response.data.user.id}`)
+          const id = response.data.user.id
+          dispatch({ type: 'setId', payload: id })
+          history.push(`/users/${id}`)
         }
       })
       .catch((error) => {
@@ -45,7 +57,6 @@ export const UsersNew = (props) => {
     <>
       <body>
         <Header />
-        <p>ログイン状態：{props.loggedInStatus}</p>
         <div className="mainWrapper">
           <h2>新規登録</h2>
           <p>
@@ -154,6 +165,9 @@ export const UsersNew = (props) => {
             >
               登録する
             </button>
+            {/* <button className="register-btn" onClick={handleTest} type="button">
+              testする
+            </button> */}
           </form>
         </div>
         {/* <Footer /> */}

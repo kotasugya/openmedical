@@ -37,7 +37,7 @@ export const CompaniesIndex = () => {
         <Header />
         <div className="mainWrapper">
           <h2>医療機関一覧</h2>
-          {companyList.companies.map((company, i) => (
+          {companyList.companies.map((company) => (
             <table>
               <tr>
                 <td className="companyName">

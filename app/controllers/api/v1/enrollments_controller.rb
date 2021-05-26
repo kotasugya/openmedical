@@ -9,7 +9,7 @@ module Api
         if @enrollment.save
           render json: { status: :created, enrollment: @enrollment }
         else
-          render json: { status: 500, errors: @enrollment.errors.full_messages }
+          render json: { errors: @enrollment.errors.full_messages }, status: :internal_server_error
         end
       end
 

@@ -11,12 +11,14 @@ export const EnrollmentsNew = (props) => {
   const [leaveYear, setLeaveYear] = useState('')
   const [occupation, setOccupation] = useState('')
   const history = useHistory()
+  const { state } = useContext(Context)
+  console.log(`state:${state.id}`)
 
   const handleSubmit = () => {
     const headers = { 'Content-Type': 'application/json' }
     const body = {
       enrollment: {
-        user_id: 2,
+        user_id: state.id,
         company_id: props.companyInformation.id,
         employment_status: employmentStatus,
         working_now_or_not: workingNowOrNot,
@@ -30,19 +32,26 @@ export const EnrollmentsNew = (props) => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log('success', response)
-        alert('登録が完了しました')
-        history.push({
-          pathname: `/reviews/new`,
-          state: {
-            companyId: props.companyInformation.id,
-            enrollmentId: response.data.enrollment.id,
-          },
-        })
+        if (response.data.status === 'created') {
+          alert('登録が完了しました')
+          history.push({
+            pathname: `/reviews/new`,
+            state: {
+              companyId: props.companyInformation.id,
+              enrollmentId: response.data.enrollment.id,
+            },
+          })
+        }
       })
       .catch((error) => {
-        console.log('failed', error)
-        alert('登録出来ませんでした')
+        const errors = error.response.data.errors
+        if (errors) {
+          alert(errors)
+        } else {
+          alert('エラーが発生しました')
+        }
+        // console.log(error.response.data.errors)
+        // alert(error.response.data.errors)
       })
   }
 

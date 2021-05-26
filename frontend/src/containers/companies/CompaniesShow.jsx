@@ -13,21 +13,11 @@ const companyInitialState = {
     name: '',
   },
 }
-const reviewInitialState = {
-  review: {
-    id: null,
-    user_id: null,
-    company_id: null,
-    review_category_id: null,
-    review_content: '',
-  },
-}
 
 export const CompaniesShow = ({ match }) => {
   const [companyInformation, setCompanyInformation] = useState(
     companyInitialState
   )
-  const [reviewInformation, setReviewInformation] = useState(reviewInitialState)
   const reviewCategoryList = ReviewCategoriesIndex()
 
   const fetchCompaniesShow = (id) =>
@@ -47,10 +37,6 @@ export const CompaniesShow = ({ match }) => {
       (data) => setCompanyInformation(data),
       console.log({ companyInformation })
     )
-    fetchReview(match.params.companyId, Math.floor(Math.random() * 6), 2).then(
-      (data) => setReviewInformation(data),
-      console.log(reviewInformation)
-    )
   }, [])
 
   return (
@@ -60,6 +46,9 @@ export const CompaniesShow = ({ match }) => {
         <div className="mainWrapper">
           <h2>{companyInformation.company.name}</h2>
           <h3>カテゴリー</h3>
+          <h4 className="selectCategory">
+            ※閲覧したいカテゴリーを選んで下さい
+          </h4>
           <div className="review-categories">
             {reviewCategoryList.review_categories.map(
               (reviewCategory, index) => (
@@ -74,10 +63,6 @@ export const CompaniesShow = ({ match }) => {
                 </div>
               )
             )}
-          </div>
-          <div className="reviewIndex">
-            <h3>口コミ一覧</h3>
-            {reviewInformation.review.content}
           </div>
         </div>
         <Footer />

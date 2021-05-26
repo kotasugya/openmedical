@@ -4,22 +4,21 @@
 
 ###
 @name = getBooks
-{{host}}:{{port}}{{base_path}}/companies/1
+{{host}}:{{port}}{{base_path}}/users/1
 
 ###
 @name = getBooksWithQuery
-POST {{host}}:{{port}}{{base_path}}/review_categories
+POST {{host}}:{{port}}{{base_path}}/users
 Content-Type: application/json
 
 {
-  "review": {
-    "user_id": 1,
-    "company_id": 2,
-    "review_category_id": 1,
-    "review_content": "在籍情報を入れられるかのテスト",
-    "created_at": "2021-04-26T15:31:45.000Z",
-    "updated_at": "2021-04-26T15:31:45.000Z",
-    "enrollment_id": 1
+  "user": {
+    "name": "guest9",
+    "email": "test9@test.com",
+    "password": "9740zero",
+    "password_confirmation": "9740zero",
+    "birthday": "1995-11-16",
+    "salary": 300
   }
 }
 

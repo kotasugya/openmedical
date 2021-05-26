@@ -49,3 +49,14 @@ table.newForm {
   transform: translate(0, 2px);
   border-bottom: none;
 }
+
+/* EnrollmentsShow */
+/* .enrollments-information {
+  color: #0077b6;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-top: 10px;
+} */
+.enrollments-information span {
+  color: rgb(31, 31, 31);
+}

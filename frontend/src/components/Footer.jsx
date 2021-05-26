@@ -5,17 +5,19 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    position: 'absolute',
+    width: '100%',
+    bottom: 0,
   },
   footerBar: {
-    width: '100%',
     height: '150px',
     backgroundColor: '#F2F2F2',
-    position: 'absolute',
-    bottom: 0,
+  },
+  items: {
+    paddingTop: '30px',
   },
   title: {
     textAlign: 'center',
-    marginTop: '25px',
     fontSize: '20px',
   },
   menuList: {
@@ -49,15 +51,17 @@ export const Footer = () => {
   return (
     <div className={classes.root}>
       <div className={classes.footerBar}>
-        <div className={classes.title}>openmedical</div>
-        <div className={classes.menuList}>
-          <ul>
-            <Link className={classes.link} to="/">
-              <li>HOME</li>
-            </Link>
-            <li>ABOUT</li>
-            <li>お問い合わせ</li>
-          </ul>
+        <div className={classes.items}>
+          <div className={classes.title}>openmedical</div>
+          <div className={classes.menuList}>
+            <ul>
+              <Link className={classes.link} to="/">
+                <li>HOME</li>
+              </Link>
+              <li>ABOUT</li>
+              <li>お問い合わせ</li>
+            </ul>
+          </div>
         </div>
         <div className={classes.copyRight}>Copyright © 2021 Sugya.</div>
       </div>

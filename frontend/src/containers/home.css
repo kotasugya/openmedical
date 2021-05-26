@@ -1,0 +1,31 @@
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
+  min-height: 100vh;
+  flex-direction: column;
+  /* display: flex; */
+  position: relative;
+}
+.mainWrapper {
+  width: 100%;
+}
+h2 {
+  font-weight: normal;
+  margin-left: 15%;
+  margin-bottom: 30px;
+}
+
+.searchInput {
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px 0px;
+  border-color: #0077b6;
+  border-radius: 5px;
+}
+.searchInput::placeholder {
+  padding-left: 7px;
+}
+.companyList {
+  width: 40%;
+  margin-bottom: 100px;
+}
