@@ -20,12 +20,6 @@ export const UsersNew = () => {
   const { state, dispatch } = useContext(Context)
   const { signup } = useContext(AuthContext)
 
-  // const handleTest = () => {
-  //   console.log(`before${state.id}`)
-  //   dispatch({ type: 'setId', payload: 1 })
-  //   console.log(`after${state}`)
-  //   // history.push(`/users/1`)
-  // }
   const handleSubmit = async () => {
     await signup(email, password, history)
     const headers = { 'Content-Type': 'application/json' }
@@ -45,7 +39,6 @@ export const UsersNew = () => {
         if (response.data.status === 'created') {
           const id = response.data.user.id
           dispatch({ type: 'setId', payload: id })
-          history.push(`/users/${id}`)
         }
       })
       .catch((error) => {

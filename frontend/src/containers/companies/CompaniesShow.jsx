@@ -7,6 +7,21 @@ import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { ReviewCategoriesIndex } from '../reviewCategories/ReviewCategoriesIndex'
 
+// MaterialUI
+import AccountBalanceSharpIcon from '@material-ui/icons/AccountBalanceSharp'
+import DoubleArrowSharpIcon from '@material-ui/icons/DoubleArrowSharp'
+import CallMadeSharpIcon from '@material-ui/icons/CallMadeSharp'
+import EmojiPeopleSharpIcon from '@material-ui/icons/EmojiPeopleSharp'
+import ViewAgendaSharpIcon from '@material-ui/icons/ViewAgendaSharp'
+
+const materialUiList = [
+  <AccountBalanceSharpIcon />,
+  <DoubleArrowSharpIcon />,
+  <CallMadeSharpIcon />,
+  <EmojiPeopleSharpIcon />,
+  <ViewAgendaSharpIcon />,
+]
+
 const companyInitialState = {
   company: {
     id: null,
@@ -19,16 +34,9 @@ export const CompaniesShow = ({ match }) => {
     companyInitialState
   )
   const reviewCategoryList = ReviewCategoriesIndex()
-
   const fetchCompaniesShow = (id) =>
     axios
       .get(companiesShow(id))
-      .then((response) => response.data)
-      .catch((error) => console.error(error))
-
-  const fetchReview = (companyId, reviewCategoryId, id) =>
-    axios
-      .get(reviewsShow(companyId, reviewCategoryId, id))
       .then((response) => response.data)
       .catch((error) => console.error(error))
 
@@ -58,6 +66,7 @@ export const CompaniesShow = ({ match }) => {
                       companyInformation.company.id
                     }/reviewCategories/${index + 1}/reviews`}
                   >
+                    {materialUiList[index]}
                     {reviewCategory.name} <span>詳しく見る</span>
                   </Link>
                 </div>

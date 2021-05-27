@@ -1,16 +1,10 @@
-import React, { useContext } from 'react'
-import { useHistory, Link } from 'react-router-dom'
-import { AuthContext } from '../auth/AuthProvider'
-
+import React from 'react'
+import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
-import Button from '@material-ui/core/Button'
 import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
-import InputBase from '@material-ui/core/InputBase'
+import { HeaderMenu } from './HeaderMenu'
 import { fade, makeStyles } from '@material-ui/core/styles'
-import MenuIcon from '@material-ui/icons/Menu'
-import SearchIcon from '@material-ui/icons/Search'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,55 +70,18 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export const Header = () => {
-  const history = useHistory()
   const classes = useStyles()
-  const { logout } = useContext(AuthContext)
-
-  const handleClick = () => {
-    logout()
-    history.push('/login')
-  }
 
   return (
-    // <div className={classes.root}>
     <AppBar position="static" className={classes.header}>
       <Toolbar>
-        <IconButton
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="open drawer"
-        >
-          <MenuIcon />
-        </IconButton>
         <Typography className={classes.title} variant="h6" noWrap>
           <Link to="/" className={classes.link}>
             openmedical
           </Link>
         </Typography>
-        {/* <div className={classes.search}>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </div>
-         */}
-        <Button
-          onClick={() => {
-            handleClick()
-          }}
-        >
-          LogOut
-        </Button>
+        <HeaderMenu />
       </Toolbar>
     </AppBar>
-    // </div>
   )
 }

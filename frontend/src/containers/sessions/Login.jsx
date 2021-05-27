@@ -31,8 +31,6 @@ export const Login = () => {
           const id = response.data.user.id
           console.log(id)
           dispatch({ type: 'setId', payload: id })
-          console.log(state.id)
-          // history.push(`/users/${response.data.user.id}`)
         }
       })
       .catch((error) => {
