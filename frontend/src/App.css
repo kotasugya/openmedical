@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', Meiryo, sans-serif;
+  width: 100%;
+  height: 100%;
+}
+.mainWrapper {
+  position: relative;
+}
+Footer {
+  position: absolute;
+  bottom: 0;
+}

@@ -12,6 +12,8 @@ import { AuthProvider } from './auth/AuthProvider'
 
 // components
 import { Home } from './containers/Home'
+import { Header } from './components/Header'
+import { Footer } from './components/Footer'
 import { UsersNew } from './containers/users/UsersNew'
 import { UsersShow } from './containers/users/UsersShow'
 import { Login } from './containers/sessions/Login'
@@ -28,59 +30,73 @@ import { SearchCompanies } from './containers/companies/SearchCompanies'
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
-    <Context.Provider value={{ state, dispatch }}>
-      <Router history={history}>
-        <Switch>
-          <AuthProvider>
-            <Route exact path="/" component={Home} />
+    <body>
+      <Context.Provider value={{ state, dispatch }}>
+        <Router history={history}>
+          <Switch>
+            <AuthProvider>
+              <div className="mainWrapper">
+                <Header />
+                <Route exact path="/" component={Home} />
 
-            {/* ユーザー */}
-            <Route exact path="/users" component={UsersNew} />
-            <Route
-              exact
-              path="/users/:id"
-              render={({ match }) => <UsersShow match={match} />}
-            />
-            <Route
-              exact
-              path="/users/:id/edit"
-              render={({ match }) => <UsersEdit match={match} />}
-            />
+                {/* ユーザー */}
+                <Route exact path="/users" component={UsersNew} />
+                <Route
+                  exact
+                  path="/users/:id"
+                  render={({ match }) => <UsersShow match={match} />}
+                />
+                <Route
+                  exact
+                  path="/users/:id/edit"
+                  render={({ match }) => <UsersEdit match={match} />}
+                />
 
-            {/* ログイン */}
-            <Route exact path="/login" component={Login} />
+                {/* ログイン */}
+                <Route exact path="/login" component={Login} />
 
-            {/* 企業 */}
-            <Route exact path="/companies/new" component={CompaniesNew} />
-            <Route exact path="/companies" component={CompaniesIndex} />
-            <Route
-              exact
-              path="/companies/:id"
-              render={({ match }) => <CompaniesShow match={match} />}
-            />
+                {/* 企業 */}
+                <Route exact path="/companies/new" component={CompaniesNew} />
+                <Route exact path="/companies" component={CompaniesIndex} />
+                <Route
+                  exact
+                  path="/companies/:id"
+                  render={({ match }) => <CompaniesShow match={match} />}
+                />
 
-            {/* 検索 */}
-            <Route
-              exact
-              path="/companies/search?search=:keyword"
-              render={({ match }) => <SearchCompanies match={match} />}
-            />
+                {/* 検索 */}
+                <Route
+                  exact
+                  path="/companies/search?search=:keyword"
+                  render={({ match }) => <SearchCompanies match={match} />}
+                />
 
-            {/* レビュー */}
-            <PrivateRoute exact path="/reviews" component={ReviewsTop} />
-            <PrivateRoute exact path="/reviews/new" component={ReviewsNew} />
-            <Route
-              exact
-              path="/companies/:companyId/reviewCategories/:reviewCategoryId/reviews"
-              render={({ match }) => <ReviewCategoriesShow match={match} />}
-            />
+                {/* レビュー */}
+                <PrivateRoute exact path="/reviews" component={ReviewsTop} />
+                <PrivateRoute
+                  exact
+                  path="/reviews/new"
+                  component={ReviewsNew}
+                />
+                <Route
+                  exact
+                  path="/companies/:companyId/reviewCategories/:reviewCategoryId/reviews"
+                  render={({ match }) => <ReviewCategoriesShow match={match} />}
+                />
 
-            {/* 在籍情報 */}
-            <Route exact path="/enrollments/new" component={EnrollmentsNew} />
-          </AuthProvider>
-        </Switch>
-      </Router>
-    </Context.Provider>
+                {/* 在籍情報 */}
+                <Route
+                  exact
+                  path="/enrollments/new"
+                  component={EnrollmentsNew}
+                />
+                <Footer />
+              </div>
+            </AuthProvider>
+          </Switch>
+        </Router>
+      </Context.Provider>
+    </body>
   )
 }
 

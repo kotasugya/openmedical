@@ -5,9 +5,8 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    position: 'absolute',
     width: '100%',
-    bottom: 0,
+    marginTop: '50px',
   },
   footerBar: {
     height: '150px',
