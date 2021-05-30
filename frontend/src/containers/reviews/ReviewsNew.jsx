@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './reviews.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { reviewsNew } from '../../urls/index'
-import { Header } from '../../components/Header'
-import { Footer } from '../../components/Footer'
+import { AuthContext } from '../../auth/AuthProvider'
+import { Context } from '../../store'
 
 export const ReviewsNew = (props) => {
   const [content1, setContent1] = useState('')
@@ -167,117 +167,91 @@ export const ReviewsNew = (props) => {
 
   return (
     <>
-      <body>
-        <div className="mainWrapper">
-          <Header />
-          <h3>評価レポート (STEP2)</h3>
-          <div className="reviewsNewForm">
-            <h4>職場の雰囲気</h4>
-            <p className="exp-culture">
-              この医院は又は病院の勤務する上での雰囲気は、どのような特徴がありますか。
-            </p>
-            <form className="reviewsForm">
-              <textarea
-                name="companyCulture"
-                placeholder={companyCulturePlaceholder}
-                value={content1}
-                onChange={(event) => setContent1(event.target.value)}
-              />
-              <button
-                className="reviews-btn"
-                onClick={handleSubmit1}
-                type="button"
-              >
-                このレポートを投稿する
-              </button>
-            </form>
-            <h4>入職した理由 / 勤務後のギャップ</h4>
-            <p className="exp-joinReason">
-              この医院又は病院へ入職を決めた理由は何ですか？
-              <br />
-              また、入職後に感じたギャップや入職前に認識すべきだったと感じる事はありますか？
-            </p>
-            <form className="reviewsForm">
-              <textarea
-                name="JoinReason"
-                placeholder={joinReasonPlaceholder}
-                value={content2}
-                onChange={(event) => setContent2(event.target.value)}
-              />
-              <button
-                className="reviews-btn"
-                onClick={handleSubmit2}
-                type="button"
-              >
-                このレポートを投稿する
-              </button>
-            </form>
-            <h4>働きがい/成長</h4>
-            <p className="exp-growth">
-              振り返って、この医院又は病院に入職してどのような点で成長出来ると考えていますか。
-            </p>
-            <form className="reviewsForm">
-              <textarea
-                name="Motivation"
-                placeholder={growthPlaceholder}
-                value={content3}
-                onChange={(event) => setContent3(event.target.value)}
-              />
-              <button
-                className="reviews-btn"
-                onClick={handleSubmit3}
-                type="button"
-              >
-                このレポートを投稿する
-              </button>
-            </form>
-            <h4>退職理由</h4>
-            <p className="exp-leaveReason">
-              どのような理由でこの医院又は病院から退職(の検討)をしましたか。
-            </p>
-            <form className="reviewsForm">
-              <textarea
-                name="LeaveReason"
-                placeholder={leavePlaceholder}
-                value={content4}
-                onChange={(event) => setContent4(event.target.value)}
-              />
-              <button
-                className="reviews-btn"
-                onClick={handleSubmit4}
-                type="button"
-              >
-                このレポートを投稿する
-              </button>
-            </form>
-            <h4>給与体系</h4>
-            <p className="exp-salarySystem">
-              給与制度はどのようになっておりますか。
-            </p>
-            <form className="reviewsForm">
-              <textarea
-                name="LeaveReason"
-                placeholder={salarySystemPlaceholder}
-                value={content5}
-                onChange={(event) => setContent5(event.target.value)}
-              />
-              <button
-                className="reviews-btn"
-                onClick={handleSubmit5}
-                type="button"
-              >
-                このレポートを投稿する
-              </button>
-            </form>
-            <Link to="/">
-              <button className="finishReviews-btn" type="button">
-                以上でレポートを終了する
-              </button>
-            </Link>
-          </div>
-          <Footer />
-        </div>
-      </body>
+      <h3>評価レポート (STEP2)</h3>
+      <div className="reviewsNewForm">
+        <h4>職場の雰囲気</h4>
+        <p className="exp-culture">
+          この医院は又は病院の勤務する上での雰囲気は、どのような特徴がありますか。
+        </p>
+        <form className="reviewsForm">
+          <textarea
+            name="companyCulture"
+            placeholder={companyCulturePlaceholder}
+            value={content1}
+            onChange={(event) => setContent1(event.target.value)}
+          />
+          <button className="reviews-btn" onClick={handleSubmit1} type="button">
+            このレポートを投稿する
+          </button>
+        </form>
+        <h4>入職した理由 / 勤務後のギャップ</h4>
+        <p className="exp-joinReason">
+          この医院又は病院へ入職を決めた理由は何ですか？
+          <br />
+          また、入職後に感じたギャップや入職前に認識すべきだったと感じる事はありますか？
+        </p>
+        <form className="reviewsForm">
+          <textarea
+            name="JoinReason"
+            placeholder={joinReasonPlaceholder}
+            value={content2}
+            onChange={(event) => setContent2(event.target.value)}
+          />
+          <button className="reviews-btn" onClick={handleSubmit2} type="button">
+            このレポートを投稿する
+          </button>
+        </form>
+        <h4>働きがい/成長</h4>
+        <p className="exp-growth">
+          振り返って、この医院又は病院に入職してどのような点で成長出来ると考えていますか。
+        </p>
+        <form className="reviewsForm">
+          <textarea
+            name="Motivation"
+            placeholder={growthPlaceholder}
+            value={content3}
+            onChange={(event) => setContent3(event.target.value)}
+          />
+          <button className="reviews-btn" onClick={handleSubmit3} type="button">
+            このレポートを投稿する
+          </button>
+        </form>
+        <h4>退職理由</h4>
+        <p className="exp-leaveReason">
+          どのような理由でこの医院又は病院から退職(の検討)をしましたか。
+        </p>
+        <form className="reviewsForm">
+          <textarea
+            name="LeaveReason"
+            placeholder={leavePlaceholder}
+            value={content4}
+            onChange={(event) => setContent4(event.target.value)}
+          />
+          <button className="reviews-btn" onClick={handleSubmit4} type="button">
+            このレポートを投稿する
+          </button>
+        </form>
+        <h4>給与体系</h4>
+        <p className="exp-salarySystem">
+          給与制度はどのようになっておりますか。
+        </p>
+        <form className="reviewsForm">
+          <textarea
+            name="LeaveReason"
+            placeholder={salarySystemPlaceholder}
+            value={content5}
+            onChange={(event) => setContent5(event.target.value)}
+          />
+          <button className="reviews-btn" onClick={handleSubmit5} type="button">
+            このレポートを投稿する
+          </button>
+        </form>
+        <Link to="/">
+          <button className="finishReviews-btn" type="button">
+            以上でレポートを終了する
+          </button>
+        </Link>
+      </div>
     </>
   )
 }

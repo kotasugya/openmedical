@@ -1,16 +1,5 @@
 /* commonStyle */
-body {
-  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
-    'Hiragino Sans', Meiryo, sans-serif;
-  position: relative;
-}
-.mainWrapper {
-  height: auto;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
+
 /* UsersNew */
 h2 {
   font-weight: normal;
@@ -45,12 +34,11 @@ table.newForm td {
   padding: 30px 300px 30px 30px;
   font-size: small;
 }
-input,
-select {
+.placeholderPosition {
   padding: 5px;
   border: 1px solid lightgray;
   background-color: rgb(248, 241, 241);
-  width: 150%;
+  width: 100%;
 }
 .placeholderPosition::placeholder {
   text-align: left;
@@ -108,6 +96,7 @@ table.userShowTable td {
   font-weight: bold;
   font-size: 15px;
   margin-top: 50px;
+  text-decoration: none;
 }
 .edit-btn:hover {
   opacity: 0.8;

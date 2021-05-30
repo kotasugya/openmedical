@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  min-height: 100%;
+  position: relative;
+}
+.main {
+  padding-bottom: 150px;
+}
+Footer {
+  position: absolute;
+  bottom: 0;
+}
