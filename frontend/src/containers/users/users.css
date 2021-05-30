@@ -34,12 +34,11 @@ table.newForm td {
   padding: 30px 300px 30px 30px;
   font-size: small;
 }
-input,
-select {
+.placeholderPosition {
   padding: 5px;
   border: 1px solid lightgray;
   background-color: rgb(248, 241, 241);
-  width: 150%;
+  width: 100%;
 }
 .placeholderPosition::placeholder {
   text-align: left;

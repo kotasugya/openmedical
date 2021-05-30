@@ -38,7 +38,7 @@ export const CompaniesIndex = () => {
         <div className="mainWrapper">
           <h2>医療機関一覧</h2>
           {companyList.companies.map((company) => (
-            <table>
+            <table className="company-index-table">
               <tr>
                 <td className="companyName">
                   <Link to={`companies/${company.id}`}>{company.name}</Link>

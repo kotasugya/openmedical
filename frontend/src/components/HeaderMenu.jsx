@@ -6,8 +6,17 @@ import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuIcon from '@material-ui/icons/Menu'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(() => ({
+  MenuIcon: {
+    fontSize: '30px',
+    color: 'white',
+  },
+}))
 
 export const HeaderMenu = () => {
+  const classes = useStyles()
   const history = useHistory()
   const { state } = useContext(Context)
   console.log(`state:${state.id}`)
@@ -37,7 +46,7 @@ export const HeaderMenu = () => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MenuIcon />
+        <MenuIcon className={classes.MenuIcon} />
       </Button>
       <Menu
         id="simple-menu"

@@ -1,25 +1,14 @@
-/* commonStyle */
-body {
-  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
-    'Hiragino Sans', Meiryo, sans-serif;
-  height: auto;
-  position: relative;
-}
-.mainWrapper {
-  width: 100%;
-  height: auto;
-  flex-direction: column;
-}
-
 h2 {
   font-weight: normal;
   margin-left: 15%;
   margin-bottom: 30px;
+  color: #333333;
 }
 
 h3 {
   font-weight: normal;
   margin-left: 20%;
+  color: #333333;
 }
 td.review-content-item {
   display: block;
@@ -28,18 +17,64 @@ td.review-content-item {
 
 .review {
   margin: 0 auto;
-  width: 40%;
+  width: 50%;
   height: 350px;
   border: 1px solid lightgray;
   margin-bottom: 20px;
+  margin-top: 15px;
+}
+.company-name {
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 16px;
 }
 .review-category {
   border-bottom: 1px solid lightgray;
   padding: 20px;
+  display: flex;
+  font-weight: bold;
+  color: #333333;
+}
+.review-category-icon {
+  display: inline-block;
+  margin-right: 5px;
+  color: #0077b6;
+}
+.review-date {
+  font-size: small;
+  color: gray;
+  margin-left: auto;
+  font-weight: normal;
 }
 .enrollment {
   color: #0077b6;
   font-size: 14px;
   margin-left: 10px;
   margin-top: 10px;
+}
+.review-content {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+.reviews-new {
+  padding: 10px 80px;
+  background-color: #0099ff;
+  border-radius: 5px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 100px;
+  border: 1px solid #0099ff;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+.reviews-new:hover {
+  opacity: 0.8;
+}
+.reviews-new:active {
+  -webkit-transform: translate(0, 2px);
+  -moz-transform: translate(0, 2px);
+  transform: translate(0, 2px);
+  border-bottom: none;
 }

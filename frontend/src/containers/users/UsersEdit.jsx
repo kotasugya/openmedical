@@ -15,6 +15,7 @@ export const UsersEdit = ({ match }) => {
   const [userInformation, setUserInformation] = useState(initialState)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [birthday, setBirthday] = useState('')
   const [salary, setSalary] = useState('')
 
@@ -42,9 +43,12 @@ export const UsersEdit = ({ match }) => {
       },
     }
     axios
-      .patch(usersEdit, body, header, { withCredentials: true })
+      .patch(usersEdit(match.params.id), body, header, {
+        withCredentials: true,
+      })
       .then((response) => {
         console.log('success', response)
+        history.push(`/users/${match.params.id}`)
       })
       .catch((error) => {
         console.log('failed', error)
@@ -75,6 +79,18 @@ export const UsersEdit = ({ match }) => {
               value={email}
               placeholder="メールアドレス"
               onChange={(event) => setEmail(event.target.value)}
+              className="placeholderPosition"
+            />
+          </td>
+        </tr>
+        <tr>
+          <th>パスワード</th>
+          <td>
+            <input
+              type="password"
+              value={password}
+              placeholder="8文字以上でご入力下さい"
+              onChange={(event) => setPassword(event.target.value)}
               className="placeholderPosition"
             />
           </td>

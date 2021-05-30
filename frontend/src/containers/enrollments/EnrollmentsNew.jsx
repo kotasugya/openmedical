@@ -1,17 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import './enrollments.css'
 import { enrollmentsNew } from '../../urls/index'
+import { AuthContext } from '../../auth/AuthProvider'
+import { Context } from '../../store'
 
 export const EnrollmentsNew = (props) => {
+  const history = useHistory()
   const [employmentStatus, setEmploymentStatus] = useState('')
   const [workingNowOrNot, setWorkingNowOrNot] = useState('')
   const [joinYear, setJoinYear] = useState('')
   const [leaveYear, setLeaveYear] = useState('')
   const [occupation, setOccupation] = useState('')
-  const history = useHistory()
   const { state } = useContext(Context)
+  const { location } = props
+  const companyId = location.state.companyId
+
   console.log(`state:${state.id}`)
 
   const handleSubmit = () => {
@@ -19,7 +24,7 @@ export const EnrollmentsNew = (props) => {
     const body = {
       enrollment: {
         user_id: state.id,
-        company_id: props.companyInformation.id,
+        company_id: props.companyInformation.id || companyId,
         employment_status: employmentStatus,
         working_now_or_not: workingNowOrNot,
         join_year: joinYear,
@@ -28,16 +33,21 @@ export const EnrollmentsNew = (props) => {
       },
     }
     axios
-      .post(enrollmentsNew(props.companyInformation.id), body, headers, {
-        withCredentials: true,
-      })
+      .post(
+        enrollmentsNew(props.companyInformation.id || companyId),
+        body,
+        headers,
+        {
+          withCredentials: true,
+        }
+      )
       .then((response) => {
         if (response.data.status === 'created') {
           alert('登録が完了しました')
           history.push({
             pathname: `/reviews/new`,
             state: {
-              companyId: props.companyInformation.id,
+              companyId: props.companyInformation.id || companyId,
               enrollmentId: response.data.enrollment.id,
             },
           })

@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import moment from 'moment'
 import './reviewCategories.css'
-import { Header } from '../../components/Header'
-import { Footer } from '../../components/Footer'
+import axios from 'axios'
+import { useLocation } from 'react-router-dom'
 import { EnrollmentsShow } from '../enrollments/EnrollmentsShow'
 import { reviewCategoriesShow, reviewsIndex } from '../../urls/index'
+
+// MaterialUI
+import AccountBalanceSharpIcon from '@material-ui/icons/AccountBalanceSharp'
+import DoubleArrowSharpIcon from '@material-ui/icons/DoubleArrowSharp'
+import CallMadeSharpIcon from '@material-ui/icons/CallMadeSharp'
+import EmojiPeopleSharpIcon from '@material-ui/icons/EmojiPeopleSharp'
+import ViewAgendaSharpIcon from '@material-ui/icons/ViewAgendaSharp'
 
 const reviewInitialState = {
   reviews: [
@@ -25,12 +32,20 @@ const reviewCategoryInitialState = {
     name: '',
   },
 }
+const materialUiList = [
+  <AccountBalanceSharpIcon />,
+  <DoubleArrowSharpIcon />,
+  <CallMadeSharpIcon />,
+  <EmojiPeopleSharpIcon />,
+  <ViewAgendaSharpIcon />,
+]
 
 export const ReviewCategoriesShow = ({ match }) => {
   const [reviewCategoryInformation, setReviewCategoryInformation] = useState(
     reviewCategoryInitialState
   )
   const [reviewInformation, setReviewInformation] = useState(reviewInitialState)
+  const { state } = useLocation()
 
   const fetchReviewCategoriesShow = (companyId, reviewCategoryId) =>
     axios
@@ -43,6 +58,8 @@ export const ReviewCategoriesShow = ({ match }) => {
       .get(reviewsIndex(companyId, reviewCategoryId))
       .then((response) => response.data)
       .catch((error) => console.error(error))
+
+  console.log(state)
 
   useEffect(() => {
     fetchReviewCategoriesShow(
@@ -63,32 +80,32 @@ export const ReviewCategoriesShow = ({ match }) => {
 
   return (
     <>
-      <body>
-        <Header />
-        <div className="mainWrapper">
-          <h3>
+      <h3>
+        {reviewCategoryInformation.review_category.name}
+        <span className="company-name">
+          -{state.companyInformation.company.name}-
+        </span>
+      </h3>
+      {reviewInformation.reviews.map((review) => (
+        <div className="review">
+          <div className="review-category">
+            <span className="review-category-icon">
+              {materialUiList[reviewCategoryInformation.review_category.id - 1]}
+            </span>
             {reviewCategoryInformation.review_category.name}
-            <span>-企業名入れる-</span>
-          </h3>
-          {reviewInformation.reviews.map((review) => (
-            <div className="review">
-              <div className="review-category">
-                {reviewCategoryInformation.review_category.name}
-                {/* 回答日：
-                {reviewCategoryInformation.review_category.created_at} */}
-              </div>
-              <div className="enrollment">
-                <EnrollmentsShow
-                  companyId={match.params.companyId}
-                  enrollmentId={review.enrollment_id}
-                />
-              </div>
-              <div className="review-content">{review.review_content}</div>
+            <div className="review-date">
+              回答日： {moment(review.created_at).format('YYYY-MM-DD')}
             </div>
-          ))}
+          </div>
+          <div className="enrollment">
+            <EnrollmentsShow
+              companyId={match.params.companyId}
+              enrollmentId={review.enrollment_id}
+            />
+          </div>
+          <div className="review-content">{review.review_content}</div>
         </div>
-        <Footer />
-      </body>
+      ))}
     </>
   )
 }

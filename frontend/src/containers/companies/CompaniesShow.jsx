@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './companies.css'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { companiesShow, reviewsShow } from '../../urls/index'
-import { Header } from '../../components/Header'
-import { Footer } from '../../components/Footer'
 import { ReviewCategoriesIndex } from '../reviewCategories/ReviewCategoriesIndex'
 
 // MaterialUI
@@ -33,7 +31,16 @@ export const CompaniesShow = ({ match }) => {
   const [companyInformation, setCompanyInformation] = useState(
     companyInitialState
   )
+  const history = useHistory()
   const reviewCategoryList = ReviewCategoriesIndex()
+  const handleEnrollment = () => {
+    history.push({
+      pathname: `/enrollments/new`,
+      state: {
+        companyId: match.params.id,
+      },
+    })
+  }
   const fetchCompaniesShow = (id) =>
     axios
       .get(companiesShow(id))
@@ -49,33 +56,33 @@ export const CompaniesShow = ({ match }) => {
 
   return (
     <>
-      <body>
-        <Header />
-        <div className="mainWrapper">
-          <h2>{companyInformation.company.name}</h2>
-          <h3>カテゴリー</h3>
-          <h4 className="selectCategory">
-            ※閲覧したいカテゴリーを選んで下さい
-          </h4>
-          <div className="review-categories">
-            {reviewCategoryList.review_categories.map(
-              (reviewCategory, index) => (
-                <div className="categories-name">
-                  <Link
-                    to={`/companies/${
-                      companyInformation.company.id
-                    }/reviewCategories/${index + 1}/reviews`}
-                  >
-                    {materialUiList[index]}
-                    {reviewCategory.name} <span>詳しく見る</span>
-                  </Link>
-                </div>
-              )
-            )}
+      <h2>{companyInformation.company.name}</h2>
+      <h4 className="selectCategory">※閲覧したいカテゴリーを選んで下さい</h4>
+      <div className="review-categories">
+        {reviewCategoryList.review_categories.map((reviewCategory, index) => (
+          <div className="categories-name">
+            <Link
+              to={{
+                pathname: `/companies/${
+                  companyInformation.company.id
+                }/reviewCategories/${index + 1}/reviews`,
+                state: {
+                  companyInformation: companyInformation,
+                },
+              }}
+            >
+              <span className="review-category-icon">
+                {materialUiList[index]}
+              </span>
+              {reviewCategory.name}
+              <span className="detail-review-category">詳しく見る</span>
+            </Link>
           </div>
-        </div>
-        <Footer />
-      </body>
+        ))}
+      </div>
+      <button className="reviews-new" onClick={handleEnrollment}>
+        この医院のレポートに回答する
+      </button>
     </>
   )
 }

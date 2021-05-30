@@ -132,10 +132,9 @@ export const UsersNew = () => {
               <select
                 value={salary}
                 onChange={(event) => setSalary(event.target.value)}
+                className="placeholderPosition"
               >
-                <option value="" className="placeholderPosition">
-                  選択してください
-                </option>
+                <option value="">選択してください</option>
                 <option value="〜300">300万円未満</option>
                 <option value="300〜500">300万円〜500万円</option>
                 <option value="750〜1000">750万円〜1000万円</option>

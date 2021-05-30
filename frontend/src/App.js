@@ -30,13 +30,13 @@ import { SearchCompanies } from './containers/companies/SearchCompanies'
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
-    <body>
-      <Context.Provider value={{ state, dispatch }}>
-        <Router history={history}>
-          <Switch>
-            <AuthProvider>
-              <div className="mainWrapper">
-                <Header />
+    <Context.Provider value={{ state, dispatch }}>
+      <Router history={history}>
+        <Switch>
+          <AuthProvider>
+            <div className="container">
+              <Header />
+              <div className="main">
                 <Route exact path="/" component={Home} />
 
                 {/* ユーザー */}
@@ -90,13 +90,13 @@ function App() {
                   path="/enrollments/new"
                   component={EnrollmentsNew}
                 />
-                <Footer />
               </div>
-            </AuthProvider>
-          </Switch>
-        </Router>
-      </Context.Provider>
-    </body>
+              <Footer />
+            </div>
+          </AuthProvider>
+        </Switch>
+      </Router>
+    </Context.Provider>
   )
 }
 
