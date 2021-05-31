@@ -167,7 +167,12 @@ export const ReviewsNew = (props) => {
 
   return (
     <>
-      <h3>評価レポート (STEP2)</h3>
+      <h3>
+        評価レポート (STEP2)
+        <span id="reviewNewAsterisk">
+          <solid>※</solid>最低1カテゴリー以上記入してください
+        </span>
+      </h3>
       <div className="reviewsNewForm">
         <h4>職場の雰囲気</h4>
         <p className="exp-culture">

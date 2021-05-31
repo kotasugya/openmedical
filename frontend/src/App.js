@@ -41,7 +41,7 @@ function App() {
 
                 {/* ユーザー */}
                 <Route exact path="/users" component={UsersNew} />
-                <Route
+                <PrivateRoute
                   exact
                   path="/users/:id"
                   render={({ match }) => <UsersShow match={match} />}
@@ -85,7 +85,7 @@ function App() {
                 />
 
                 {/* 在籍情報 */}
-                <Route
+                <PrivateRoute
                   exact
                   path="/enrollments/new"
                   component={EnrollmentsNew}

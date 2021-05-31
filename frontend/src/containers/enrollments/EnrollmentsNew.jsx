@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import './enrollments.css'
 import { enrollmentsNew } from '../../urls/index'
-import { AuthContext } from '../../auth/AuthProvider'
 import { Context } from '../../store'
 
 export const EnrollmentsNew = (props) => {
@@ -14,17 +13,27 @@ export const EnrollmentsNew = (props) => {
   const [leaveYear, setLeaveYear] = useState('')
   const [occupation, setOccupation] = useState('')
   const { state } = useContext(Context)
-  const { location } = props
-  const companyId = location.state.companyId
+  console.log(`state:${JSON.stringify(state)}`)
 
-  console.log(`state:${state.id}`)
+  // 検索から登録する場合
+  if (props.companyInformation) {
+    const searchedCompanyId = props.companyInformation.id
+    console.log(searchedCompanyId)
+  }
+
+  // 企業詳細ページから登録する場合
+  if (location.state) {
+    const { location } = props
+    const companyId = location.state.companyId
+    console.log(companyId)
+  }
 
   const handleSubmit = () => {
     const headers = { 'Content-Type': 'application/json' }
     const body = {
       enrollment: {
         user_id: state.id,
-        company_id: props.companyInformation.id || companyId,
+        company_id: searchedCompanyId || companyId,
         employment_status: employmentStatus,
         working_now_or_not: workingNowOrNot,
         join_year: joinYear,
@@ -60,91 +69,90 @@ export const EnrollmentsNew = (props) => {
         } else {
           alert('エラーが発生しました')
         }
-        // console.log(error.response.data.errors)
-        // alert(error.response.data.errors)
       })
   }
 
   return (
     <>
-      <body>
-        <div className="mainWrapper">
-          <h3>在籍情報 (STEP1)</h3>
-          <form className="enrollmentTable">
-            <table className="newForm">
-              <tr>
-                <th>雇用形態</th>
-                <td>
-                  <select
-                    value={employmentStatus}
-                    onChange={(event) =>
-                      setEmploymentStatus(event.target.value)
-                    }
-                  >
-                    <option value="" className="placeholderPosition">
-                      選択してください
-                    </option>
-                    <option value="非常勤">非常勤</option>
-                    <option value="常勤">常勤</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <th>在籍状況</th>
-                <td>
-                  <select
-                    value={workingNowOrNot}
-                    onChange={(event) => setWorkingNowOrNot(event.target.value)}
-                  >
-                    <option value="" className="placeholderPosition">
-                      選択してください
-                    </option>
-                    <option value="現職">現職中</option>
-                    <option value="退職済み">退職済み</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <th>入社年</th>
-                <td>
-                  <input
-                    type="month"
-                    value={joinYear}
-                    onChange={(event) => setJoinYear(event.target.value)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>退職年</th>
-                <td>
-                  <input
-                    type="month"
-                    value={leaveYear}
-                    onChange={(event) => setLeaveYear(event.target.value)}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>職種</th>
-                <td>
-                  <input
-                    type="text"
-                    value={occupation}
-                    onChange={(event) => setOccupation(event.target.value)}
-                  />
-                </td>
-              </tr>
-            </table>
-            <button
-              className="register-btn"
-              onClick={handleSubmit}
-              type="button"
-            >
-              登録して次へ進む
-            </button>
-          </form>
-        </div>
-      </body>
+      <h3>
+        在籍情報 (STEP1)<span className="enrollmentAsterisk">※</span>
+      </h3>
+      <form className="enrollmentTable">
+        <table className="enrollmentNewForm">
+          <tr>
+            <th className="enrollment-th">雇用形態</th>
+            <td className="enrollment-td">
+              <select
+                className="enrollment-select"
+                value={employmentStatus}
+                onChange={(event) => setEmploymentStatus(event.target.value)}
+              >
+                <option value="" className="placeholderPosition">
+                  選択してください
+                </option>
+                <option value="非常勤">非常勤</option>
+                <option value="常勤">常勤</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th className="enrollment-th">在籍状況</th>
+            <td className="enrollment-td">
+              <select
+                className="enrollment-select"
+                value={workingNowOrNot}
+                onChange={(event) => setWorkingNowOrNot(event.target.value)}
+              >
+                <option value="" className="placeholderPosition">
+                  選択してください
+                </option>
+                <option value="現職">現職中</option>
+                <option value="退職済み">退職済み</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th className="enrollment-th">入社年</th>
+            <td className="enrollment-td">
+              <input
+                className="enrollment-select"
+                type="month"
+                value={joinYear}
+                onChange={(event) => setJoinYear(event.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <th className="enrollment-th">退職年</th>
+            <td className="enrollment-td">
+              <input
+                className="enrollment-select"
+                type="month"
+                value={leaveYear}
+                onChange={(event) => setLeaveYear(event.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <th className="enrollment-th">職種</th>
+            <td className="enrollment-td">
+              <input
+                className="enrollment-select"
+                type="text"
+                value={occupation}
+                onChange={(event) => setOccupation(event.target.value)}
+              />
+            </td>
+          </tr>
+        </table>
+        <button
+          className="enrollment-register-btn"
+          onClick={handleSubmit}
+          type="button"
+        >
+          登録して次へ進む
+        </button>
+      </form>
     </>
   )
 }
