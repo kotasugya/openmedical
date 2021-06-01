@@ -1,45 +1,57 @@
-body {
-  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
-    'Hiragino Sans', Meiryo, sans-serif;
-  position: relative;
-}
-.mainWrapper {
-  min-height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
 .h4-selectedCompany {
-  margin-left: 15%;
-  margin-bottom: 30px;
+  margin-left: 35%;
+  margin-bottom: 20px;
   color: #333333;
 }
 /* ReviewsTop */
-
+#searchalert {
+  font-weight: normal;
+  font-size: small;
+  margin-left: 35%;
+  margin-top: 40px;
+}
 .searchCompanyAsterisk {
   font-size: 12px;
-  margin-left: 35%;
+  margin-left: 30%;
+  margin-bottom: 40px;
 }
 .searchCompanyAsterisk solid {
   color: red;
 }
+.companySelectZone {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid lightgray;
+  margin-bottom: 50px;
+}
 .selectCompany {
-  width: 30%;
+  width: 40%;
   margin: 0 auto;
+  display: block;
   padding: 15px;
+  border: 1px solid lightgray;
 }
 .selectedCompanyName {
-  width: 30%;
+  width: 40%;
   margin: 0 auto;
   padding: 15px;
-  border: 0.5px solid lightgray;
+  border: 2px solid #0077b6;
+  border-radius: 5px;
 }
 
 /* ReviewsNew */
+#reviewNewAsterisk {
+  font-size: small;
+  font-weight: bold;
+}
+#reviewNewAsterisk solid {
+  font-size: small;
+  color: red;
+  font-weight: bold;
+}
 .reviewsNewForm {
   margin-left: 20%;
-  padding-bottom: 20%;
 }
 .reviewsForm {
   margin-bottom: 5%;

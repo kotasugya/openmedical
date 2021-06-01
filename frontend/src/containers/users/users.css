@@ -20,10 +20,13 @@ p {
 table.newForm {
   border-collapse: collapse;
   margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 table.newForm th {
   border: 1px solid lightgray;
   padding-left: 30px;
+  width: 200px;
   height: 20px;
   font-size: small;
   text-align: left;
@@ -31,6 +34,7 @@ table.newForm th {
 }
 table.newForm td {
   border: 1px solid lightgray;
+  width: 300px;
   padding: 30px 300px 30px 30px;
   font-size: small;
 }
