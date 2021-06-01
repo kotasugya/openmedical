@@ -31,9 +31,9 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <Context.Provider value={{ state, dispatch }}>
-      <Router history={history}>
-        <Switch>
-          <AuthProvider>
+      <AuthProvider>
+        <Router history={history}>
+          <Switch>
             <div className="container">
               <Header />
               <div className="main">
@@ -93,9 +93,9 @@ function App() {
               </div>
               <Footer />
             </div>
-          </AuthProvider>
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
+      </AuthProvider>
     </Context.Provider>
   )
 }

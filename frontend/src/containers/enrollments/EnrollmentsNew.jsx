@@ -15,61 +15,88 @@ export const EnrollmentsNew = (props) => {
   const { state } = useContext(Context)
   console.log(`state:${JSON.stringify(state)}`)
 
-  // 検索から登録する場合
-  if (props.companyInformation) {
-    const searchedCompanyId = props.companyInformation.id
-    console.log(searchedCompanyId)
-  }
-
-  // 企業詳細ページから登録する場合
-  if (location.state) {
-    const { location } = props
-    const companyId = location.state.companyId
-    console.log(companyId)
-  }
-
   const handleSubmit = () => {
     const headers = { 'Content-Type': 'application/json' }
-    const body = {
-      enrollment: {
-        user_id: state.id,
-        company_id: searchedCompanyId || companyId,
-        employment_status: employmentStatus,
-        working_now_or_not: workingNowOrNot,
-        join_year: joinYear,
-        leave_year: leaveYear,
-        occupation: occupation,
-      },
-    }
-    axios
-      .post(
-        enrollmentsNew(props.companyInformation.id || companyId),
-        body,
-        headers,
-        {
+    // 企業をけんさくして投稿する場合
+    if (props.companyInformation) {
+      const searchCompanyId = props.companyInformation.id
+      console.log(searchCompanyId)
+      const body = {
+        enrollment: {
+          user_id: state.id,
+          company_id: searchCompanyId,
+          employment_status: employmentStatus,
+          working_now_or_not: workingNowOrNot,
+          join_year: joinYear,
+          leave_year: leaveYear,
+          occupation: occupation,
+        },
+      }
+      axios
+        .post(enrollmentsNew(searchCompanyId), body, headers, {
           withCredentials: true,
-        }
-      )
-      .then((response) => {
-        if (response.data.status === 'created') {
-          alert('登録が完了しました')
-          history.push({
-            pathname: `/reviews/new`,
-            state: {
-              companyId: props.companyInformation.id || companyId,
-              enrollmentId: response.data.enrollment.id,
-            },
-          })
-        }
-      })
-      .catch((error) => {
-        const errors = error.response.data.errors
-        if (errors) {
-          alert(errors)
-        } else {
-          alert('エラーが発生しました')
-        }
-      })
+        })
+        .then((response) => {
+          if (response.data.status === 'created') {
+            alert('登録が完了しました')
+            history.push({
+              pathname: `/reviews/new`,
+              state: {
+                companyId: searchCompanyId,
+                enrollmentId: response.data.enrollment.id,
+              },
+            })
+          }
+        })
+        .catch((error) => {
+          const errors = error.response.data.errors
+          if (errors) {
+            alert(errors)
+          } else {
+            alert('エラーが発生しました')
+          }
+        })
+      // 企業詳細ページから投稿する場合
+    } else {
+      const { location } = props
+      const companyId = location.state.companyId
+      console.log(companyId)
+      const body = {
+        enrollment: {
+          user_id: state.id,
+          company_id: companyId,
+          employment_status: employmentStatus,
+          working_now_or_not: workingNowOrNot,
+          join_year: joinYear,
+          leave_year: leaveYear,
+          occupation: occupation,
+        },
+      }
+      axios
+        .post(enrollmentsNew(companyId), body, headers, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          if (response.data.status === 'created') {
+            alert('登録が完了しました')
+            history.push({
+              pathname: `/reviews/new`,
+              state: {
+                companyId: companyId,
+                enrollmentId: response.data.enrollment.id,
+              },
+            })
+          }
+        })
+        .catch((error) => {
+          const errors = error.response.data.errors
+          if (errors) {
+            alert(errors)
+          } else {
+            alert('エラーが発生しました')
+          }
+        })
+    }
   }
 
   return (
@@ -116,7 +143,7 @@ export const EnrollmentsNew = (props) => {
             <td className="enrollment-td">
               <input
                 className="enrollment-select"
-                type="month"
+                type="date"
                 value={joinYear}
                 onChange={(event) => setJoinYear(event.target.value)}
               />
@@ -127,7 +154,7 @@ export const EnrollmentsNew = (props) => {
             <td className="enrollment-td">
               <input
                 className="enrollment-select"
-                type="month"
+                type="date"
                 value={leaveYear}
                 onChange={(event) => setLeaveYear(event.target.value)}
               />
