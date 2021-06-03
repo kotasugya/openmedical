@@ -1,9 +1,6 @@
 module Api
   module V1
     class EnrollmentsController < ApplicationController
-      def index
-      end
-
       def create
         @enrollment = Enrollment.new(enrollment_params)
         if @enrollment.save
