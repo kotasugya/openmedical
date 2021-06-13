@@ -1,4 +1,5 @@
 const DEFAULT_API_LOCALHOST = 'http://localhost:3001/api/v1'
+// const DEFAULT_API_LOCALHOST = 'http://backend:3001/api/v1'
 
 // ユーザー
 export const usersNew = `${DEFAULT_API_LOCALHOST}/users`
@@ -36,3 +37,7 @@ export const enrollmentsNew = (companyId) =>
   `${DEFAULT_API_LOCALHOST}/companies/${companyId}/enrollments`
 export const enrollmentsShow = (companyId, id) =>
   `${DEFAULT_API_LOCALHOST}/companies/${companyId}/enrollments/${id}`
+
+// 検索
+export const searchCompanies = (keyword) =>
+  `${DEFAULT_API_LOCALHOST}/companies/search?search=${keyword}`

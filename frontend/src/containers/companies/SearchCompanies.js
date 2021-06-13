@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { searchCompanies } from '../../urls/index'
 import axios from 'axios'
 
 const initialState = {
@@ -14,7 +15,7 @@ export const SearchCompanies = (keyword) => {
 
   const fetchCompany = (keyword) =>
     axios
-      .get(`http://localhost:3001/api/v1/companies/search?search=${keyword}`)
+      .get(searchCompanies(keyword))
       .then((res) => {
         return res.data
       })
