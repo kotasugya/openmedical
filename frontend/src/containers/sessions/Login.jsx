@@ -5,8 +5,6 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { login } from '../../urls/index'
 import { Context } from '../../store'
-import { Header } from '../../components/Header'
-import { Footer } from '../../components/Footer'
 
 export const Login = () => {
   const [email, setEmail] = useState('')
@@ -14,7 +12,9 @@ export const Login = () => {
   const history = useHistory()
   const { state, dispatch } = useContext(Context)
   const { loginFirebase } = useContext(AuthContext)
-
+  const handleUsersNew = () => {
+    history.push('/users')
+  }
   const handleSubmit = () => {
     loginFirebase(email, password, history)
     const body = {
@@ -77,6 +77,9 @@ export const Login = () => {
         </div>
         <button className="login-btn" onClick={handleSubmit} type="button">
           ログイン
+        </button>
+        <button className="toUsersNew" onClick={handleUsersNew} type="button">
+          会員登録がまだの方は、こちら
         </button>
       </form>
     </>
