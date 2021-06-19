@@ -1,11 +1,11 @@
 /* commonStyle */
 
 /* UsersNew */
-h2 {
+/* h2 {
   font-weight: normal;
   margin-left: 15%;
   margin-bottom: 30px;
-}
+} */
 p {
   font-weight: bold;
   margin-left: 15%;
@@ -22,6 +22,7 @@ table.newForm {
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
+  width: 50%;
 }
 table.newForm th {
   border: 1px solid lightgray;

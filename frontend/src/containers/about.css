@@ -1,0 +1,50 @@
+.main-contents {
+  display: flex;
+  justify-content: center; /*左右中央揃え*/
+  align-items: center; /*上下中央揃え*/
+  background-color: whitesmoke;
+  height: 500px;
+}
+.main-theme {
+  font-size: 50px;
+  color: #00b4d8;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+.sub-theme {
+  margin-top: 20px;
+  font-size: 20px;
+  color: rgb(136, 136, 136);
+  font-weight: bold;
+  display: inline-block;
+}
+.sub-contents {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 3px 15px rgba(0, 180, 216, 0.2);
+  border-radius: 15px;
+  width: 80%;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+.title {
+  font-size: 40px;
+  color: #00b4d8;
+  padding-top: 50px;
+}
+.sub-title {
+  font-size: 25px;
+  color: #00b4d8;
+  padding-top: 20px;
+}
+.made-background {
+  color: rgb(163, 163, 163);
+  padding-top: 20px;
+  padding-bottom: 50px;
+  line-height: 3;
+  font-weight: bold;
+  font-size: 18px;
+}

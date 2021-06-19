@@ -13,9 +13,11 @@ const useStyles = makeStyles((theme) => ({
   header: {
     backgroundColor: '  #0077B6',
   },
-  menuButton: {},
+  menuButton: {
+    // marginRight: '5%',
+  },
   title: {
-    flexGrow: 1,
+    flexGrow: 0.8,
     display: 'none',
     fontWeight: 'bold',
     [theme.breakpoints.up('sm')]: {

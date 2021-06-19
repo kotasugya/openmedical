@@ -57,7 +57,9 @@ export const Footer = () => {
               <Link className={classes.link} to="/">
                 <li>HOME</li>
               </Link>
-              <li>ABOUT</li>
+              <Link className={classes.link} to="/about">
+                <li>ABOUT</li>
+              </Link>
               <li>お問い合わせ</li>
             </ul>
           </div>
