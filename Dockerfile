@@ -13,6 +13,8 @@ COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3001
-
+RUN mkdir -p tmp/sockets
+VOLUME /app/public
+VOLUME /app/tmp
 # Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+#CMD ["rails", "server", "-b", "0.0.0.0"]
