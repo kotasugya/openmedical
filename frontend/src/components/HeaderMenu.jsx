@@ -29,6 +29,14 @@ export const HeaderMenu = () => {
     logout()
     history.push('/login')
   }
+
+  const handleLogin = () => {
+    history.push('/login')
+  }
+
+  const handleRegistry = () => {
+    history.push('/users')
+  }
   const handleClose = () => {
     setAnchorEl(null)
   }
@@ -36,6 +44,8 @@ export const HeaderMenu = () => {
   const handleProfile = () => {
     if (state.id) {
       history.push(`/users/${state.id}`)
+    } else {
+      history.push('/users')
     }
   }
 
@@ -55,7 +65,9 @@ export const HeaderMenu = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>プロフィール</MenuItem>
+        <MenuItem onClick={handleProfile}>プロフィール</MenuItem>
+        <MenuItem onClick={handleRegistry}>登録する</MenuItem>
+        <MenuItem onClick={handleLogin}>ログイン</MenuItem>
         <MenuItem onClick={handleLogout}>ログアウト</MenuItem>
         <MenuItem onClick={handleClose}>閉じる</MenuItem>
       </Menu>
