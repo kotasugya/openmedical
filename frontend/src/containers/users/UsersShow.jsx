@@ -26,7 +26,7 @@ export const UsersShow = ({ match }) => {
 
   const fetchUsersShow = (id) =>
     axios
-      .get(usersShow(id), { withCredentials: true })
+      .get(usersShow(id))
       .then((response) => response.data)
       .catch((error) => console.error(error))
 

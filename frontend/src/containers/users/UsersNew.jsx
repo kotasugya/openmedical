@@ -32,7 +32,7 @@ export const UsersNew = () => {
       },
     }
     axios
-      .post(usersNew, body, headers, { withCredentials: true })
+      .post(usersNew, body, headers)
       .then((response) => {
         if (response.data.status === 'created') {
           const id = response.data.user.id

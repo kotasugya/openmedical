@@ -33,9 +33,7 @@ export const EnrollmentsNew = (props) => {
         },
       }
       axios
-        .post(enrollmentsNew(searchCompanyId), body, headers, {
-          withCredentials: true,
-        })
+        .post(enrollmentsNew(searchCompanyId), body, headers)
         .then((response) => {
           if (response.data.status === 'created') {
             alert('登録が完了しました')
@@ -73,9 +71,7 @@ export const EnrollmentsNew = (props) => {
         },
       }
       axios
-        .post(enrollmentsNew(companyId), body, headers, {
-          withCredentials: true,
-        })
+        .post(enrollmentsNew(companyId), body, headers)
         .then((response) => {
           if (response.data.status === 'created') {
             alert('登録が完了しました')

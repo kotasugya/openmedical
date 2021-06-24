@@ -43,9 +43,7 @@ export const UsersEdit = ({ match }) => {
       },
     }
     axios
-      .patch(usersEdit(match.params.id), body, header, {
-        withCredentials: true,
-      })
+      .patch(usersEdit(match.params.id), body, header)
       .then((response) => {
         console.log('success', response)
         history.push(`/users/${match.params.id}`)
