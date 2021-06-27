@@ -1,5 +1,4 @@
-const DEFAULT_API_LOCALHOST = 'http://localhost:3001/api/v1'
-// const DEFAULT_API_LOCALHOST = 'http://backend:3001/api/v1'
+const DEFAULT_API_LOCALHOST = 'http://backend/api/v1'
 
 // ユーザー
 export const usersNew = `${DEFAULT_API_LOCALHOST}/users`

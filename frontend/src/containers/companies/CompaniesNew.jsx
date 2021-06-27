@@ -13,7 +13,7 @@ export const CompaniesNew = () => {
     }
     const headers = { 'Content-Type': 'application/json' }
     axios
-      .post(companiesNew, body, headers, { withCredentials: true })
+      .post(companiesNew, body, headers)
       .then((response) => {
         console.log('success', response)
         alert('登録が成功しました')

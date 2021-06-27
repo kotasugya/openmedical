@@ -26,6 +26,7 @@ import { ReviewsTop } from './containers/reviews/ReviewsTop'
 import { ReviewCategoriesShow } from './containers/reviewCategories/ReviewCategoriesShow'
 import { EnrollmentsNew } from './containers/enrollments/EnrollmentsNew'
 import { SearchCompanies } from './containers/companies/SearchCompanies'
+import { About } from './containers/About'
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -38,6 +39,7 @@ function App() {
               <Header />
               <div className="main">
                 <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
 
                 {/* ユーザー */}
                 <Route exact path="/users" component={UsersNew} />
