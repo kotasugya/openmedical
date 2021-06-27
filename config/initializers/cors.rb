@@ -7,8 +7,8 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    #Access-Control-Allow-Origin 'http://54.250.240.173:3000'
-    #origins 'http://backend:3001','http://54.250.240.173:3000'
+    #Access-Control-Allow-Origin 'http://35.74.112.246:3000'
+    #origins 'http://backend:3001','http://35.74.112.246:3000'
     origins '*'
     
     resource '*',
