@@ -27,8 +27,14 @@ services:
     depends_on:
       - db
   frontend:
-    image: 759813110226.dkr.ecr.ap-northeast-1.amazonaws.com/open-medical-ecr
+    # image: 759813110226.dkr.ecr.ap-northeast-1.amazonaws.com/open-medical-ecr
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
     container_name: frontend
+    volumes:
+      - public-data:/open_medical/public
+      - tmp-data:/open_medical/tmp
     #build:
     #context: ./frontend/
     #dockerfile: Dockerfile
@@ -36,20 +42,20 @@ services:
     # - ./frontend:/usr/src/app/frontend
     working_dir: /usr/src/app/frontend
     command: sh -c "npm start --host 0.0.0.0 --port 3000"
-    #ports:
-    #- '3000:3000'
-    depends_on:
-      - backend
-  web:
-    build:
-      context: ./containers/nginx
-    volumes:
-      - public-data:/open_medical/public
-      - tmp-data:/open_medical/tmp
     ports:
-      - 80:80
+      - '80:80'
     depends_on:
       - backend
+  # web:
+  #   build:
+  #     context: ./containers/nginx
+  #   volumes:
+  #     - public-data:/open_medical/public
+  #     - tmp-data:/open_medical/tmp
+  #   ports:
+  #     - 80:80
+  #   depends_on:
+  #     - backend
 
 volumes:
   mysql-data: {}
