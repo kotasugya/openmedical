@@ -8,9 +8,10 @@ h2 {
   display: block;
   width: 60%;
   margin: 0 auto;
-  padding: 10px 0px;
+  padding: 15px 0px;
   border-color: #0077b6;
   border-radius: 5px;
+  margin-top: 50px;
 }
 .searchInput::placeholder {
   padding-left: 7px;

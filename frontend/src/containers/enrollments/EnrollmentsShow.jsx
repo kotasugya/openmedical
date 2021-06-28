@@ -23,7 +23,7 @@ export const EnrollmentsShow = (props) => {
   )
   const fetchEnrollmentsShow = () =>
     axios
-      .get(enrollmentsShow(companyId, enrollmentId), { withCredentials: true })
+      .get(enrollmentsShow(companyId, enrollmentId))
       .then((response) => response.data)
       .catch((error) => console.error(error))
 

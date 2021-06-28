@@ -25,7 +25,7 @@ export const Login = () => {
     }
     const headers = { 'Content-Type': 'application/json' }
     axios
-      .post(login, body, headers, { withCredentials: true })
+      .post(login, body, headers)
       .then((response) => {
         if (response.data.logged_in) {
           const id = response.data.user.id
