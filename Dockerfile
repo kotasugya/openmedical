@@ -16,9 +16,6 @@ RUN mkdir -p tmp/sockets
 VOLUME /app/public
 VOLUME /app/tmp
 
-# Start the main process.
-#CMD ["rails", "server", "-b", "0.0.0.0"]
-
 # mariadb
 # FROM mariadb
 
