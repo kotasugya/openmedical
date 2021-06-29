@@ -41,26 +41,14 @@
 * ユーザー登録・ログイン機能
   * FirebaseAuthによる認証
   * useContext/usereduserによるログイン状態保持
-* 口コミ投稿
-  *  
+* 口コミ投稿  
 * 医療機関検索
-  * Route53による独自ドメイン化
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Route53による独自ドメイン化
+### 非ユーザー利用機能
+* puma-socketを通したRailsのNginx配信
+* Dockerを使用して開発環境を完全コンテナ化
+* ECRを利用してFrontendのイメージをpush
+### テスト
+* Rspec
+ * 単体テスト(model)
+ * 単体テスト(request)
