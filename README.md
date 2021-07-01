@@ -29,7 +29,7 @@ https://twitter.com/sugya_k
 
 </br>
 
-## 使用技術
+## 使用技術(概略)※詳細後述
 * Backend
   * Ruby 2.7.2 / Rails(api_mode) 5.2.5 / Rspec(Factorybot) / rubocop(rubocop_airbnb) / Nginx / Puma
 * Frontend
@@ -67,3 +67,22 @@ https://twitter.com/sugya_k
 * Rspec
  * 単体テスト(model)
  * 単体テスト(request)
+</br>
+
+## 使用技術(詳細)
+### Backend
+* `rspec`: Rubyで使用率の高いと言われるテスト用ライブラリ
+ * `factorybot`: テストデータ作成に使用されるライブラリ
+* `rubocop`:　Ruby用の静的コード解析ライブラリ(airbnbが用いるルールが良く使用されるらしい)
+* `rack-cors`: 異なるオリジン(URLの(スキーム/ホスト/ポート))間の通信を可能にするライブラリ
+</br>
+
+### Frontend
+* `Material-UI`: Googleが提供するUIパックライブラリ
+* `eslint &prettier` : javascript用の静的コード解析ライブラリ
+* `firebase`: Googleが提供するバックエンド開発をクラウド上で行えるようにしたサービス(ライブラリ)
+ * `firebaseAuth`:  firebaseのうちの認証認可を行う機能
+
+
+
+
