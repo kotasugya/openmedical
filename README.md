@@ -41,7 +41,7 @@ https://twitter.com/sugya_k
 </br>
 
 ## インフラ構成
-スクリーンショット 2021-07-01 16.15.34
+<image src="https://user-images.githubusercontent.com/36041745/124082735-09d08500-da88-11eb-8937-a4e1e8c8dda8.png">
 
 </br>
 
