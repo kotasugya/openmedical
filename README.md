@@ -71,18 +71,20 @@ https://twitter.com/sugya_k
 
 ## 使用技術(詳細)
 ### Backend
-* `rspec`: Rubyで使用率の高いと言われるテスト用ライブラリ
- * `factorybot`: テストデータ作成に使用されるライブラリ
-* `rubocop`:　Ruby用の静的コード解析ライブラリ(airbnbが用いるルールが良く使用されるらしい)
-* `rack-cors`: 異なるオリジン(URLの(スキーム/ホスト/ポート))間の通信を可能にするライブラリ
+* `rspec` : Rubyで使用率の高いと言われるテスト用ライブラリ
+ * `factorybot` : テストデータ作成に使用されるライブラリ
+* `rubocop` :　Ruby用の静的コード解析ライブラリ(airbnbが用いるルールが良く使用されるらしい)
+* `rack-cors` : 異なるオリジン(URLの(スキーム/ホスト/ポート))間の通信を可能にするライブラリ
 </br>
 
 ### Frontend
-* `Material-UI`: Googleが提供するUIパックライブラリ
+* `Material-UI` : Googleが提供するUIパックライブラリ
 * `eslint &prettier` : javascript用の静的コード解析ライブラリ
-* `firebase`: Googleが提供するバックエンド開発をクラウド上で行えるようにしたサービス(ライブラリ)
- * `firebaseAuth`:  firebaseのうちの認証認可を行う機能
-
-
+* `firebase` : Googleが提供するバックエンド開発をクラウド上で行えるようにしたサービス(ライブラリ)
+  * `firebaseAuth` :  firebaseのうちの認証認可を行う機能
+### Infra
+* `EC2~` : クラウドで作成する仮想サーバー
+* `ECR` : Reactのイメージをpushして保存します
+* `Route53`: IPアドレスを独自ドメインに変更
 
 
