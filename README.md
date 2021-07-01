@@ -83,7 +83,7 @@ https://twitter.com/sugya_k
 * `firebase` : Googleが提供するバックエンド開発をクラウド上で行えるようにしたサービス(ライブラリ)
   * `firebaseAuth` :  firebaseのうちの認証認可を行う機能
 ### Infra
-* `EC2~` : クラウドで作成する仮想サーバー
+* `EC2` : クラウドで作成する仮想サーバー
 * `ECR` : Reactのイメージをpushして保存します
 * `Route53`: IPアドレスを独自ドメインに変更
 
