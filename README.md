@@ -41,10 +41,14 @@ https://twitter.com/sugya_k
 </br>
 
 ## インフラ構成
-構成図を後ほど作成
+スクリーンショット 2021-07-01 16.15.34
 
 </br>
 
+## ER図
+<image src="https://user-images.githubusercontent.com/36041745/123961754-ab55c900-d9eb-11eb-95f4-1a099f3decdb.png" >
+</br>
+ 
 ## 機能一覧
 ### ユーザー利用機能
 ※axiosを使用してReactからRailsのapiリクエストを投げております。
