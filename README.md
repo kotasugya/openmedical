@@ -23,7 +23,8 @@ URL: http://35.74.112.246/
 </br>
 
 ## 使い方紹介
-スライド画像または動画を貼り付ける
+スライドをご確認下さい。
+https://docs.google.com/presentation/d/1OGMP0mQMV0sOHJQUEGhF0dovXmwShwNlGN7mAF-IiAE/edit?usp=sharing
 
 </br>
 
