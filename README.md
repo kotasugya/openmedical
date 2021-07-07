@@ -5,7 +5,6 @@
 
 URL: http://35.74.112.246/
 ※後でドメイン追加する
-※デモデータぶちこんで無いので、デザイン崩れてる
 
 </br>
 <image src="https://user-images.githubusercontent.com/36041745/123840175-fcf94780-d948-11eb-885e-ced934d2e333.png">
@@ -20,6 +19,10 @@ URL: http://35.74.112.246/
 
 医療従事者同士が職場の内情を良い面、悪い面ともに共有する事で、少しでもミスマッチを減らしたいと考えた。
 
+</br>
+
+## 開発者Twitter
+https://twitter.com/sugya_k
 </br>
 
 ## 使い方紹介
