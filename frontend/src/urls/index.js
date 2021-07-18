@@ -27,6 +27,7 @@ export const reviewsIndex = (companyId, reviewCategoryId) =>
   `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories/${reviewCategoryId}/reviews`
 
 // レビューカテゴリー
+export const reviewCategoriesNew = `${DEFAULT_API_LOCALHOST}/review_categories`
 export const reviewCategoriesIndex = `${DEFAULT_API_LOCALHOST}/review_categories`
 export const reviewCategoriesShow = (companyId, reviewCategoryId) =>
   `${DEFAULT_API_LOCALHOST}/companies/${companyId}/review_categories/${reviewCategoryId}`

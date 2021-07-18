@@ -15,7 +15,6 @@ RUN rm -f /etc/nginx/conf.d/*
 
 # Nginxの設定ファイルをコンテナにコピー
 ADD nginx.conf /etc/nginx/conf.d/open_medical.conf
-# COPY nginx.conf /etc/nginx/nginx.conf
 # React資材の配置
 RUN mkdir -p /var/log/nginx/log\
     && mkdir /home/www\

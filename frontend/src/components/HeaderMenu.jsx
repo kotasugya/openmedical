@@ -16,12 +16,22 @@ const useStyles = makeStyles(() => ({
 }))
 
 export const HeaderMenu = () => {
+  // const adminContent = () => {
+  //   if (currentUser.email === "admin@admin.com"){
+  //     return(
+  //       <>
+  //         <MenuItem onClick={handleNew}>企業登録</MenuItem>
+  //         <MenuItem onClick={handleCategoryNew}>カテゴリー登録</MenuItem>
+  //       </>
+  //     )
+  //   }
+  // }
+  const { state } = useContext(Context)
+  const { logout,currentUser } = useContext(AuthContext)
+  const [anchorEl, setAnchorEl] = React.useState(null)
   const classes = useStyles()
   const history = useHistory()
-  const { state } = useContext(Context)
   console.log(`state:${state.id}`)
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const { logout } = useContext(AuthContext)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
   }
@@ -48,6 +58,12 @@ export const HeaderMenu = () => {
       history.push('/users')
     }
   }
+  const handleNew = () => {
+    history.push('/companies/admin/new')
+  }
+  const handleCategoryNew = () => {
+    history.push('/review_category/new')
+  }
 
   return (
     <div>
@@ -70,6 +86,11 @@ export const HeaderMenu = () => {
         <MenuItem onClick={handleLogin}>ログイン</MenuItem>
         <MenuItem onClick={handleLogout}>ログアウト</MenuItem>
         <MenuItem onClick={handleClose}>閉じる</MenuItem>
+        {/* {currentUser && (
+          {adminContent}
+        )} */}
+        <MenuItem onClick={handleNew}>企業登録</MenuItem>
+        <MenuItem onClick={handleCategoryNew}>カテゴリー登録</MenuItem>
       </Menu>
     </div>
   )

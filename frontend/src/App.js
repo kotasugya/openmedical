@@ -24,6 +24,7 @@ import { CompaniesShow } from './containers/companies/CompaniesShow'
 import { ReviewsNew } from './containers/reviews/ReviewsNew'
 import { ReviewsTop } from './containers/reviews/ReviewsTop'
 import { ReviewCategoriesShow } from './containers/reviewCategories/ReviewCategoriesShow'
+import { ReviewCategoiresNew } from './containers/reviewCategories/ReviewCategoriesNew'
 import { EnrollmentsNew } from './containers/enrollments/EnrollmentsNew'
 import { SearchCompanies } from './containers/companies/SearchCompanies'
 import { About } from './containers/About'
@@ -58,7 +59,7 @@ function App() {
                 <Route exact path="/login" component={Login} />
 
                 {/* 企業 */}
-                <Route exact path="/companies/new" component={CompaniesNew} />
+                <Route exact path="/companies/admin/new" component={CompaniesNew} />
                 <Route exact path="/companies" component={CompaniesIndex} />
                 <Route
                   exact
@@ -85,6 +86,8 @@ function App() {
                   path="/companies/:companyId/reviewCategories/:reviewCategoryId/reviews"
                   render={({ match }) => <ReviewCategoriesShow match={match} />}
                 />
+                {/* レビューカテゴリー */}
+                <Route exact path="/review_category/new" component={ReviewCategoiresNew} />
 
                 {/* 在籍情報 */}
                 <PrivateRoute
