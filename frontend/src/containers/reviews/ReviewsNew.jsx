@@ -59,6 +59,7 @@ export const ReviewsNew = (props) => {
         review_content: content2,
       },
     }
+    console.log(companyId, reviewCategoryId2, enrollmentId, body)
     const headers = { 'Content-Type': 'application/json' }
     axios
       .post(reviewsNew, body, headers)
@@ -85,7 +86,7 @@ export const ReviewsNew = (props) => {
         review_content: content3,
       },
     }
-    console.log(companyInformation, reviewCategoryId3, body)
+    console.log(companyId, reviewCategoryId3, enrollmentId, body)
     const headers = { 'Content-Type': 'application/json' }
     axios
       .post(reviewsNew, body, headers)
@@ -113,7 +114,7 @@ export const ReviewsNew = (props) => {
         review_content: content4,
       },
     }
-    console.log(companyInformation, reviewCategoryId4, body)
+    console.log(companyId, reviewCategoryId4, enrollmentId, body)
     const headers = { 'Content-Type': 'application/json' }
     axios
       .post(reviewsNew, body, headers)
@@ -141,7 +142,7 @@ export const ReviewsNew = (props) => {
         review_content: content5,
       },
     }
-    console.log(companyInformation, reviewCategoryId5, body)
+    console.log(companyId, reviewCategoryId5, enrollmentId, body)
     const headers = { 'Content-Type': 'application/json' }
     axios
       .post(reviewsNew, body, headers)

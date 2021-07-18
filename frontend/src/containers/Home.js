@@ -7,7 +7,6 @@ export const Home = () => {
   const handleChange = (e) => {
     setSearchKeyWord(e.target.value)
   }
-
   return (
     <>
       <h2>医院を検索する</h2>

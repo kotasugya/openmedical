@@ -1,25 +1,25 @@
 @host = http://localhost
-@port = 3001
+@port = 80
 @base_path = /api/v1
 
 ###
 @name = getBooks
-{{host}}:{{port}}{{base_path}}/users/1
+GET {{host}}:{{port}}{{base_path}}/review_categories
 
 ###
 @name = getBooksWithQuery
-POST {{host}}:{{port}}{{base_path}}/users
+POST {{host}}:{{port}}{{base_path}}/review_categories
 Content-Type: application/json
 
 {
-  "user": {
-    "name": "guest9",
-    "email": "test9@test.com",
-    "password": "9740zero",
-    "password_confirmation": "9740zero",
-    "birthday": "1995-11-16",
-    "salary": 300
-  }
+  "reviewCategories": [
+    {
+    "id": 6,
+    "name": "きゅわの有無",
+    "created_at": "2021-07-04T08:37:41.000Z",
+    "updated_at": "2021-07-04T08:37:41.000Z"
+    }
+  ]
 }
 
 ###

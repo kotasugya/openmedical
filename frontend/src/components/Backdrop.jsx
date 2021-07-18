@@ -22,3 +22,53 @@ export const SimpleBackdrop = (props) => {
     </div>
   )
 }
+
+
+// import AppContext from "./context";
+
+// class App extends React.Component {
+
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       loading: true
+//     };
+//   }
+
+//   async componentDidMount() {
+//     try {
+//       const resp= await axios.get("/api/my/profile");
+//       const user = resp.data;
+//       this.setState({ user });
+//     } catch (e) {
+//       if (e.response.status === 401) {
+//         const user = {};
+//         this.setState({ user });
+//       } else {
+//         //401エラー以外のエラーが返ってきた場合の処理を記述
+//       }
+//     }
+//     this.setState({ loading: false });
+//   }
+
+//   render() {
+//     const { loading, user } = this.state;
+//     const style = { position: "fixed", top: 0, left: 0, width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" };
+//     if (loading) {
+//       return (
+//         <div style={style}>
+//           <ActivityIndicator size="large" />
+//         </div>
+//       );
+//     }
+//     return (
+//       <AppContext.Provider value={{ user }}>
+//         <BrowserRouter>
+//           {/*ここで各コンポーネントのルーティングを設定する*/}
+//         </BrowserRouter>
+//       </AppContext.Provider>
+//     );
+//   }
+// }
+
+// export default App;
