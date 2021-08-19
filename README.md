@@ -21,16 +21,6 @@ URL: http://35.74.112.246/
 
 </br>
 
-## 開発者Twitter
-https://twitter.com/sugya_k
-
-</br>
-
-## 開発者Wantedly
-https://www.wantedly.com/users/9949079
-
-</br>
-
 ## 使い方紹介
 スライドをご確認下さい。
 https://docs.google.com/presentation/d/1OGMP0mQMV0sOHJQUEGhF0dovXmwShwNlGN7mAF-IiAE/edit?usp=sharing
